@@ -1,0 +1,17 @@
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\WinFormsAppSales.exe
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\WinFormsAppSales.deps.json
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\WinFormsAppSales.runtimeconfig.json
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\WinFormsAppSales.dll
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\WinFormsAppSales.pdb
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.Form_Sales.resources
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.csproj.GenerateResource.cache
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.GeneratedMSBuildEditorConfig.editorconfig
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.AssemblyInfoInputs.cache
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.AssemblyInfo.cs
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.csproj.CoreCompileInputs.cache
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.sourcelink.json
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.dll
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\refint\WinFormsAppSales.dll
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.pdb
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.genruntimeconfig.cache
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\ref\WinFormsAppSales.dll
