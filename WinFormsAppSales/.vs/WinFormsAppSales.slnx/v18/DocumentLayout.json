@@ -3,12 +3,29 @@
   "WorkspaceRootPath": "D:\\_git\\Sales\\WinFormsAppSales\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2564CD0A-8309-4F53-A3D8-0BF4FA0546EF}|..\\ClassLibrarySales\\ClassLibrarySales.csproj|d:\\_git\\sales\\classlibrarysales\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2564CD0A-8309-4F53-A3D8-0BF4FA0546EF}|..\\ClassLibrarySales\\ClassLibrarySales.csproj|d:\\_git\\sales\\classlibrarysales\\dataprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{623C3F29-F03A-4A4B-9056-A4F420FC437C}|..\\TestProjectSales\\TestProjectSales.csproj|d:\\_git\\sales\\testprojectsales\\dataprocessingtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,17 +35,17 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Sales.cs",
               "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs",
               "RelativeDocumentMoniker": "Sales.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs*",
-              "RelativeToolTip": "Sales.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs",
+              "RelativeToolTip": "Sales.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAADwv4EAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-25T11:06:09.843Z",
               "IsPinned": true,
@@ -56,15 +73,79 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.cs",
+              "RelativeDocumentMoniker": "ReportForm.cs",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "RelativeToolTip": "ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T13:01:07.028Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ReportForm.cs",
+              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.cs",
+              "RelativeDocumentMoniker": "ReportForm.cs",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.cs*",
+              "RelativeToolTip": "ReportForm.cs*",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwEgAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T13:20:51.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs",
               "RelativeDocumentMoniker": "Sales.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
-              "RelativeToolTip": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-25T11:03:21.828Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "D:\\_git\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "..\\ClassLibrarySales\\DatabaseHelper.cs",
+              "ToolTip": "D:\\_git\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "RelativeToolTip": "..\\ClassLibrarySales\\DatabaseHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T09:48:16.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DataProcessing.cs",
+              "DocumentMoniker": "D:\\_git\\Sales\\ClassLibrarySales\\DataProcessing.cs",
+              "RelativeDocumentMoniker": "..\\ClassLibrarySales\\DataProcessing.cs",
+              "ToolTip": "D:\\_git\\Sales\\ClassLibrarySales\\DataProcessing.cs",
+              "RelativeToolTip": "..\\ClassLibrarySales\\DataProcessing.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwEIAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T11:16:05.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DataProcessingTests.cs",
+              "DocumentMoniker": "D:\\_git\\Sales\\TestProjectSales\\DataProcessingTests.cs",
+              "RelativeDocumentMoniker": "..\\TestProjectSales\\DataProcessingTests.cs",
+              "ToolTip": "D:\\_git\\Sales\\TestProjectSales\\DataProcessingTests.cs",
+              "RelativeToolTip": "..\\TestProjectSales\\DataProcessingTests.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAUwIcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T12:00:20.222Z",
+              "EditorCaption": ""
             }
           ]
         }
