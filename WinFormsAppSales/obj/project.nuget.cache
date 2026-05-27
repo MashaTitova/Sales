@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "FEvmwo6hcYk=",
+  "dgSpecHash": "G496erl41ek=",
   "success": true,
   "projectFilePath": "D:\\_git\\Sales\\WinFormsAppSales\\WinFormsAppSales.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.compat\\2026.2.1\\fastreport.compat.2026.2.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.opensource\\2026.2.1\\fastreport.opensource.2026.2.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.1\\microsoft.codeanalysis.common.4.0.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.1\\microsoft.codeanalysis.csharp.4.0.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.visualbasic\\4.0.1\\microsoft.codeanalysis.visualbasic.4.0.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.data.oledb\\10.0.8\\system.data.oledb.10.0.8.nupkg.sha512"
+  ],
   "logs": []
 }

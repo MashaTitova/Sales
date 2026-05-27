@@ -7,14 +7,57 @@
   "targets": {
     ".NETCoreApp,Version=v10.0": {
       "WinFormsAppSales/1.0.0": {
+        "dependencies": {
+          "ClassLibrarySales": "1.0.0",
+          "System.Data.OleDb": "10.0.8"
+        },
         "runtime": {
           "WinFormsAppSales.dll": {}
+        }
+      },
+      "System.Data.OleDb/10.0.8": {
+        "runtime": {
+          "lib/net10.0/System.Data.OleDb.dll": {
+            "assemblyVersion": "10.0.0.8",
+            "fileVersion": "10.0.826.23019"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net10.0/System.Data.OleDb.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "10.0.0.8",
+            "fileVersion": "10.0.826.23019"
+          }
+        }
+      },
+      "ClassLibrarySales/1.0.0": {
+        "dependencies": {
+          "System.Data.OleDb": "10.0.8"
+        },
+        "runtime": {
+          "ClassLibrarySales.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "WinFormsAppSales/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Data.OleDb/10.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QZnhynkA7p7clCHWsQMpnjNGMHSprCI9lYcJp39PyiA1inS98WpkcxWO00/dCljoMG++ujUq0S2ezBrqbMRrQg==",
+      "path": "system.data.oledb/10.0.8",
+      "hashPath": "system.data.oledb.10.0.8.nupkg.sha512"
+    },
+    "ClassLibrarySales/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -15,3 +15,9 @@ D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\refint\WinFormsAppSales
 D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.pdb
 D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.genruntimeconfig.cache
 D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\ref\WinFormsAppSales.dll
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\System.Data.OleDb.dll
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\runtimes\win\lib\net10.0\System.Data.OleDb.dll
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\ClassLibrarySales.dll
+D:\_git\Sales\WinFormsAppSales\bin\Debug\net10.0-windows\ClassLibrarySales.pdb
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinFormsAppSales.csproj.AssemblyReference.cache
+D:\_git\Sales\WinFormsAppSales\obj\Debug\net10.0-windows\WinForms.8FC9194A.Up2Date

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Sales));
             panel_Main = new Panel();
             flowLayoutPanel_HomeButtons = new FlowLayoutPanel();
             button_LoadBase = new Button();
@@ -38,19 +40,23 @@
             button_ExitApp = new Button();
             button_Info = new Button();
             panel_Processing = new Panel();
+            panel_Find = new Panel();
+            radioButton_NumFind = new RadioButton();
+            radioButton_StringFind = new RadioButton();
+            label1 = new Label();
+            label_ChooseFind = new Label();
             comboBox_FindRatio = new ComboBox();
+            comboBox_ChooseFindParam = new ComboBox();
+            label_Find = new Label();
+            textBox_ChooseFind = new TextBox();
             label_SortDirection = new Label();
             comboBox_SortDirection = new ComboBox();
-            textBox_ChooseFind = new TextBox();
             label_SortingColumn = new Label();
             label_Sort = new Label();
             label_Group = new Label();
-            label_Find = new Label();
-            label_ChooseFind = new Label();
             label_ChooseGroup = new Label();
             comboBox_ChooseGroupParam = new ComboBox();
             comboBox_SortingColumn = new ComboBox();
-            comboBox_ChooseFindParam = new ComboBox();
             button_Return = new Button();
             button_Remove = new Button();
             button_Apply = new Button();
@@ -63,9 +69,12 @@
             panel_Base = new Panel();
             dataGridView_Sales = new DataGridView();
             label_Name = new Label();
+            toolTip_Find = new ToolTip(components);
+            toolTip1 = new ToolTip(components);
             panel_Main.SuspendLayout();
             flowLayoutPanel_HomeButtons.SuspendLayout();
             panel_Processing.SuspendLayout();
+            panel_Find.SuspendLayout();
             panel_ChooseTable.SuspendLayout();
             panel_StatInfo.SuspendLayout();
             panel_Base.SuspendLayout();
@@ -179,6 +188,7 @@
             button_Report.TabIndex = 10;
             button_Report.Text = "Создание отчета";
             button_Report.UseVisualStyleBackColor = false;
+            button_Report.Click += button_Report_Click;
             // 
             // button_ExitApp
             // 
@@ -207,24 +217,83 @@
             // 
             // panel_Processing
             // 
-            panel_Processing.Controls.Add(comboBox_FindRatio);
+            panel_Processing.Controls.Add(panel_Find);
             panel_Processing.Controls.Add(label_SortDirection);
             panel_Processing.Controls.Add(comboBox_SortDirection);
-            panel_Processing.Controls.Add(textBox_ChooseFind);
             panel_Processing.Controls.Add(label_SortingColumn);
             panel_Processing.Controls.Add(label_Sort);
             panel_Processing.Controls.Add(label_Group);
-            panel_Processing.Controls.Add(label_Find);
-            panel_Processing.Controls.Add(label_ChooseFind);
             panel_Processing.Controls.Add(label_ChooseGroup);
             panel_Processing.Controls.Add(comboBox_ChooseGroupParam);
             panel_Processing.Controls.Add(comboBox_SortingColumn);
-            panel_Processing.Controls.Add(comboBox_ChooseFindParam);
             panel_Processing.Location = new Point(3, 262);
             panel_Processing.Name = "panel_Processing";
             panel_Processing.Size = new Size(549, 799);
             panel_Processing.TabIndex = 28;
             panel_Processing.Visible = false;
+            // 
+            // panel_Find
+            // 
+            panel_Find.Controls.Add(radioButton_NumFind);
+            panel_Find.Controls.Add(radioButton_StringFind);
+            panel_Find.Controls.Add(label1);
+            panel_Find.Controls.Add(label_ChooseFind);
+            panel_Find.Controls.Add(comboBox_FindRatio);
+            panel_Find.Controls.Add(comboBox_ChooseFindParam);
+            panel_Find.Controls.Add(label_Find);
+            panel_Find.Controls.Add(textBox_ChooseFind);
+            panel_Find.Location = new Point(43, 262);
+            panel_Find.Name = "panel_Find";
+            panel_Find.Size = new Size(456, 382);
+            panel_Find.TabIndex = 41;
+            // 
+            // radioButton_NumFind
+            // 
+            radioButton_NumFind.AutoSize = true;
+            radioButton_NumFind.Location = new Point(129, 162);
+            radioButton_NumFind.Name = "radioButton_NumFind";
+            radioButton_NumFind.Size = new Size(226, 36);
+            radioButton_NumFind.TabIndex = 27;
+            radioButton_NumFind.TabStop = true;
+            radioButton_NumFind.Text = "Числовой поиск";
+            radioButton_NumFind.UseVisualStyleBackColor = true;
+            radioButton_NumFind.CheckedChanged += radioButton_NumFind_CheckedChanged;
+            // 
+            // radioButton_StringFind
+            // 
+            radioButton_StringFind.AutoSize = true;
+            radioButton_StringFind.Location = new Point(132, 103);
+            radioButton_StringFind.Name = "radioButton_StringFind";
+            radioButton_StringFind.Size = new Size(240, 36);
+            radioButton_StringFind.TabIndex = 26;
+            radioButton_StringFind.TabStop = true;
+            radioButton_StringFind.Text = "Строковый поиск";
+            radioButton_StringFind.UseVisualStyleBackColor = true;
+            radioButton_StringFind.CheckedChanged += radioButton_StringFind_CheckedChanged;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            label1.Location = new Point(11, 55);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(435, 45);
+            label1.TabIndex = 25;
+            label1.Text = "Выберите формат поиска";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label_ChooseFind
+            // 
+            label_ChooseFind.Anchor = AnchorStyles.None;
+            label_ChooseFind.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            label_ChooseFind.Location = new Point(4, 201);
+            label_ChooseFind.Margin = new Padding(4, 0, 4, 0);
+            label_ChooseFind.Name = "label_ChooseFind";
+            label_ChooseFind.Size = new Size(435, 45);
+            label_ChooseFind.TabIndex = 13;
+            label_ChooseFind.Text = "Введите запрос для поиска";
+            label_ChooseFind.TextAlign = ContentAlignment.TopCenter;
             // 
             // comboBox_FindRatio
             // 
@@ -232,17 +301,49 @@
             comboBox_FindRatio.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_FindRatio.FormattingEnabled = true;
             comboBox_FindRatio.Items.AddRange(new object[] { "=", ">", ">=", "<", "<=" });
-            comboBox_FindRatio.Location = new Point(396, 443);
+            comboBox_FindRatio.Location = new Point(345, 261);
             comboBox_FindRatio.Margin = new Padding(4, 2, 4, 2);
             comboBox_FindRatio.Name = "comboBox_FindRatio";
             comboBox_FindRatio.Size = new Size(94, 40);
             comboBox_FindRatio.TabIndex = 17;
             // 
+            // comboBox_ChooseFindParam
+            // 
+            comboBox_ChooseFindParam.Anchor = AnchorStyles.None;
+            comboBox_ChooseFindParam.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_ChooseFindParam.FormattingEnabled = true;
+            comboBox_ChooseFindParam.Location = new Point(4, 261);
+            comboBox_ChooseFindParam.Margin = new Padding(4, 2, 4, 2);
+            comboBox_ChooseFindParam.Name = "comboBox_ChooseFindParam";
+            comboBox_ChooseFindParam.Size = new Size(312, 40);
+            comboBox_ChooseFindParam.TabIndex = 16;
+            // 
+            // label_Find
+            // 
+            label_Find.Anchor = AnchorStyles.None;
+            label_Find.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            label_Find.Location = new Point(8, 14);
+            label_Find.Margin = new Padding(4, 0, 4, 0);
+            label_Find.Name = "label_Find";
+            label_Find.Size = new Size(435, 41);
+            label_Find.TabIndex = 11;
+            label_Find.Text = "Поиск";
+            label_Find.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // textBox_ChooseFind
+            // 
+            textBox_ChooseFind.Anchor = AnchorStyles.None;
+            textBox_ChooseFind.Location = new Point(4, 326);
+            textBox_ChooseFind.Margin = new Padding(4, 2, 4, 2);
+            textBox_ChooseFind.Name = "textBox_ChooseFind";
+            textBox_ChooseFind.Size = new Size(435, 39);
+            textBox_ChooseFind.TabIndex = 24;
+            // 
             // label_SortDirection
             // 
             label_SortDirection.Anchor = AnchorStyles.None;
             label_SortDirection.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            label_SortDirection.Location = new Point(55, 208);
+            label_SortDirection.Location = new Point(51, 170);
             label_SortDirection.Margin = new Padding(4, 0, 4, 0);
             label_SortDirection.Name = "label_SortDirection";
             label_SortDirection.Size = new Size(435, 45);
@@ -256,26 +357,17 @@
             comboBox_SortDirection.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_SortDirection.FormattingEnabled = true;
             comboBox_SortDirection.Items.AddRange(new object[] { "Возрастание", "Убывание" });
-            comboBox_SortDirection.Location = new Point(55, 255);
+            comboBox_SortDirection.Location = new Point(51, 217);
             comboBox_SortDirection.Margin = new Padding(4, 2, 4, 2);
             comboBox_SortDirection.Name = "comboBox_SortDirection";
             comboBox_SortDirection.Size = new Size(435, 40);
             comboBox_SortDirection.TabIndex = 26;
             // 
-            // textBox_ChooseFind
-            // 
-            textBox_ChooseFind.Anchor = AnchorStyles.None;
-            textBox_ChooseFind.Location = new Point(55, 508);
-            textBox_ChooseFind.Margin = new Padding(4, 2, 4, 2);
-            textBox_ChooseFind.Name = "textBox_ChooseFind";
-            textBox_ChooseFind.Size = new Size(435, 39);
-            textBox_ChooseFind.TabIndex = 24;
-            // 
             // label_SortingColumn
             // 
             label_SortingColumn.Anchor = AnchorStyles.None;
             label_SortingColumn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            label_SortingColumn.Location = new Point(63, 92);
+            label_SortingColumn.Location = new Point(59, 54);
             label_SortingColumn.Margin = new Padding(4, 0, 4, 0);
             label_SortingColumn.Name = "label_SortingColumn";
             label_SortingColumn.Size = new Size(427, 45);
@@ -287,7 +379,7 @@
             // 
             label_Sort.Anchor = AnchorStyles.None;
             label_Sort.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            label_Sort.Location = new Point(55, 39);
+            label_Sort.Location = new Point(51, 1);
             label_Sort.Margin = new Padding(4, 0, 4, 0);
             label_Sort.Name = "label_Sort";
             label_Sort.Size = new Size(435, 45);
@@ -299,7 +391,7 @@
             // 
             label_Group.Anchor = AnchorStyles.None;
             label_Group.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            label_Group.Location = new Point(63, 590);
+            label_Group.Location = new Point(59, 647);
             label_Group.Margin = new Padding(4, 0, 4, 0);
             label_Group.Name = "label_Group";
             label_Group.Size = new Size(427, 38);
@@ -307,40 +399,16 @@
             label_Group.Text = "Группировка";
             label_Group.TextAlign = ContentAlignment.TopCenter;
             // 
-            // label_Find
-            // 
-            label_Find.Anchor = AnchorStyles.None;
-            label_Find.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            label_Find.Location = new Point(55, 342);
-            label_Find.Margin = new Padding(4, 0, 4, 0);
-            label_Find.Name = "label_Find";
-            label_Find.Size = new Size(435, 41);
-            label_Find.TabIndex = 11;
-            label_Find.Text = "Поиск";
-            label_Find.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label_ChooseFind
-            // 
-            label_ChooseFind.Anchor = AnchorStyles.None;
-            label_ChooseFind.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            label_ChooseFind.Location = new Point(55, 383);
-            label_ChooseFind.Margin = new Padding(4, 0, 4, 0);
-            label_ChooseFind.Name = "label_ChooseFind";
-            label_ChooseFind.Size = new Size(435, 45);
-            label_ChooseFind.TabIndex = 13;
-            label_ChooseFind.Text = "Введите запрос для поиска";
-            label_ChooseFind.TextAlign = ContentAlignment.TopCenter;
-            // 
             // label_ChooseGroup
             // 
             label_ChooseGroup.Anchor = AnchorStyles.None;
             label_ChooseGroup.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            label_ChooseGroup.Location = new Point(55, 637);
+            label_ChooseGroup.Location = new Point(51, 694);
             label_ChooseGroup.Margin = new Padding(4, 0, 4, 0);
             label_ChooseGroup.Name = "label_ChooseGroup";
             label_ChooseGroup.Size = new Size(435, 44);
             label_ChooseGroup.TabIndex = 14;
-            label_ChooseGroup.Text = "Выберите параметр для группировки";
+            label_ChooseGroup.Text = "Выберите столбец для группировки";
             label_ChooseGroup.TextAlign = ContentAlignment.TopCenter;
             // 
             // comboBox_ChooseGroupParam
@@ -348,7 +416,7 @@
             comboBox_ChooseGroupParam.Anchor = AnchorStyles.None;
             comboBox_ChooseGroupParam.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_ChooseGroupParam.FormattingEnabled = true;
-            comboBox_ChooseGroupParam.Location = new Point(55, 693);
+            comboBox_ChooseGroupParam.Location = new Point(51, 750);
             comboBox_ChooseGroupParam.Margin = new Padding(4, 2, 4, 2);
             comboBox_ChooseGroupParam.Name = "comboBox_ChooseGroupParam";
             comboBox_ChooseGroupParam.Size = new Size(435, 40);
@@ -360,22 +428,11 @@
             comboBox_SortingColumn.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_SortingColumn.ForeColor = Color.Black;
             comboBox_SortingColumn.FormattingEnabled = true;
-            comboBox_SortingColumn.Location = new Point(55, 149);
+            comboBox_SortingColumn.Location = new Point(51, 111);
             comboBox_SortingColumn.Margin = new Padding(4, 2, 4, 2);
             comboBox_SortingColumn.Name = "comboBox_SortingColumn";
             comboBox_SortingColumn.Size = new Size(435, 40);
             comboBox_SortingColumn.TabIndex = 15;
-            // 
-            // comboBox_ChooseFindParam
-            // 
-            comboBox_ChooseFindParam.Anchor = AnchorStyles.None;
-            comboBox_ChooseFindParam.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_ChooseFindParam.FormattingEnabled = true;
-            comboBox_ChooseFindParam.Location = new Point(55, 443);
-            comboBox_ChooseFindParam.Margin = new Padding(4, 2, 4, 2);
-            comboBox_ChooseFindParam.Name = "comboBox_ChooseFindParam";
-            comboBox_ChooseFindParam.Size = new Size(312, 40);
-            comboBox_ChooseFindParam.TabIndex = 16;
             // 
             // button_Return
             // 
@@ -401,6 +458,7 @@
             button_Remove.Text = " Снять обработку";
             button_Remove.UseVisualStyleBackColor = true;
             button_Remove.Visible = false;
+            button_Remove.Click += button_Remove_Click;
             // 
             // button_Apply
             // 
@@ -413,6 +471,7 @@
             button_Apply.Text = "Применить обработку";
             button_Apply.UseVisualStyleBackColor = true;
             button_Apply.Visible = false;
+            button_Apply.Click += button_Apply_Click;
             // 
             // panel_ChooseTable
             // 
@@ -447,6 +506,7 @@
             comboBox_ChooseTable.Name = "comboBox_ChooseTable";
             comboBox_ChooseTable.Size = new Size(435, 40);
             comboBox_ChooseTable.TabIndex = 28;
+            comboBox_ChooseTable.SelectedValueChanged += comboBox_ChooseTable_SelectedValueChanged;
             // 
             // panel_StatInfo
             // 
@@ -501,7 +561,7 @@
             // 
             // dataGridView_Sales
             // 
-            dataGridView_Sales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView_Sales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView_Sales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView_Sales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_Sales.Dock = DockStyle.Fill;
@@ -532,6 +592,7 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1622, 1164);
             Controls.Add(panel_Main);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form_Sales";
             Text = "Sales";
             FormClosing += Form_Sales_FormClosing;
@@ -540,7 +601,8 @@
             flowLayoutPanel_HomeButtons.ResumeLayout(false);
             flowLayoutPanel_HomeButtons.PerformLayout();
             panel_Processing.ResumeLayout(false);
-            panel_Processing.PerformLayout();
+            panel_Find.ResumeLayout(false);
+            panel_Find.PerformLayout();
             panel_ChooseTable.ResumeLayout(false);
             panel_StatInfo.ResumeLayout(false);
             panel_Base.ResumeLayout(false);
@@ -585,19 +647,12 @@
         private Button button_Apply;
         private Panel panel_Processing;
         private Button button_Info;
-        private ComboBox comboBox1;
-        private Label label1;
-        private ComboBox comboBox2;
-        private TextBox textBox1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private ComboBox comboBox3;
-        private ComboBox comboBox4;
-        private ComboBox comboBox5;
         private Button button_DataViewing;
+        private Panel panel_Find;
+        private ToolTip toolTip_Find;
+        private ToolTip toolTip1;
+        private RadioButton radioButton_StringFind;
+        private Label label1;
+        private RadioButton radioButton_NumFind;
     }
 }
