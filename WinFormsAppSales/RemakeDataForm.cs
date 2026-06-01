@@ -1,0 +1,369 @@
+﻿
+using ClassLibrarySales;
+using System.Data;
+using System.Data.OleDb;
+
+namespace WinFormsAppSales
+{
+    public partial class RemakeDataForm : Form
+    {
+        private DataTable data;
+        private string connectionString;
+        private string nameOfTable;
+        int page = 1;
+        public RemakeDataForm()
+        {
+            InitializeComponent();
+        }
+        public void SetData(DataTable dt, string basePath, string name)
+        {
+            data = dt;
+            string conString = DatabaseHelper.GetConnectionString(basePath);
+            connectionString = conString;
+            nameOfTable = name;
+            CreatingFields();
+            ShowPage();
+        }
+        public DataTable GetDataTable()
+        {
+            return data;
+        }
+        private void CreatingFields()
+        {
+            int y = 65;
+            foreach (DataColumn column in data.Columns)
+            {
+                Label label = new Label();
+                label.Height = 43;
+                label.Width = 315;
+                label.Text = column.ColumnName;
+                label.Name = $"label_{column.ColumnName}";
+                label.Location = new System.Drawing.Point(55, y);
+                this.Controls.Add(label);
+
+                TextBox textBox = new TextBox();
+                textBox.Height = 43;
+                textBox.Width = 315;
+                textBox.Name = $"textBox_{column.ColumnName}";
+                textBox.Location = new System.Drawing.Point(470, y);
+                this.Controls.Add(textBox);
+
+                y += 53;
+            }
+            Button buttonLast = new Button();
+            buttonLast.Height = 50;
+            buttonLast.Width = 50;
+            buttonLast.Text = "<-";
+            buttonLast.Name = $"button_Last";
+            buttonLast.Location = new System.Drawing.Point(155, y);
+            buttonLast.Click += button_Last_Click; 
+            this.Controls.Add(buttonLast);
+
+            Button buttonNext = new Button();
+            buttonNext.Height = 50;
+            buttonNext.Width = 50;
+            buttonNext.Text = "->";
+            buttonNext.Name = $"button_Next";
+            buttonNext.Location = new System.Drawing.Point(603, y);
+            buttonNext.Click += button_Next_Click;
+            this.Controls.Add(buttonNext);
+
+            y += 60;
+
+            Button buttonAdd = new Button();
+            buttonAdd.Height = 100;
+            buttonAdd.Width = 300;
+            buttonAdd.Text = "Добавить запись";
+            buttonAdd.Name = $"button_Add";
+            buttonAdd.Location = new System.Drawing.Point(255, y);
+            buttonAdd.Click += button_Add_Click;
+            this.Controls.Add(buttonAdd);
+
+            y += 110;
+
+            Button buttonSave = new Button();
+            buttonSave.Height = 100;
+            buttonSave.Width = 300;
+            buttonSave.Text = "Сохранить изменения в записи";
+            buttonSave.Name = $"button_Save";
+            buttonSave.Location = new System.Drawing.Point(255, y);
+            buttonSave.Click += button_Save_Click;
+            this.Controls.Add(buttonSave);
+
+            y += 110;
+
+            Button buttonDelete = new Button();
+            buttonDelete.Height = 100;
+            buttonDelete.Width = 300;
+            buttonDelete.Text = "Удалить запись";
+            buttonDelete.Name = $"button_Delete";
+            buttonDelete.Location = new System.Drawing.Point(255, y);
+            buttonDelete.Click += button_Delete_Click;
+            this.Controls.Add(buttonDelete);
+
+            y += 110;
+
+            Button buttonReturn = new Button();
+            buttonReturn.Height = 100;
+            buttonReturn.Width = 300;
+            buttonReturn.Text = "Сохранить в базу данных и выйти";
+            buttonReturn.Name = $"button_Return";
+            buttonReturn.Location = new System.Drawing.Point(255, y);
+            buttonReturn.Click += button_Return_Click;
+            this.Controls.Add(buttonReturn);
+
+            y += 200;
+
+            this.Height = y;
+        }
+
+        private void button_Next_Click(object sender, EventArgs e)
+        {
+            if(page < data.Rows.Count)
+            {
+                page++;
+                ShowPage();
+            }
+        }
+        private void button_Last_Click(object sender, EventArgs e)
+        {
+            if(page > 1)
+            {
+                page--;
+                ShowPage();
+            }
+        }
+        private void button_Return_Click(object sender, EventArgs e)
+        {
+            if(SaveToAccess()) this.Close();
+        }
+
+        private void ShowPage()
+        {
+            // Проверяем, что страница существует 
+            if (page <= 0 || page > data.Rows.Count) return;
+
+            // Получаем текущую строку 
+            DataRow currentRow = data.Rows[page - 1];
+            if (currentRow.RowState == DataRowState.Deleted)
+            {
+                return;
+            }
+
+            // Проходим по всем столбцам
+            foreach (DataColumn column in data.Columns)
+            {
+                // Формируем имя TextBox 
+                string textBoxName = $"textBox_{column.ColumnName}";
+
+                // Находим элемент управления по имени
+                TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
+
+                // Если элемент найден — заполняем его
+                if (textBox != null)
+                {
+                    if (currentRow.RowState == DataRowState.Deleted)
+                        continue;
+                    // Берем значение из текущей строки и текущего столбца
+                    textBox.Text = currentRow[column].ToString();
+                }
+            }
+        }
+        private void button_Save_Click(object sender, EventArgs e)
+        {
+            string text = "";
+            if (page <= 0 || page > data.Rows.Count) return;
+
+            string errorMessage;
+            if (!ValidateFormData(out errorMessage))
+            {
+                MessageBox.Show(errorMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DataRow currentRow = data.Rows[page - 1];
+            
+            foreach (DataColumn column in data.Columns)
+            {
+                string textBoxName = $"textBox_{column.ColumnName}";
+                TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
+
+                if (textBox != null && textBox.Text != null)
+                {
+                    if(nameOfTable == "Пользователи" && textBoxName == "textBox_Пароль")
+                    {
+                        text = DatabaseHelper.HashPassword(textBox.Text);
+                    }
+                    else
+                    {
+                        text = textBox.Text;
+                    }
+                    // Записываем изменения в DataTable
+                    currentRow[column] = text; 
+                }
+            }
+            MessageBox.Show("Текущие изменения успешно сохранены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private bool ValidateFormData(out string errorMessage)
+        {
+            errorMessage = "";
+
+            // Собираем значения из TextBox в словарь для удобства
+            var formValues = new Dictionary<DataColumn, string>();
+            foreach (DataColumn column in data.Columns)
+            {
+                string textBoxName = $"textBox_{column.ColumnName}";
+                TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
+                if (textBox != null)
+                {
+                    formValues[column] = textBox.Text;
+                }
+            }
+
+            // Проверка: Первое поле не пустое
+            string firstValue = formValues[data.Columns[0]];
+            if (string.IsNullOrWhiteSpace(firstValue))
+            {
+                errorMessage = "Первое поле записи не может быть пустым";
+                return false;
+            }
+
+            // Проверка: Уникальность ключа
+            if (page > 0 && page <= data.Rows.Count)
+            {
+                DataRow currentRow = data.Rows[page - 1];
+                bool isUnique = true;
+                foreach (DataRow row in data.Rows)
+                {
+                    // Пропускаем текущую строку
+                    if (row == currentRow) continue;
+                    // Пропускаем удалённые строки
+                    if (row.RowState == DataRowState.Deleted) continue;
+                    object value = row[data.Columns[0]];
+                    if (!IsValueEmpty(value) && value.ToString() == firstValue)
+                    {
+                        isUnique = false;
+                        break;
+                    }
+                }
+                if (!isUnique)
+                {
+                    errorMessage = "Значение в первом поле должно быть уникальным.";
+                    return false;
+                }
+            }
+
+            // Валидация остальных столбцов 
+            foreach (DataColumn column in data.Columns)
+            {
+                // Пропускаем первый столбец
+                if (column.Ordinal == 0) continue; 
+
+                string value = formValues[column];
+
+                // Проверка типа данных
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    try
+                    {
+                        Convert.ChangeType(value, column.DataType);
+                    }
+                    catch (Exception)
+                    {
+                        errorMessage = $"В поле \"{column.ColumnName}\" введено некорректное значение. Ожидается тип: {column.DataType.Name}";
+                        return false;
+                    }
+                }
+
+                // Проверка длины строк
+                if (column.DataType == typeof(string))
+                {
+                    int maxLength = column.MaxLength;
+                    if (maxLength > 0 && !string.IsNullOrWhiteSpace(value))
+                    {
+                        if (value.Length > maxLength)
+                        {
+                            errorMessage = $"Длина значения в поле \"{column.ColumnName}\" превышает допустимую ({maxLength} символов).";
+                            return false;
+                        }
+                    }
+                }
+            }
+            errorMessage = "";
+            return true;
+        }
+        private bool IsValueEmpty(object value)
+        {
+            return value == null || value is DBNull || string.IsNullOrWhiteSpace(value.ToString());
+        }
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = data.NewRow();
+            data.Rows.Add(newRow);
+
+            // Переключаемся на новую запись
+            page = data.Rows.Count;
+            ShowPage();
+        }
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            if (page <= 0 || page > data.Rows.Count) return;
+
+            DataRow currentRow = data.Rows[page - 1];
+            currentRow.Delete();
+
+            // Обновляем отображение страницы
+            ShowPage();
+
+            MessageBox.Show("Данные успешно удалены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private bool SaveToAccess()
+        {
+            try
+            {
+
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    OleDbDataAdapter adapter = new OleDbDataAdapter($"SELECT * FROM [{nameOfTable}]", connection);
+                    OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
+
+                    // Обновляем команды адаптера
+                    adapter.InsertCommand = builder.GetInsertCommand();
+                    adapter.UpdateCommand = builder.GetUpdateCommand();
+                    adapter.DeleteCommand = builder.GetDeleteCommand();
+
+                    // Применяем изменения
+                    adapter.Update(data);
+                    
+                    MessageBox.Show("Данные успешно сохранены в базу данных", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+
+                }
+            }
+            catch (OleDbException ex)
+            {
+                MessageBox.Show(
+                    $"Ошибка при сохранении в базу данных:\n{ex.Message}\n\n" +
+                    "Проверьте корректность данных и соединение с базой.",
+                    "Ошибка базы данных",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Неизвестная ошибка при сохранении:\n{ex.Message}",
+                    "Критическая ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return false;
+            }
+        }
+
+    }
+}
