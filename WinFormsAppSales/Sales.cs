@@ -9,27 +9,64 @@ namespace WinFormsAppSales
     public partial class Form_Sales : Form
     {
         private string selectedBasePath = "";
-        private DataTable mainTable;
-        private OleDbDataAdapter currentAdapter;
+        private DataTable mainTable = new DataTable();
+        private OleDbDataAdapter currentAdapter = new OleDbDataAdapter();
         public Form_Sales()
         {
             InitializeComponent();
+
             foreach (DataGridViewColumn column in dataGridView_Sales.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            toolTip_Find.SetToolTip(panel_Find, "Пример для числового поиска:\n" +
-            "СтоимостьЕдиницы >= 5000\n" +
-            "Пример для строкового поиска:\n" +
-            "Модель = A01\n" +
-            "ВНИМАНИЕ\n" +
-            "Для составления выражений строкового поиска из представленных операторов сравнения выбирайте \"=\"\n");
-        }
 
+        }
+        private void ShowAuthentication()
+        {
+            AuthenticationForm form = new AuthenticationForm();
+            form.SetConnectionStirng(selectedBasePath);
+            this.Hide();
+            form.ShowDialog();
+            string userRightsIndex = form.GetUserRights();
+            RightsSettings(userRightsIndex);
+            if (form.DialogResult == DialogResult.OK)
+            {
+                this.Show();
+            }
+            else { Application.Exit(); }
+            
+
+        }
+        private void RightsSettings(string userRightsIndex)
+        {
+            int userRightsInt = Convert.ToInt32(userRightsIndex);
+            if(userRightsInt > 1)
+            {
+                comboBox_ChooseTable.Items.Remove("Пользователи");
+                comboBox_ChooseTable.Items.Remove("ПраваПользователей");
+                if(userRightsInt > 2)
+                {
+                    if(userRightsInt > 3)
+                    {
+                        button_RemakeData.Visible = false;
+                    }
+                }
+            }
+        }
         private void button_LoadBase_Click(object sender, EventArgs e)
         {
+            if (!DatabaseHelper.IsAceOleDb12Installed())
+            {
+                MessageBox.Show(
+                    "Драйвер Microsoft.ACE.OLEDB.12.0 не установлен.\n" +
+                    "Для работы приложения требуется установить Microsoft Access Database Engine 2010/2016.\n" +
+                    "Загрузите его с официального сайта Microsoft."
+                );
+                return;
+            }
             ChooseDatabase();
             FillNamesComboBox();
+            ShowAuthentication();
         }
         private void ChooseDatabase()
         {
@@ -61,7 +98,7 @@ namespace WinFormsAppSales
             {
                 comboBox_ChooseTable.Items.Add(tableName);
             }
-
+            panel_ChooseTable.Visible = true;
         }
         private void button_ExitApp_Click(object sender, EventArgs e)
         {
@@ -70,6 +107,11 @@ namespace WinFormsAppSales
 
         private void Form_Sales_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (currentAdapter != null)
+            {
+                currentAdapter.Dispose();
+                currentAdapter = null;
+            }
             DialogResult result = MessageBox.Show(
             "Вы уверены, что хотите закрыть приложение?",
             "Подтверждение",
@@ -87,10 +129,6 @@ namespace WinFormsAppSales
             if (CheckAvailability())
             {
                 panel_Processing.Visible = true;
-                button_Apply.Visible = true;
-                button_Apply.Text = "Применить обработку";
-                button_Remove.Visible = true;
-                button_Remove.Text = "Снять обработку";
                 ViewTable();
                 label_Name.Text = "Обработка данных";
             }
@@ -108,20 +146,26 @@ namespace WinFormsAppSales
         {
             if (CheckAvailability())
             {
-                label_Name.Text = "Изменение данных";
-                button_Apply.Visible = true;
-                button_Apply.Text = "Сохранить изменения";
-                button_Remove.Visible = true;
-                button_Remove.Text = "Отменить изменения";
-                ViewTable();
+                RemakeDataForm remakeForm = new RemakeDataForm();
+                remakeForm.SetData(mainTable, selectedBasePath, comboBox_ChooseTable.Text);
+                this.Hide();
+                remakeForm.ShowDialog();
+                if (remakeForm.DialogResult == DialogResult.Cancel) 
+                {
+                    DataTable dt = remakeForm.GetDataTable();
+                    dataGridView_Sales.DataSource = dt;
+                    remakeForm.Close();
+                    this.Show();
+                }
+
             }
-            
+
         }
         private void button_Report_Click(object sender, EventArgs e)
         {
             if (CheckAvailability())
             {
-                if(mainTable != null)
+                if (mainTable != null)
                 {
                     ReportForm form = new ReportForm();
                     form.SetData(mainTable);
@@ -137,15 +181,15 @@ namespace WinFormsAppSales
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 }
-                
+
             }
         }
         private bool CheckAvailability()
         {
-            if (comboBox_ChooseTable.Items.Count == 0)
+            if (comboBox_ChooseTable.Items.Count == 0 || comboBox_ChooseTable.Text == "")
             {
                 MessageBox.Show(
-                "Данные не найдены",
+                "Загрузите базу данных и выберите таблицу с данными",
                 "Ошибка",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
@@ -156,7 +200,7 @@ namespace WinFormsAppSales
         private void ViewTable()
         {
             button_Return.Visible = true;
-            panel_ChooseTable.Visible = true;
+            panel_ChooseTable.Visible = false;
             button_Info.Visible = false;
             panel_StatInfo.Visible = true;
             panel_Base.Visible = true;
@@ -166,17 +210,15 @@ namespace WinFormsAppSales
         private void button_Return_Click(object sender, EventArgs e)
         {
             button_Return.Visible = false;
-            panel_ChooseTable.Visible = false;
             button_Info.Visible = true;
             panel_StatInfo.Visible = false;
             panel_Base.Visible = false;
+            panel_ChooseTable.Visible = true;
             flowLayoutPanel_HomeButtons.Visible = true;
             label_Name.Text = "Данные о продажах";
             if (panel_Processing.Visible == true)
             {
                 panel_Processing.Visible = false;
-                button_Apply.Visible = false;
-                button_Remove.Visible = false;
             }
             dataGridView_Sales.DataSource = mainTable;
             label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
@@ -189,12 +231,6 @@ namespace WinFormsAppSales
             if (mainTable != null)
             {
                 FillTable();
-                FillComboBoxes();
-            }
-            if (label_Name.Text == "Изменение данных")
-            {
-                DataTable dt = mainTable.Copy();
-                dataGridView_Sales.DataSource = dt;
             }
 
         }
@@ -203,6 +239,10 @@ namespace WinFormsAppSales
             string query = $"SELECT * FROM {comboBox_ChooseTable.SelectedItem}";
             var (table, adapter) = DatabaseHelper.ReadData(selectedBasePath, query);
             mainTable = table;
+            if (currentAdapter != null)
+            {
+                currentAdapter.Dispose();
+            }
             currentAdapter = adapter;
         }
         private void FillTable()
@@ -211,155 +251,88 @@ namespace WinFormsAppSales
             label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
         }
 
-        private void FillComboBoxes()
-        {
-            comboBox_SortingColumn.Items.Clear();
-            comboBox_ChooseFindParam.Items.Clear();
-            comboBox_ChooseGroupParam.Items.Clear();
-            foreach (DataGridViewColumn column in dataGridView_Sales.Columns)
-            {
-                comboBox_SortingColumn.Items.Add(column.HeaderText);
-                comboBox_ChooseFindParam.Items.Add(column.HeaderText);
-                comboBox_ChooseGroupParam.Items.Add(column.HeaderText);
-            }
-        }
 
-        private void button_Apply_Click(object sender, EventArgs e)
-        {
-            if (panel_Processing.Visible == true)
-            {
-                GetDataProcessing();
-            }
-            else
-            {
-                if (mainTable != null && currentAdapter != null)
-                {
-                    DatabaseHelper.SaveChanges(currentAdapter, mainTable, selectedBasePath);
-                }
-                mainTable = (DataTable)dataGridView_Sales.DataSource;
-                label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
-            }
 
-        }
-
-        private void GetDataProcessing()
+        private void button_Remove_Click(object sender, EventArgs e)
         {
+
             DataTable dt = mainTable.Copy();
+            dataGridView_Sales.DataSource = dt;
+            label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
+        }
+        private void button_Sort_Click(object sender, EventArgs e)
+        {
             if (comboBox_ChooseTable.Text != "")
             {
-                GetSort(dt);
-                GetFind(dt);
-                GetGroup(dt);
-            }
-            dataGridView_Sales.DataSource = dt;
-        }
-        private void GetSort(DataTable dt)
-        {
-            if (comboBox_SortingColumn.Text != "" && comboBox_SortDirection.Text != "")
-            {
-                DataProcessing.CustomSort(dt, comboBox_SortDirection.Text, comboBox_SortingColumn.Text);
-            }
-        }
-        private void GetFind(DataTable dt)
-        {
-            if (comboBox_ChooseFindParam.Text != "" && comboBox_FindRatio.Text != "" && textBox_ChooseFind.Text != "" && (radioButton_NumFind.Checked || radioButton_StringFind.Checked))
-            {
-                if (comboBox_FindRatio.Text == "=" && radioButton_StringFind.Checked)
+                SortForm sort = new SortForm();
+                DataTable table = mainTable.Copy();
+                sort.SetDataTable(table);
+                this.Hide();
+                sort.ShowDialog();
+                if (sort.DialogResult == DialogResult.OK)
                 {
-                    DataProcessing.FilterString(dt, textBox_ChooseFind.Text, comboBox_ChooseFindParam.Text);
+                    DataTable dt = sort.GetDataTable();
+                    dataGridView_Sales.DataSource = dt;
+                    sort.Close();
+                    this.Show();
                 }
                 else
                 {
-                    if (radioButton_NumFind.Checked)
-                    {
-
-                        // Проверка: введено ли число в поле поиска
-                        if (!CheckIntInput(textBox_ChooseFind.Text.Trim(), "Значение для поиска должно быть целым числом"))
-                        {
-                            MessageBox.Show("Значение для поиска должно быть целым числом", "Ошибка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Проверка: содержит ли столбец только числа
-                        if (!CheckColumnForNumbers(dt, comboBox_ChooseFindParam.Text))
-                        {
-                            MessageBox.Show($"Столбец '{comboBox_ChooseFindParam.Text}' содержит нечисловые значения. Числовой поиск невозможен.",
-                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        // Если все проверки пройдены — выполняем фильтрацию
-                        DataProcessing.FilterNums(dt, textBox_ChooseFind.Text, comboBox_ChooseFindParam.Text, comboBox_FindRatio.Text.Trim());
-                    }
+                    this.Show();
                 }
+
             }
         }
-        private void GetGroup(DataTable dt)
-        {
-            if (comboBox_ChooseGroupParam.Text != "")
-            {
-                dt = DataProcessing.Group(dt, comboBox_ChooseGroupParam.Text);
-            }
-        }
-        private bool CheckIntInput(string input, string errorMessage)
-        {
 
-            if (string.IsNullOrWhiteSpace(input))
-                return false;
-
-            return int.TryParse(input, out _);
-        }
-        private bool CheckColumnForNumbers(DataTable table, string columnName)
+        private void button_Find_Click(object sender, EventArgs e)
         {
-            foreach (DataRow row in table.Rows)
+            if (comboBox_ChooseTable.Text != "")
             {
-                object cellValue = row[columnName];
-
-                if (!int.TryParse(cellValue.ToString(), out _))
-                    return false;
-            }
-
-            return true;
-        }
-        private void button_Remove_Click(object sender, EventArgs e)
-        {
-            if (panel_Processing.Visible == true)
-            {
-                comboBox_SortingColumn.SelectedItem = null;
-                comboBox_SortDirection.SelectedItem = null;
-                comboBox_ChooseFindParam.SelectedItem = null;
-                comboBox_FindRatio.SelectedItem = null;
-                textBox_ChooseFind.Text = "";
-                comboBox_ChooseGroupParam.SelectedItem = null;
-                dataGridView_Sales.DataSource = mainTable;
-                radioButton_NumFind.Checked = false;
-                radioButton_StringFind.Checked = false;
-            }
-            else
-            {
-                DataTable dt = mainTable.Copy();
-                dataGridView_Sales.DataSource = null;
-                dataGridView_Sales.DataSource = dt;
+                FindForm find = new FindForm();
+                DataTable table = mainTable.Copy();
+                find.SetDataTable(table);
+                this.Hide();
+                find.ShowDialog();
+                if (find.DialogResult == DialogResult.OK)
+                {
+                    DataTable dt = find.GetDataTable();
+                    dataGridView_Sales.DataSource = dt;
+                    find.Close();
+                    this.Show();
+                }
+                else
+                {
+                    this.Show();
+                }
                 label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
+
             }
         }
 
-        private void radioButton_StringFind_CheckedChanged(object sender, EventArgs e)
+        private void button_Group_Click(object sender, EventArgs e)
         {
-            if (radioButton_StringFind.Checked)
+            if (comboBox_ChooseTable.Text != "")
             {
-                radioButton_NumFind.Checked = false;
+                GroupForm group = new GroupForm();
+                 DataTable table = mainTable.Copy();
+                group.SetDataTable(table);
+                this.Hide();
+                group.ShowDialog();
+                if (group.DialogResult == DialogResult.OK)
+                {
+                    DataTable dt = group.GetDataTable();
+                    dataGridView_Sales.DataSource = dt;
+                    dataGridView_Sales.Refresh();
+                    group.Close();
+                    this.Show();
+                }
+                else
+                {
+                    this.Show();
+                }
+                label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
+
             }
         }
-
-        private void radioButton_NumFind_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton_NumFind.Checked)
-            {
-                radioButton_StringFind.Checked = false;
-            }
-        }
-
     }
 }
