@@ -93,6 +93,7 @@
             button_Info.TabIndex = 48;
             button_Info.Text = "Справка пользователя";
             button_Info.UseVisualStyleBackColor = true;
+            button_Info.Click += button_Info_Click;
             // 
             // button_Return
             // 

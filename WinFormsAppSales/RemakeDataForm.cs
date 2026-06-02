@@ -4,6 +4,9 @@ using System.Data.OleDb;
 
 namespace WinFormsAppSales
 {
+    /// <summary>
+    /// Форма для добавления, изменения или удаления данных
+    /// </summary>
     public partial class RemakeDataForm : Form
     {
         private DataTable data;
@@ -27,6 +30,9 @@ namespace WinFormsAppSales
         {
             return data;
         }
+        /// <summary>
+        /// Динамическое создание интерфейса формы
+        /// </summary>
         private void CreatingFields()
         {
             int y = 65;
@@ -34,7 +40,7 @@ namespace WinFormsAppSales
             {
                 if (i == 0 && nameOfTable != "Пользователи")
                 {
-                    continue; 
+                    continue;
                 }
                 DataColumn column = data.Columns[i];
                 Label label = new Label();
@@ -147,23 +153,19 @@ namespace WinFormsAppSales
             // Проверяем, что страница существует
             if (page <= 0 || page > data.Rows.Count) return;
 
-            // Получаем текущую строку
             DataRow currentRow = data.Rows[page - 1];
             if (currentRow.RowState == DataRowState.Deleted)
             {
                 return;
             }
 
-            // Проходим по всем столбцам
             foreach (DataColumn column in data.Columns)
             {
-                // Формируем имя TextBox
                 string textBoxName = $"textBox_{column.ColumnName}";
 
                 // Находим элемент управления по имени
                 TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
 
-                // Если элемент найден — заполняем его
                 if (textBox != null)
                 {
                     if (currentRow.RowState == DataRowState.Deleted)
@@ -291,18 +293,24 @@ namespace WinFormsAppSales
             if (page <= 0 || page > data.Rows.Count) return;
 
             DataRow currentRow = data.Rows[page - 1];
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите удалить запись?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
             currentRow.Delete();
+            if (result == DialogResult.Yes)
+            {
+                // Обновляем отображение страницы
+                ShowPage();
+                MessageBox.Show("Данные успешно удалены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-            // Обновляем отображение страницы
-            ShowPage();
-
-            MessageBox.Show("Данные успешно удалены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private bool SaveToAccess()
         {
             try
             {
-
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
                     connection.Open();
@@ -345,6 +353,5 @@ namespace WinFormsAppSales
                 return false;
             }
         }
-
     }
 }

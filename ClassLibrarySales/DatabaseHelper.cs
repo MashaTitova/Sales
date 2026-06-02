@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace ClassLibrarySales
 {
+    /// <summary>
+    /// Связь с базой данных
+    /// </summary>
     public class DatabaseHelper
     {
         public static string GetConnectionString(string databasePath)
         {
-
-           
-
             // Если драйвер есть — формируем строку подключения
             return $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={databasePath};Persist Security Info=False;";
         }
@@ -39,6 +39,9 @@ namespace ClassLibrarySales
                 return false; 
             }
         }
+        /// <summary>
+        /// Получение данных по запросу
+        /// </summary>
         public static (DataTable table, OleDbDataAdapter adapter) ReadData(string databasePath, string query)
         {
             DataTable result = new DataTable();
@@ -72,7 +75,9 @@ namespace ClassLibrarySales
             }
         }
 
-
+        /// <summary>
+        /// Получение заголовков всех таблиц в бд
+        /// </summary>
         public static List<string> GetAllTableNames(string databasePath)
         {
             List<string> tableNames = new List<string>();
@@ -100,6 +105,9 @@ namespace ClassLibrarySales
 
             return tableNames;
         }
+        /// <summary>
+        /// Хеширование паролей
+        /// </summary>
         public static string HashPassword(string password)
         {
             using (var sha256 = System.Security.Cryptography.SHA256.Create())
@@ -109,6 +117,7 @@ namespace ClassLibrarySales
                 return Convert.ToBase64String(hash);
             }
         }
+
     }
 }
 

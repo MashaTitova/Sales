@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsAppSales
 {
+    /// <summary>
+    /// Форма аутентификации пользователя
+    /// </summary>
     public partial class AuthenticationForm : Form
     {
         private string userRightsIndex;
@@ -17,6 +20,7 @@ namespace WinFormsAppSales
         public AuthenticationForm()
         {
             InitializeComponent();
+            // Использование системного символа для сокрытия пароля
             textBox_Password.UseSystemPasswordChar = true;
         }
         private void buttonTogglePassword_Click(object sender, EventArgs e)
@@ -37,7 +41,7 @@ namespace WinFormsAppSales
                 button_TogglePassword.Tag = false;
             }
         }
-        public void SetConnectionStirng(string basePath)
+        public void SetConnectionString(string basePath)
         {
             string conString = DatabaseHelper.GetConnectionString(basePath);
             connectionString = conString;

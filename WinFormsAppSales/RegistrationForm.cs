@@ -11,6 +11,11 @@ using System.Windows.Forms;
 
 namespace WinFormsAppSales
 {
+    /// <summary>
+    /// Форма регистрации нового пользователя в системе.
+    /// Позволяет создать учётную запись с указанием логина и пароля,
+    /// автоматически назначает базовый уровень доступа (код 4).
+    /// </summary>
     public partial class RegistrationForm : Form
     {
         private string connectionString;
@@ -23,6 +28,9 @@ namespace WinFormsAppSales
         {
             connectionString = conString;
         }
+        /// <summary>
+        /// Проверка на существование пользователя с таким же логином
+        /// </summary>
         private bool IsUserExists(string login)
         {
             using (OleDbConnection connection = new OleDbConnection(connectionString))
@@ -35,6 +43,7 @@ namespace WinFormsAppSales
                     using (OleDbCommand command = new OleDbCommand(checkUserQuery, connection))
                     {
                         command.Parameters.AddWithValue("@Login", login);
+                        // Получение количества пользователей с заданным логином
                         int userCount = (int)command.ExecuteScalar();
                         return userCount > 0;
                     }
@@ -86,6 +95,7 @@ namespace WinFormsAppSales
                     {
                         try
                         {
+                            // Добавление нового пользователя в таблицу Пользователи
                             string insertUserQuery =
                                 "INSERT INTO Пользователи (ИмяПользователя, Пароль, КодПравПользователя) " +
                                 "VALUES (@Login, @Password, @RightsCode)";
@@ -95,12 +105,9 @@ namespace WinFormsAppSales
                                 userCommand.Parameters.AddWithValue("@Login", newLogin);
                                 userCommand.Parameters.AddWithValue("@Password", hashedPassword);
                                 userCommand.Parameters.AddWithValue("@RightsCode", 4);
-
-                                userCommand.ExecuteNonQuery();
                             }
 
                             transaction.Commit();
-                            GetNameFromIndex(connection, transaction);
                             MessageBox.Show("Пользователь успешно зарегистрирован");
                             string userRightsName = GetNameFromIndex(connection, transaction);
                             if (userRightsName != "")
@@ -123,6 +130,9 @@ namespace WinFormsAppSales
                 }
             }
         }
+        /// <summary>
+        /// Получение уровня доступа по индексу
+        /// </summary>
         private string GetNameFromIndex(OleDbConnection connection, OleDbTransaction transaction)
         {
             string getRightsQuery = "SELECT ПраваПользователя FROM ПраваПользователей WHERE КодПравПользователя = @RightsCode";
