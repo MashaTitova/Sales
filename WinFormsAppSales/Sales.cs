@@ -6,10 +6,18 @@ using FastReport.Preview;
 
 namespace WinFormsAppSales
 {
+
+    /// <summary>
+    /// Главная форма приложения.
+    /// Служит для перемещений между остальными формами
+    /// </summary>
     public partial class Form_Sales : Form
     {
+        // Путь к выбранной базе данных
         private string selectedBasePath = "";
+        // DataTable с выбранными данными
         private DataTable mainTable = new DataTable();
+        // Используемый адаптер
         private OleDbDataAdapter currentAdapter = new OleDbDataAdapter();
         public Form_Sales()
         {
@@ -24,7 +32,7 @@ namespace WinFormsAppSales
         private void ShowAuthentication()
         {
             AuthenticationForm form = new AuthenticationForm();
-            form.SetConnectionStirng(selectedBasePath);
+            form.SetConnectionString(selectedBasePath);
             this.Hide();
             form.ShowDialog();
             string userRightsIndex = form.GetUserRights();
@@ -33,26 +41,32 @@ namespace WinFormsAppSales
             {
                 this.Show();
             }
-            else { Application.Exit(); }
-            
+            else { Application.Exit(); } 
+
 
         }
+        /// <summary>
+        /// Определение доступного функционала в соответствии с правами пользователя
+        /// </summary>
         private void RightsSettings(string userRightsIndex)
         {
             int userRightsInt = Convert.ToInt32(userRightsIndex);
-            if(userRightsInt > 1)
+            if (userRightsInt > 1)
             {
                 comboBox_ChooseTable.Items.Remove("Пользователи");
                 comboBox_ChooseTable.Items.Remove("ПраваПользователей");
-                if(userRightsInt > 2)
+                if (userRightsInt > 2)
                 {
-                    if(userRightsInt > 3)
+                    if (userRightsInt > 3)
                     {
                         button_RemakeData.Visible = false;
                     }
                 }
             }
         }
+        /// <summary>
+        /// Проверка на наличие нужного драйвера
+        /// </summary>
         private void button_LoadBase_Click(object sender, EventArgs e)
         {
             if (!DatabaseHelper.IsAceOleDb12Installed())
@@ -68,16 +82,20 @@ namespace WinFormsAppSales
             FillNamesComboBox();
             ShowAuthentication();
         }
+        /// <summary>
+        /// Выбор базы данных
+        /// </summary>
         private void ChooseDatabase()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             // Настройка диалогового окна
             openFileDialog.Title = "Выберите базу данных";
-            openFileDialog.Filter = "(*.accdb)|*.accdb|All files (*.*)|*.*";
+            openFileDialog.Filter = "(*.accdb)|*.accdb";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // Запоминаем путь к файлу
                 selectedBasePath = openFileDialog.FileName;
                 if (string.IsNullOrEmpty(selectedBasePath))
                 {
@@ -90,6 +108,9 @@ namespace WinFormsAppSales
                 }
             }
         }
+        /// <summary>
+        /// Формирование списка для выбора таблиц
+        /// </summary>
         private void FillNamesComboBox()
         {
             comboBox_ChooseTable.Items.Clear();
@@ -109,19 +130,17 @@ namespace WinFormsAppSales
         {
             if (currentAdapter != null)
             {
+                // Явное освобождения неуправляемых ресурсов
                 currentAdapter.Dispose();
                 currentAdapter = null;
             }
+
             DialogResult result = MessageBox.Show(
-            "Вы уверены, что хотите закрыть приложение?",
-            "Подтверждение",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question
+                "Приложение будет закрыто",
+                "Закрытие приложения",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
             );
-            if (result != DialogResult.Yes)
-            {
-                e.Cancel = true;
-            }
         }
 
         private void button_DataProcessing_Click(object sender, EventArgs e)
@@ -150,7 +169,7 @@ namespace WinFormsAppSales
                 remakeForm.SetData(mainTable, selectedBasePath, comboBox_ChooseTable.Text);
                 this.Hide();
                 remakeForm.ShowDialog();
-                if (remakeForm.DialogResult == DialogResult.Cancel) 
+                if (remakeForm.DialogResult == DialogResult.Cancel)
                 {
                     DataTable dt = remakeForm.GetDataTable();
                     dataGridView_Sales.DataSource = dt;
@@ -184,6 +203,9 @@ namespace WinFormsAppSales
 
             }
         }
+        /// <summary>
+        /// Проверка на получение необходимых данных
+        /// </summary>
         private bool CheckAvailability()
         {
             if (comboBox_ChooseTable.Items.Count == 0 || comboBox_ChooseTable.Text == "")
@@ -227,9 +249,11 @@ namespace WinFormsAppSales
 
         private void comboBox_ChooseTable_SelectedValueChanged(object sender, EventArgs e)
         {
+            // Получение выбранных данных
             LoadTable();
             if (mainTable != null)
             {
+                // Заполнение DataGridView
                 FillTable();
             }
 
@@ -250,9 +274,9 @@ namespace WinFormsAppSales
             dataGridView_Sales.DataSource = mainTable;
             label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
         }
-
-
-
+        /// <summary>
+        /// Отображение изначальных данных
+        /// </summary>
         private void button_Remove_Click(object sender, EventArgs e)
         {
 
@@ -314,7 +338,7 @@ namespace WinFormsAppSales
             if (comboBox_ChooseTable.Text != "")
             {
                 GroupForm group = new GroupForm();
-                 DataTable table = mainTable.Copy();
+                DataTable table = mainTable.Copy();
                 group.SetDataTable(table);
                 this.Hide();
                 group.ShowDialog();
@@ -333,6 +357,22 @@ namespace WinFormsAppSales
                 label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
 
             }
+        }
+
+        private void button_Info_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("   Данное приложение предназначено для работы с данными о продажах. \n" +
+                "   Для начала работы необходимо загрузить базу данных в формате (*.accdb). \n" +
+                "   После прохождения аутентификации или регистрации вы получите доступ к определенным функциям в соответствии с уровнем доступа. \n" +
+                "   При регистрации вы получаете уровень доступа только для чтения.\n" +
+                "   Перед этим необходимо выбрать таблицу с данными.\n" +
+                "   При успешном выполнении описанных действий вы получите возможность:\n" +
+                "   1. Просматривать выбранные данные\n" +
+                "   2. Применять к данным сортировку, группировку или поиск по значению\n" +
+                "   3. При соответствующем уровне доступа добавлять, изменять или удалять данные\n" +
+                "   4. Создавать отчеты по данные, которые можно сохранить или распечатать", "Справка пользователя",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
         }
     }
 }
