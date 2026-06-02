@@ -23,6 +23,29 @@ namespace WinFormsAppSales
         {
             connectionString = conString;
         }
+        private bool IsUserExists(string login)
+        {
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string checkUserQuery = "SELECT COUNT(*) FROM Пользователи WHERE ИмяПользователя = @Login";
+
+                    using (OleDbCommand command = new OleDbCommand(checkUserQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", login);
+                        int userCount = (int)command.ExecuteScalar();
+                        return userCount > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при проверке существования пользователя: {ex.Message}");
+                    return false;
+                }
+            }
+        }
         private void button_AddUser_Click(object sender, EventArgs e)
         {
 
@@ -41,9 +64,14 @@ namespace WinFormsAppSales
                 MessageBox.Show("Проверьте правильность ввода пароля");
                 return;
             }
-            if(newPassword.Length < 6)
+            if (newPassword.Length < 6)
             {
                 MessageBox.Show("Пароль должен содержать минимум 6 символов");
+                return;
+            }
+            if (IsUserExists(newLogin))
+            {
+                MessageBox.Show("Пользователь с таким логином уже существует. Выберите другой логин.");
                 return;
             }
             // Хеширование пароля
@@ -75,7 +103,8 @@ namespace WinFormsAppSales
                             GetNameFromIndex(connection, transaction);
                             MessageBox.Show("Пользователь успешно зарегистрирован");
                             string userRightsName = GetNameFromIndex(connection, transaction);
-                            if (userRightsName != "") {
+                            if (userRightsName != "")
+                            {
                                 MessageBox.Show($"Уровень доступа пользователя - {userRightsName}");
                             }
 
@@ -114,6 +143,14 @@ namespace WinFormsAppSales
         private void button_Return_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void RegistrationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true; 
+            }
         }
     }
 }

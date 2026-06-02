@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G496erl41ek=",
+  "dgSpecHash": "UQCqbR6IW+Q=",
   "success": true,
-  "projectFilePath": "D:\\_git\\Sales\\WinFormsAppSales\\WinFormsAppSales.csproj",
+  "projectFilePath": "D:\\_git\\LastSales\\WinFormsAppSales\\WinFormsAppSales.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.compat\\2026.2.1\\fastreport.compat.2026.2.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.opensource\\2026.2.1\\fastreport.opensource.2026.2.1.nupkg.sha512",

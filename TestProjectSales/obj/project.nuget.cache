@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GrBdKKE8xUo=",
+  "dgSpecHash": "GrCXaJIpFjI=",
   "success": true,
-  "projectFilePath": "D:\\_git\\Sales\\TestProjectSales\\TestProjectSales.csproj",
+  "projectFilePath": "D:\\_git\\LastSales\\TestProjectSales\\TestProjectSales.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.compat\\2026.2.1\\fastreport.compat.2026.2.1.nupkg.sha512",

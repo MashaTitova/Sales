@@ -1,5 +1,4 @@
-﻿
-using ClassLibrarySales;
+﻿using ClassLibrarySales;
 using System.Data;
 using System.Data.OleDb;
 
@@ -31,8 +30,13 @@ namespace WinFormsAppSales
         private void CreatingFields()
         {
             int y = 65;
-            foreach (DataColumn column in data.Columns)
+            for (int i = 1; i < data.Columns.Count; i++)
             {
+                if (i == 0 && nameOfTable != "Пользователи")
+                {
+                    continue; 
+                }
+                DataColumn column = data.Columns[i];
                 Label label = new Label();
                 label.Height = 43;
                 label.Width = 315;
@@ -56,7 +60,7 @@ namespace WinFormsAppSales
             buttonLast.Text = "<-";
             buttonLast.Name = $"button_Last";
             buttonLast.Location = new System.Drawing.Point(155, y);
-            buttonLast.Click += button_Last_Click; 
+            buttonLast.Click += button_Last_Click;
             this.Controls.Add(buttonLast);
 
             Button buttonNext = new Button();
@@ -119,7 +123,7 @@ namespace WinFormsAppSales
 
         private void button_Next_Click(object sender, EventArgs e)
         {
-            if(page < data.Rows.Count)
+            if (page < data.Rows.Count)
             {
                 page++;
                 ShowPage();
@@ -127,7 +131,7 @@ namespace WinFormsAppSales
         }
         private void button_Last_Click(object sender, EventArgs e)
         {
-            if(page > 1)
+            if (page > 1)
             {
                 page--;
                 ShowPage();
@@ -135,15 +139,15 @@ namespace WinFormsAppSales
         }
         private void button_Return_Click(object sender, EventArgs e)
         {
-            if(SaveToAccess()) this.Close();
+            if (SaveToAccess()) this.Close();
         }
 
         private void ShowPage()
         {
-            // Проверяем, что страница существует 
+            // Проверяем, что страница существует
             if (page <= 0 || page > data.Rows.Count) return;
 
-            // Получаем текущую строку 
+            // Получаем текущую строку
             DataRow currentRow = data.Rows[page - 1];
             if (currentRow.RowState == DataRowState.Deleted)
             {
@@ -153,7 +157,7 @@ namespace WinFormsAppSales
             // Проходим по всем столбцам
             foreach (DataColumn column in data.Columns)
             {
-                // Формируем имя TextBox 
+                // Формируем имя TextBox
                 string textBoxName = $"textBox_{column.ColumnName}";
 
                 // Находим элемент управления по имени
@@ -174,6 +178,7 @@ namespace WinFormsAppSales
             string text = "";
             if (page <= 0 || page > data.Rows.Count) return;
 
+
             string errorMessage;
             if (!ValidateFormData(out errorMessage))
             {
@@ -182,7 +187,14 @@ namespace WinFormsAppSales
             }
 
             DataRow currentRow = data.Rows[page - 1];
-            
+            // Проверка: если строка удалена, не сохраняем
+            if (currentRow.RowState == DataRowState.Deleted)
+            {
+                MessageBox.Show("Невозможно сохранить изменения: текущая запись была удалена.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             foreach (DataColumn column in data.Columns)
             {
                 string textBoxName = $"textBox_{column.ColumnName}";
@@ -190,7 +202,7 @@ namespace WinFormsAppSales
 
                 if (textBox != null && textBox.Text != null)
                 {
-                    if(nameOfTable == "Пользователи" && textBoxName == "textBox_Пароль")
+                    if (nameOfTable == "Пользователи" && textBoxName == "textBox_Пароль")
                     {
                         text = DatabaseHelper.HashPassword(textBox.Text);
                     }
@@ -199,7 +211,7 @@ namespace WinFormsAppSales
                         text = textBox.Text;
                     }
                     // Записываем изменения в DataTable
-                    currentRow[column] = text; 
+                    currentRow[column] = text;
                 }
             }
             MessageBox.Show("Текущие изменения успешно сохранены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -208,10 +220,15 @@ namespace WinFormsAppSales
         {
             errorMessage = "";
 
-            // Собираем значения из TextBox в словарь для удобства
+            // Собираем значения из TextBox в словарь 
             var formValues = new Dictionary<DataColumn, string>();
-            foreach (DataColumn column in data.Columns)
+            for (int i = 0; i < data.Columns.Count; i++)
             {
+                if (i == 0 && nameOfTable != "Пользователи")
+                {
+                    continue;
+                }
+                DataColumn column = data.Columns[i];
                 string textBoxName = $"textBox_{column.ColumnName}";
                 TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
                 if (textBox != null)
@@ -220,45 +237,13 @@ namespace WinFormsAppSales
                 }
             }
 
-            // Проверка: Первое поле не пустое
-            string firstValue = formValues[data.Columns[0]];
-            if (string.IsNullOrWhiteSpace(firstValue))
+            for (int i = 1; i < data.Columns.Count; i++)
             {
-                errorMessage = "Первое поле записи не может быть пустым";
-                return false;
-            }
-
-            // Проверка: Уникальность ключа
-            if (page > 0 && page <= data.Rows.Count)
-            {
-                DataRow currentRow = data.Rows[page - 1];
-                bool isUnique = true;
-                foreach (DataRow row in data.Rows)
+                if (i == 0 && nameOfTable != "Пользователи")
                 {
-                    // Пропускаем текущую строку
-                    if (row == currentRow) continue;
-                    // Пропускаем удалённые строки
-                    if (row.RowState == DataRowState.Deleted) continue;
-                    object value = row[data.Columns[0]];
-                    if (!IsValueEmpty(value) && value.ToString() == firstValue)
-                    {
-                        isUnique = false;
-                        break;
-                    }
+                    continue;
                 }
-                if (!isUnique)
-                {
-                    errorMessage = "Значение в первом поле должно быть уникальным.";
-                    return false;
-                }
-            }
-
-            // Валидация остальных столбцов 
-            foreach (DataColumn column in data.Columns)
-            {
-                // Пропускаем первый столбец
-                if (column.Ordinal == 0) continue; 
-
+                DataColumn column = data.Columns[i];
                 string value = formValues[column];
 
                 // Проверка типа данных
@@ -291,10 +276,6 @@ namespace WinFormsAppSales
             }
             errorMessage = "";
             return true;
-        }
-        private bool IsValueEmpty(object value)
-        {
-            return value == null || value is DBNull || string.IsNullOrWhiteSpace(value.ToString());
         }
         private void button_Add_Click(object sender, EventArgs e)
         {
@@ -336,7 +317,7 @@ namespace WinFormsAppSales
 
                     // Применяем изменения
                     adapter.Update(data);
-                    
+
                     MessageBox.Show("Данные успешно сохранены в базу данных", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
 
@@ -345,21 +326,21 @@ namespace WinFormsAppSales
             catch (OleDbException ex)
             {
                 MessageBox.Show(
-                    $"Ошибка при сохранении в базу данных:\n{ex.Message}\n\n" +
-                    "Проверьте корректность данных и соединение с базой.",
-                    "Ошибка базы данных",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                $"Ошибка при сохранении в базу данных:\n{ex.Message}\n\n" +
+                "Проверьте корректность данных и соединение с базой.",
+                "Ошибка базы данных",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
                 );
                 return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Неизвестная ошибка при сохранении:\n{ex.Message}",
-                    "Критическая ошибка",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                $"Неизвестная ошибка при сохранении:\n{ex.Message}",
+                "Критическая ошибка",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
                 );
                 return false;
             }

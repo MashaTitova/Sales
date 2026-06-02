@@ -147,6 +147,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RegistrationForm";
             Text = "Регестрация";
+            FormClosing += RegistrationForm_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

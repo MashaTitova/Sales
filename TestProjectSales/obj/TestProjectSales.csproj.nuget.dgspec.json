@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\_git\\Sales\\TestProjectSales\\TestProjectSales.csproj": {}
+    "D:\\_git\\LastSales\\TestProjectSales\\TestProjectSales.csproj": {}
   },
   "projects": {
-    "D:\\_git\\Sales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
+    "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_git\\Sales\\ClassLibrarySales\\ClassLibrarySales.csproj",
+        "projectUniqueName": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj",
         "projectName": "ClassLibrarySales",
-        "projectPath": "D:\\_git\\Sales\\ClassLibrarySales\\ClassLibrarySales.csproj",
+        "projectPath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\_git\\Sales\\ClassLibrarySales\\obj\\",
+        "outputPath": "D:\\_git\\LastSales\\ClassLibrarySales\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -351,14 +351,14 @@
         }
       }
     },
-    "D:\\_git\\Sales\\TestProjectSales\\TestProjectSales.csproj": {
+    "D:\\_git\\LastSales\\TestProjectSales\\TestProjectSales.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_git\\Sales\\TestProjectSales\\TestProjectSales.csproj",
+        "projectUniqueName": "D:\\_git\\LastSales\\TestProjectSales\\TestProjectSales.csproj",
         "projectName": "TestProjectSales",
-        "projectPath": "D:\\_git\\Sales\\TestProjectSales\\TestProjectSales.csproj",
+        "projectPath": "D:\\_git\\LastSales\\TestProjectSales\\TestProjectSales.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\_git\\Sales\\TestProjectSales\\obj\\",
+        "outputPath": "D:\\_git\\LastSales\\TestProjectSales\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -376,8 +376,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\_git\\Sales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
-                "projectPath": "D:\\_git\\Sales\\ClassLibrarySales\\ClassLibrarySales.csproj"
+              "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
+                "projectPath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj"
               }
             }
           }

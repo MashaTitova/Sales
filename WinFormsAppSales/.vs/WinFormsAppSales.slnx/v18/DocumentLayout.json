@@ -1,79 +1,85 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\_git\\Sales\\WinFormsAppSales\\",
+  "WorkspaceRootPath": "D:\\_git\\LastSales\\WinFormsAppSales\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2564CD0A-8309-4F53-A3D8-0BF4FA0546EF}|..\\ClassLibrarySales\\ClassLibrarySales.csproj|d:\\_git\\sales\\classlibrarysales\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2564CD0A-8309-4F53-A3D8-0BF4FA0546EF}|..\\ClassLibrarySales\\ClassLibrarySales.csproj|d:\\_git\\sales\\classlibrarysales\\dataprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\LastSales\\WinFormsAppSales\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\reportform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\sales\\winformsappsales\\reportform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\Sales\\WinFormsAppSales\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{2564CD0A-8309-4F53-A3D8-0BF4FA0546EF}|..\\ClassLibrarySales\\ClassLibrarySales.csproj|d:\\_git\\lastsales\\classlibrarysales\\dataprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2564CD0A-8309-4F53-A3D8-0BF4FA0546EF}|..\\ClassLibrarySales\\ClassLibrarySales.csproj|d:\\_git\\lastsales\\classlibrarysales\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\LastSales\\WinFormsAppSales\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{623C3F29-F03A-4A4B-9056-A4F420FC437C}|..\\TestProjectSales\\TestProjectSales.csproj|d:\\_git\\sales\\testprojectsales\\dataprocessingtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\LastSales\\WinFormsAppSales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\LastSales\\WinFormsAppSales\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\LastSales\\WinFormsAppSales\\groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:groupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|D:\\_git\\LastSales\\WinFormsAppSales\\findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\reportform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|d:\\_git\\lastsales\\winformsappsales\\reportform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CEF99E9-DBD3-2BD4-6D62-8FF8B59856A0}|WinFormsAppSales.csproj|solutionrelative:reportform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\_git\\Sales\\ClassLibrarySales\\DatabaseHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\_git\\Sales\\ClassLibrarySales\\DataProcessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\_git\\Sales\\TestProjectSales\\DataProcessingTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -83,17 +89,17 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Sales.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\Sales.cs",
               "RelativeDocumentMoniker": "Sales.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\Sales.cs",
               "RelativeToolTip": "Sales.cs",
-              "ViewState": "AgIAABYBAAAAAAAAAADwv1EBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwJcAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-25T11:06:09.843Z",
               "IsPinned": true,
@@ -121,200 +127,135 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RemakeDataForm.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\RemakeDataForm.cs",
-              "RelativeDocumentMoniker": "RemakeDataForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\RemakeDataForm.cs*",
-              "RelativeToolTip": "RemakeDataForm.cs*",
-              "ViewState": "AgIAABgBAAAAAAAAAAAAwDsBAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-30T13:15:43.211Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DatabaseHelper.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
-              "RelativeDocumentMoniker": "..\\ClassLibrarySales\\DatabaseHelper.cs",
-              "ToolTip": "D:\\_git\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
-              "RelativeToolTip": "..\\ClassLibrarySales\\DatabaseHelper.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAA+wGYAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T09:48:16.353Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\RemakeDataForm.cs",
-              "RelativeDocumentMoniker": "RemakeDataForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-30T13:02:19.111Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "AuthenticationForm.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\AuthenticationForm.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\AuthenticationForm.cs",
               "RelativeDocumentMoniker": "AuthenticationForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\AuthenticationForm.cs",
-              "RelativeToolTip": "AuthenticationForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAApAAAAAAAAAA==",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\AuthenticationForm.cs*",
+              "RelativeToolTip": "AuthenticationForm.cs*",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAswH4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-28T10:56:40.388Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs",
-              "RelativeDocumentMoniker": "Sales.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-25T11:03:21.828Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GroupForm.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\GroupForm.cs",
-              "RelativeDocumentMoniker": "GroupForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\GroupForm.cs",
-              "RelativeToolTip": "GroupForm.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAgwDwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T10:45:03.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RegistrationForm.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\RegistrationForm.cs",
-              "RelativeDocumentMoniker": "RegistrationForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\RegistrationForm.cs",
-              "RelativeToolTip": "RegistrationForm.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAgwDMAAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T14:13:58.143Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SortForm.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\SortForm.cs",
-              "RelativeDocumentMoniker": "SortForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\SortForm.cs",
-              "RelativeToolTip": "SortForm.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAIwCsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T11:52:57.522Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DataProcessing.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\ClassLibrarySales\\DataProcessing.cs",
-              "RelativeDocumentMoniker": "..\\ClassLibrarySales\\DataProcessing.cs",
-              "ToolTip": "D:\\_git\\Sales\\ClassLibrarySales\\DataProcessing.cs",
-              "RelativeToolTip": "..\\ClassLibrarySales\\DataProcessing.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAgwEUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T11:16:05.442Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "AuthenticationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\AuthenticationForm.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\AuthenticationForm.cs",
               "RelativeDocumentMoniker": "AuthenticationForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\AuthenticationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "AuthenticationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\AuthenticationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "RelativeToolTip": "AuthenticationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T10:51:15.28Z"
+              "WhenOpened": "2026-05-28T10:51:15.28Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "RegistrationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\RegistrationForm.cs",
+              "DocumentIndex": 2,
+              "Title": "RegistrationForm.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\RegistrationForm.cs",
               "RelativeDocumentMoniker": "RegistrationForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\RegistrationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\RegistrationForm.cs",
+              "RelativeToolTip": "RegistrationForm.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAA/wHUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T13:22:47.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegistrationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\RegistrationForm.cs",
+              "RelativeDocumentMoniker": "RegistrationForm.cs",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\RegistrationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "RegistrationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-28T11:08:48.484Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SortForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\SortForm.cs",
+              "DocumentIndex": 4,
+              "Title": "RemakeDataForm.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\RemakeDataForm.cs",
+              "RelativeDocumentMoniker": "RemakeDataForm.cs",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\RemakeDataForm.cs",
+              "RelativeToolTip": "RemakeDataForm.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAkwMQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T13:15:43.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SortForm.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\SortForm.cs",
               "RelativeDocumentMoniker": "SortForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\SortForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "SortForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\SortForm.cs",
+              "RelativeToolTip": "SortForm.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwDoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T10:29:58.345Z"
+              "WhenOpened": "2026-05-29T11:52:57.522Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "GroupForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\GroupForm.cs",
-              "RelativeDocumentMoniker": "GroupForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\GroupForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "GroupForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T10:40:43.805Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\FindForm.cs",
-              "RelativeDocumentMoniker": "FindForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T10:35:10.438Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ReportForm.resx",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.resx",
-              "RelativeDocumentMoniker": "ReportForm.resx",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.resx",
-              "RelativeToolTip": "ReportForm.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2026-05-28T10:48:58.143Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ReportForm.Designer.cs",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.Designer.cs",
-              "RelativeDocumentMoniker": "ReportForm.Designer.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.Designer.cs",
-              "RelativeToolTip": "ReportForm.Designer.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T10:48:57.4Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.cs",
+              "DocumentIndex": 7,
+              "Title": "ReportForm.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.cs",
               "RelativeDocumentMoniker": "ReportForm.cs",
-              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.cs",
+              "RelativeToolTip": "ReportForm.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAADwv8cAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T12:45:15.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GroupForm.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\GroupForm.cs",
+              "RelativeDocumentMoniker": "GroupForm.cs",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\GroupForm.cs",
+              "RelativeToolTip": "GroupForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T10:45:03.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DataProcessing.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\ClassLibrarySales\\DataProcessing.cs",
+              "RelativeDocumentMoniker": "..\\ClassLibrarySales\\DataProcessing.cs",
+              "ToolTip": "D:\\_git\\LastSales\\ClassLibrarySales\\DataProcessing.cs",
+              "RelativeToolTip": "..\\ClassLibrarySales\\DataProcessing.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T12:59:16.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "..\\ClassLibrarySales\\DatabaseHelper.cs",
+              "ToolTip": "D:\\_git\\LastSales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "RelativeToolTip": "..\\ClassLibrarySales\\DatabaseHelper.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAwwHIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T12:59:07.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.cs",
+              "RelativeDocumentMoniker": "ReportForm.cs",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T13:01:07.028Z"
@@ -322,11 +263,101 @@
             {
               "$type": "Document",
               "DocumentIndex": 18,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "D:\\_git\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "..\\..\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "ToolTip": "D:\\_git\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "RelativeToolTip": "..\\..\\Sales\\ClassLibrarySales\\DatabaseHelper.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAA+wGYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T09:48:16.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\Sales.cs",
+              "RelativeDocumentMoniker": "Sales.cs",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\Sales\\WinFormsAppSales\\Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-25T11:03:21.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DataProcessing.cs",
+              "DocumentMoniker": "D:\\_git\\Sales\\ClassLibrarySales\\DataProcessing.cs",
+              "RelativeDocumentMoniker": "..\\..\\Sales\\ClassLibrarySales\\DataProcessing.cs",
+              "ToolTip": "D:\\_git\\Sales\\ClassLibrarySales\\DataProcessing.cs",
+              "RelativeToolTip": "..\\..\\Sales\\ClassLibrarySales\\DataProcessing.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T11:16:05.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SortForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\SortForm.cs",
+              "RelativeDocumentMoniker": "SortForm.cs",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\SortForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\Sales\\WinFormsAppSales\\SortForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T10:29:58.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GroupForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\GroupForm.cs",
+              "RelativeDocumentMoniker": "GroupForm.cs",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\GroupForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\Sales\\WinFormsAppSales\\GroupForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T10:40:43.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\FindForm.cs",
+              "RelativeDocumentMoniker": "FindForm.cs",
+              "ToolTip": "D:\\_git\\Sales\\WinFormsAppSales\\FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "..\\..\\Sales\\WinFormsAppSales\\FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T10:35:10.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ReportForm.resx",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.resx",
+              "RelativeDocumentMoniker": "ReportForm.resx",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.resx",
+              "RelativeToolTip": "ReportForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-05-28T10:48:58.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ReportForm.Designer.cs",
+              "DocumentMoniker": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.Designer.cs",
+              "RelativeDocumentMoniker": "ReportForm.Designer.cs",
+              "ToolTip": "D:\\_git\\LastSales\\WinFormsAppSales\\ReportForm.Designer.cs",
+              "RelativeToolTip": "ReportForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T10:48:57.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "DataProcessingTests.cs",
               "DocumentMoniker": "D:\\_git\\Sales\\TestProjectSales\\DataProcessingTests.cs",
-              "RelativeDocumentMoniker": "..\\TestProjectSales\\DataProcessingTests.cs",
+              "RelativeDocumentMoniker": "..\\..\\Sales\\TestProjectSales\\DataProcessingTests.cs",
               "ToolTip": "D:\\_git\\Sales\\TestProjectSales\\DataProcessingTests.cs",
-              "RelativeToolTip": "..\\TestProjectSales\\DataProcessingTests.cs",
+              "RelativeToolTip": "..\\..\\Sales\\TestProjectSales\\DataProcessingTests.cs",
               "ViewState": "AgIAAHcAAAAAAAAAAAAUwIcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-26T12:00:20.222Z"

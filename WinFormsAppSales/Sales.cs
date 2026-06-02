@@ -168,7 +168,7 @@ namespace WinFormsAppSales
                 if (mainTable != null)
                 {
                     ReportForm form = new ReportForm();
-                    form.SetData(mainTable);
+                    form.SetData(mainTable, comboBox_ChooseTable.Text);
                     this.Hide();
                     DialogResult result = form.ShowDialog();
                     this.Show();

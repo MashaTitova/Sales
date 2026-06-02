@@ -11,3 +11,16 @@ D:\_git\Sales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.dll
 D:\_git\Sales\ClassLibrarySales\obj\Debug\net10.0\refint\ClassLibrarySales.dll
 D:\_git\Sales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.pdb
 D:\_git\Sales\ClassLibrarySales\obj\Debug\net10.0\ref\ClassLibrarySales.dll
+D:\_git\LastSales\ClassLibrarySales\bin\Debug\net10.0\ClassLibrarySales.deps.json
+D:\_git\LastSales\ClassLibrarySales\bin\Debug\net10.0\ClassLibrarySales.dll
+D:\_git\LastSales\ClassLibrarySales\bin\Debug\net10.0\ClassLibrarySales.pdb
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.csproj.AssemblyReference.cache
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.GeneratedMSBuildEditorConfig.editorconfig
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.AssemblyInfoInputs.cache
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.AssemblyInfo.cs
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.csproj.CoreCompileInputs.cache
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.sourcelink.json
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.dll
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\refint\ClassLibrarySales.dll
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ClassLibrarySales.pdb
+D:\_git\LastSales\ClassLibrarySales\obj\Debug\net10.0\ref\ClassLibrarySales.dll

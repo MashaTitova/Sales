@@ -593,11 +593,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\_git\\Sales\\WinFormsAppSales\\WinFormsAppSales.csproj",
+      "projectUniqueName": "D:\\_git\\LastSales\\WinFormsAppSales\\WinFormsAppSales.csproj",
       "projectName": "WinFormsAppSales",
-      "projectPath": "D:\\_git\\Sales\\WinFormsAppSales\\WinFormsAppSales.csproj",
+      "projectPath": "D:\\_git\\LastSales\\WinFormsAppSales\\WinFormsAppSales.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\_git\\Sales\\WinFormsAppSales\\obj\\",
+      "outputPath": "D:\\_git\\LastSales\\WinFormsAppSales\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -615,8 +615,8 @@
           "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows7.0",
           "projectReferences": {
-            "D:\\_git\\Sales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
-              "projectPath": "D:\\_git\\Sales\\ClassLibrarySales\\ClassLibrarySales.csproj"
+            "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
+              "projectPath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj"
             }
           }
         }

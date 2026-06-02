@@ -97,6 +97,7 @@
             button_SaveReport.TabIndex = 7;
             button_SaveReport.Text = "Сохранение отчета";
             button_SaveReport.UseVisualStyleBackColor = false;
+            button_SaveReport.Click += button_SaveReport_Click;
             // 
             // button_PrintReport
             // 
@@ -110,6 +111,7 @@
             button_PrintReport.TabIndex = 12;
             button_PrintReport.Text = "Печать отчета";
             button_PrintReport.UseVisualStyleBackColor = false;
+            button_PrintReport.Click += button_PrintReport_Click;
             // 
             // button_return
             // 

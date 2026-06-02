@@ -122,6 +122,11 @@ namespace WinFormsAppSales
                 userRightsIndex = "4";
                 this.DialogResult = DialogResult.OK;
             }
+            else
+            {
+                this.Show();
+            }
+
         }
 
         private void button_End_Click(object sender, EventArgs e)
