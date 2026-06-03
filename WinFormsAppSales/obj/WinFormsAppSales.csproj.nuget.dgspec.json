@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\_git\\LastSales\\WinFormsAppSales\\WinFormsAppSales.csproj": {}
+    "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\WinFormsAppSales.csproj": {}
   },
   "projects": {
-    "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
+    "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj",
+        "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj",
         "projectName": "ClassLibrarySales",
-        "projectPath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj",
+        "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\_git\\LastSales\\ClassLibrarySales\\obj\\",
+        "outputPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -351,14 +351,14 @@
         }
       }
     },
-    "D:\\_git\\LastSales\\WinFormsAppSales\\WinFormsAppSales.csproj": {
+    "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\WinFormsAppSales.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_git\\LastSales\\WinFormsAppSales\\WinFormsAppSales.csproj",
+        "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\WinFormsAppSales.csproj",
         "projectName": "WinFormsAppSales",
-        "projectPath": "D:\\_git\\LastSales\\WinFormsAppSales\\WinFormsAppSales.csproj",
+        "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\WinFormsAppSales.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\_git\\LastSales\\WinFormsAppSales\\obj\\",
+        "outputPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -376,8 +376,8 @@
             "framework": "net10.0-windows7.0",
             "targetAlias": "net10.0-windows7.0",
             "projectReferences": {
-              "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
-                "projectPath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj"
+              "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj": {
+                "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj"
               }
             }
           }
