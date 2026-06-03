@@ -1864,11 +1864,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\_git\\LastSales\\TestProjectSales\\TestProjectSales.csproj",
+      "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\TestProjectSales\\TestProjectSales.csproj",
       "projectName": "TestProjectSales",
-      "projectPath": "D:\\_git\\LastSales\\TestProjectSales\\TestProjectSales.csproj",
+      "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\TestProjectSales\\TestProjectSales.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\_git\\LastSales\\TestProjectSales\\obj\\",
+      "outputPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\TestProjectSales\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1886,8 +1886,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
-              "projectPath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj"
+            "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj": {
+              "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj"
             }
           }
         }

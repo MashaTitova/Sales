@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QHziQtlGWRw=",
+  "dgSpecHash": "Z/PXc0gdHX0=",
   "success": true,
-  "projectFilePath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj",
+  "projectFilePath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.compat\\2026.2.1\\fastreport.compat.2026.2.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.opensource\\2026.2.1\\fastreport.opensource.2026.2.1.nupkg.sha512",

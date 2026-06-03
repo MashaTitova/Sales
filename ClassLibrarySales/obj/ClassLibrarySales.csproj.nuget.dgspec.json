@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {}
+    "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj": {}
   },
   "projects": {
-    "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj": {
+    "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj",
+        "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj",
         "projectName": "ClassLibrarySales",
-        "projectPath": "D:\\_git\\LastSales\\ClassLibrarySales\\ClassLibrarySales.csproj",
+        "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\_git\\LastSales\\ClassLibrarySales\\obj\\",
+        "outputPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
