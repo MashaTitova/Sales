@@ -8,13 +8,25 @@
     ".NETCoreApp,Version=v10.0": {
       "TestProjectSales/1.0.0": {
         "dependencies": {
-          "ClassLibrarySales": "1.0.0",
+          "BusinessLogicLayer": "1.0.0",
           "FastReport.OpenSource": "2026.2.1",
           "Microsoft.NET.Test.Sdk": "17.14.1",
+          "Moq": "4.20.72",
           "xunit": "2.9.3"
         },
         "runtime": {
           "TestProjectSales.dll": {}
+        }
+      },
+      "Castle.Core/5.1.1": {
+        "dependencies": {
+          "System.Diagnostics.EventLog": "10.0.8"
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.1.1.0"
+          }
         }
       },
       "FastReport.Compat/2026.2.1": {
@@ -467,6 +479,17 @@
           }
         }
       },
+      "Moq/4.20.72": {
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "runtime": {
+          "lib/net6.0/Moq.dll": {
+            "assemblyVersion": "4.20.72.0",
+            "fileVersion": "4.20.72.0"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -631,13 +654,25 @@
           }
         }
       },
-      "ClassLibrarySales/1.0.0": {
+      "BusinessLogicLayer/1.0.0": {
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "FastReport.OpenSource": "2026.2.1",
           "System.Data.OleDb": "10.0.8"
         },
         "runtime": {
-          "ClassLibrarySales.dll": {
+          "BusinessLogicLayer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "DataAccessLayer/1.0.0": {
+        "dependencies": {
+          "System.Data.OleDb": "10.0.8"
+        },
+        "runtime": {
+          "DataAccessLayer.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -650,6 +685,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Castle.Core/5.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
+      "path": "castle.core/5.1.1",
+      "hashPath": "castle.core.5.1.1.nupkg.sha512"
     },
     "FastReport.Compat/2026.2.1": {
       "type": "package",
@@ -720,6 +762,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "Moq/4.20.72": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EA55cjyNn8eTNWrgrdZJH5QLFp2L43oxl1tlkoYUKIE9pRwL784OWiTXeCV5ApS+AMYEAlt7Fo03A2XfouvHmQ==",
+      "path": "moq/4.20.72",
+      "hashPath": "moq.4.20.72.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
@@ -812,7 +861,12 @@
       "path": "xunit.extensibility.execution/2.9.3",
       "hashPath": "xunit.extensibility.execution.2.9.3.nupkg.sha512"
     },
-    "ClassLibrarySales/1.0.0": {
+    "BusinessLogicLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataAccessLayer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -8,10 +8,10 @@ namespace WinFormsAppSales
 {
     public partial class ReportForm : Form
     {
-        DataTable data;
-        String reportText;
-        String nameOfBase;
-        bool hasReport;
+        private DataTable _data;
+        private string _reportText;
+        private string _nameOfBase;
+        private bool _hasReport;
         public ReportForm()
         {
             InitializeComponent();
@@ -35,20 +35,20 @@ namespace WinFormsAppSales
             int columnWidth = 20;
 
             report.AppendLine("ОТЧЁТ ПО ДАННЫМ");
-            report.AppendLine(new string('=', data.Columns.Count * columnWidth));
+            report.AppendLine(new string('=', _data.Columns.Count * columnWidth));
 
             // Заголовки
-            foreach (DataColumn column in data.Columns)
+            foreach (DataColumn column in _data.Columns)
             {
                 report.Append(string.Format("{0,-" + columnWidth + "}", column.ColumnName));
             }
             report.AppendLine();
 
             // Разделитель
-            report.AppendLine(new string('-', data.Columns.Count * columnWidth));
+            report.AppendLine(new string('-', _data.Columns.Count * columnWidth));
 
             // Данные
-            foreach (DataRow row in data.Rows)
+            foreach (DataRow row in _data.Rows)
             {
                 foreach (object cell in row.ItemArray)
                 {
@@ -57,13 +57,13 @@ namespace WinFormsAppSales
                 report.AppendLine();
             }
 
-            reportText = report.ToString();
-            hasReport = true;
+            _reportText = report.ToString();
+            _hasReport = true;
         }
         public void SetData(DataTable dt, string name)
         {
-            data = dt;
-            nameOfBase = name;
+            _data = dt;
+            _nameOfBase = name;
         }
 
         private void button_Exit_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace WinFormsAppSales
 
         private void button_ViewReport_Click(object sender, EventArgs e)
         {
-            if (!hasReport)
+            if (!_hasReport)
             {
                 MessageBox.Show("Для совершения данного действия сгенерируйте отчет");
                 return;
@@ -87,7 +87,7 @@ namespace WinFormsAppSales
             textBox.Dock = DockStyle.Fill;
             textBox.ScrollBars = ScrollBars.Vertical;
             textBox.Font = new Font("Courier New", 9);
-            textBox.Text = reportText;
+            textBox.Text = _reportText;
             textBox.TabStop = false;
 
             previewForm.Controls.Add(textBox);
@@ -95,7 +95,7 @@ namespace WinFormsAppSales
         }
         private Size CalculateWindowSize()
         {
-            string[] lines = reportText.Split('\n');
+            string[] lines = _reportText.Split('\n');
             int maxLineLength = lines.Max(line => line.Length);
 
             using (Graphics g = this.CreateGraphics())
@@ -128,21 +128,21 @@ namespace WinFormsAppSales
         }
         private void button_SaveReport_Click(object sender, EventArgs e)
         {
-            if (!hasReport)
+            if (!_hasReport)
             {
                 MessageBox.Show("Для совершения данного действия сгенерируйте отчет");
                 return;
             }
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
-            saveDialog.FileName = $"Отчет о продажах. {nameOfBase}";
+            saveDialog.FileName = $"Отчет о продажах. {_nameOfBase}";
             saveDialog.Title = "Сохранить отчёт";
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    File.WriteAllText(saveDialog.FileName, reportText, Encoding.UTF8);
+                    File.WriteAllText(saveDialog.FileName, _reportText, Encoding.UTF8);
                     MessageBox.Show("Отчёт успешно сохранён!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -154,7 +154,7 @@ namespace WinFormsAppSales
 
         private void button_PrintReport_Click(object sender, EventArgs e)
         {
-            if (!hasReport)
+            if (!_hasReport)
             {
                 MessageBox.Show("Для совершения данного действия сгенерируйте отчет");
                 return;
@@ -173,7 +173,7 @@ namespace WinFormsAppSales
                 StringFormat stringFormat = new StringFormat();
 
                 // Разбиваем текст на строки
-                string[] lines = reportText.Split('\n');
+                string[] lines = _reportText.Split('\n');
 
                 foreach (string line in lines)
                 {

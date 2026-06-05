@@ -18,43 +18,19 @@ namespace WinFormsAppSales
     /// </summary>
     public partial class RegistrationForm : Form
     {
-        private string connectionString;
+        private LogicLayer _logicLayer;
 
         public RegistrationForm()
         {
             InitializeComponent();
         }
-        public void SetConnectionStirng(string conString)
+        public void SetLogicLayer(LogicLayer logicLayer)
         {
-            connectionString = conString;
+            _logicLayer = logicLayer;
         }
         /// <summary>
         /// Проверка на существование пользователя с таким же логином
         /// </summary>
-        private bool IsUserExists(string login)
-        {
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    string checkUserQuery = "SELECT COUNT(*) FROM Пользователи WHERE ИмяПользователя = @Login";
-
-                    using (OleDbCommand command = new OleDbCommand(checkUserQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@Login", login);
-                        // Получение количества пользователей с заданным логином
-                        int userCount = (int)command.ExecuteScalar();
-                        return userCount > 0;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при проверке существования пользователя: {ex.Message}");
-                    return false;
-                }
-            }
-        }
         private void button_AddUser_Click(object sender, EventArgs e)
         {
 
@@ -78,78 +54,40 @@ namespace WinFormsAppSales
                 MessageBox.Show("Пароль должен содержать минимум 6 символов");
                 return;
             }
-            if (IsUserExists(newLogin))
+            try
             {
-                MessageBox.Show("Пользователь с таким логином уже существует. Выберите другой логин.");
+                if (_logicLayer.UserExistance(newLogin))
+                {
+                    MessageBox.Show("Пользователь с таким логином уже существует. Выберите другой логин.");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при проверке существования пользователя: {ex.Message}");
                 return;
             }
-            // Хеширование пароля
-            string hashedPassword = DatabaseHelper.HashPassword(newPassword);
-
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            try
             {
-                try
-                {
-                    connection.Open();
-                    using (OleDbTransaction transaction = connection.BeginTransaction())
-                    {
-                        try
-                        {
-                            // Добавление нового пользователя в таблицу Пользователи
-                            string insertUserQuery =
-                                "INSERT INTO Пользователи (ИмяПользователя, Пароль, КодПравПользователя) " +
-                                "VALUES (@Login, @Password, @RightsCode)";
-
-                            using (OleDbCommand userCommand = new OleDbCommand(insertUserQuery, connection, transaction))
-                            {
-                                userCommand.Parameters.AddWithValue("@Login", newLogin);
-                                userCommand.Parameters.AddWithValue("@Password", hashedPassword);
-                                userCommand.Parameters.AddWithValue("@RightsCode", 4);
-                            }
-
-                            transaction.Commit();
-                            MessageBox.Show("Пользователь успешно зарегистрирован");
-                            string userRightsName = GetNameFromIndex(connection, transaction);
-                            if (userRightsName != "")
-                            {
-                                MessageBox.Show($"Уровень доступа пользователя - {userRightsName}");
-                            }
-
-                            this.DialogResult = DialogResult.OK;
-                        }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show($"Ошибка регистрации: {ex.Message}");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка подключения: {ex.Message}");
-                }
+                string message;
+                _logicLayer.UserReg(newLogin, newPassword, out message);
+                MessageBox.Show(message);
+                ShowUserRights();
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка подключения: {ex.Message}");
             }
         }
-        /// <summary>
-        /// Получение уровня доступа по индексу
-        /// </summary>
-        private string GetNameFromIndex(OleDbConnection connection, OleDbTransaction transaction)
-        {
-            string getRightsQuery = "SELECT ПраваПользователя FROM ПраваПользователей WHERE КодПравПользователя = @RightsCode";
-            string userRightsName = "";
-
-            using (OleDbCommand rightsCommand = new OleDbCommand(getRightsQuery, connection, transaction))
+       private void ShowUserRights()
+       {
+            string userRightsName = _logicLayer.ShowUserRights();
+            if (!string.IsNullOrEmpty(userRightsName))
             {
-                rightsCommand.Parameters.AddWithValue("@RightsCode", 4);
-                object result = rightsCommand.ExecuteScalar();
-
-                if (result != null)
-                {
-                    userRightsName = result.ToString();
-                }
-                return userRightsName;
+                MessageBox.Show($"Уровень доступа пользователя - {userRightsName}");
             }
-        }
+       }
         private void button_Return_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

@@ -383,6 +383,19 @@
         "build": {
           "buildTransitive/net8.0/_._": {}
         }
+      },
+      "DataAccessLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "System.Data.OleDb": "10.0.8"
+        },
+        "compile": {
+          "bin/placeholder/DataAccessLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccessLayer.dll": {}
+        }
       }
     }
   },
@@ -928,10 +941,16 @@
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "DataAccessLayer/1.0.0": {
+      "type": "project",
+      "path": "../DataAccessLayer/DataAccessLayer.csproj",
+      "msbuildProject": "../DataAccessLayer/DataAccessLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "DataAccessLayer >= 1.0.0",
       "FastReport.OpenSource >= 2026.2.1",
       "System.Data.OleDb >= 10.0.8"
     ]
@@ -942,9 +961,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj",
-      "projectName": "ClassLibrarySales",
-      "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj",
+      "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\BusinessLogicLayer.csproj",
+      "projectName": "BusinessLogicLayer",
+      "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\BusinessLogicLayer.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\obj\\",
       "projectStyle": "PackageReference",
@@ -963,7 +982,11 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Masha\\VBA\\Практика\\LastSales — копия\\DataAccessLayer\\DataAccessLayer.csproj": {
+              "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\DataAccessLayer\\DataAccessLayer.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

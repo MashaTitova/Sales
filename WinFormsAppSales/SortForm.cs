@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -11,20 +12,23 @@ namespace WinFormsAppSales
 {
     public partial class SortForm : Form
     {
-        private DataTable dt = new DataTable();
-        private bool wasProcess = false;
+        private DataTable _dt;
+        private string _name;
+        private LogicLayer _logicLayer;
+        private bool _wasProcess = false;
         public SortForm()
         {
             InitializeComponent();
         }
-        public void SetDataTable(DataTable table)
+        public void SetData(string nameOfTable, LogicLayer logicLayer, List<string> columnNames)
         {
-            dt = table;
-            FillComboBox();
+            _name = nameOfTable;
+            _logicLayer = logicLayer;
+            FillComboBox(columnNames);
         }
         public DataTable GetDataTable()
         {
-            return dt;
+            return _dt;
         }
         private void button_Return_Click(object sender, EventArgs e)
         {
@@ -34,8 +38,19 @@ namespace WinFormsAppSales
         {
             if (comboBox_SortingColumn.Text != "" && comboBox_SortDirection.Text != "")
             {
-                DataProcessing.CustomSort(dt, comboBox_SortDirection.Text, comboBox_SortingColumn.Text);
-                wasProcess = true;
+                try
+                {
+                    _dt = _logicLayer.SortData(_name, comboBox_SortingColumn.Text, comboBox_SortDirection.Text);
+                    _wasProcess = true;
+                }
+                catch (OleDbException ex)
+                {
+                    MessageBox.Show($"SQL ошибка: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Общая ошибка: {ex.Message}");
+                }
             }
             else
             {
@@ -46,19 +61,19 @@ namespace WinFormsAppSales
         private void button_DataProcessing_Click(object sender, EventArgs e)
         {
             GetSort();
-            if(wasProcess)
+            if(_wasProcess)
             {
                 this.DialogResult = DialogResult.OK;
                 this.Hide();
             }
             
         }
-        private void FillComboBox()
+        private void FillComboBox(List<string> columnNames)
         {
             comboBox_SortingColumn.Items.Clear();
-            foreach (DataColumn column in dt.Columns)
+            foreach (string name in columnNames)
             {
-                comboBox_SortingColumn.Items.Add(column.ColumnName);
+                comboBox_SortingColumn.Items.Add(name);
             }
         }
     }

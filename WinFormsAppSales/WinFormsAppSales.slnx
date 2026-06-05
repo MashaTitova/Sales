@@ -1,5 +1,6 @@
 <Solution>
-  <Project Path="../ClassLibrarySales/ClassLibrarySales.csproj" Id="2564cd0a-8309-4f53-a3d8-0bf4fa0546ef" />
-  <Project Path="../TestProjectSales/TestProjectSales.csproj" Id="623c3f29-f03a-4a4b-9056-a4f420fc437c" />
-  <Project Path="WinFormsAppSales.csproj" />
+  <Project Path="../ClassLibrarySales/BusinessLogicLayer.csproj" Id="2564cd0a-8309-4f53-a3d8-0bf4fa0546ef" />
+  <Project Path="../DataAccessLayer/DataAccessLayer.csproj" Id="ec569b35-9fdd-4676-9a12-4141f8ce71ad" />
+  <Project Path="../TestProjectSales/TestProject.csproj" Id="623c3f29-f03a-4a4b-9056-a4f420fc437c" />
+  <Project Path="PresentationLayer.csproj" />
 </Solution>

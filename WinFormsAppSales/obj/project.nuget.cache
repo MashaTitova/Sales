@@ -1,15 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "kzR3lZRscm8=",
+  "dgSpecHash": "mn9upX00J4c=",
   "success": true,
-  "projectFilePath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\WinFormsAppSales.csproj",
+  "projectFilePath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\PresentationLayer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.compat\\2026.2.1\\fastreport.compat.2026.2.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\fastreport.opensource\\2026.2.1\\fastreport.opensource.2026.2.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.1\\microsoft.codeanalysis.common.4.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.1\\microsoft.codeanalysis.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.codeanalysis.visualbasic\\4.0.1\\microsoft.codeanalysis.visualbasic.4.0.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\moq\\4.20.72\\moq.4.20.72.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.data.oledb\\10.0.8\\system.data.oledb.10.0.8.nupkg.sha512"
   ],
   "logs": []

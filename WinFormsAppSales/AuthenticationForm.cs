@@ -15,8 +15,8 @@ namespace WinFormsAppSales
     /// </summary>
     public partial class AuthenticationForm : Form
     {
-        private string userRightsIndex;
-        private string connectionString;
+        private string _userRightsIndex;
+        private LogicLayer _logicLayer;
         public AuthenticationForm()
         {
             InitializeComponent();
@@ -41,14 +41,13 @@ namespace WinFormsAppSales
                 button_TogglePassword.Tag = false;
             }
         }
-        public void SetConnectionString(string basePath)
+        public void SetLogicLayer(LogicLayer logicLayer)
         {
-            string conString = DatabaseHelper.GetConnectionString(basePath);
-            connectionString = conString;
+            _logicLayer = logicLayer;
         }
         public string GetUserRights()
         {
-            return userRightsIndex;
+            return _userRightsIndex;
         }
         private void button_Entry_Click(object sender, EventArgs e)
         {
@@ -60,56 +59,20 @@ namespace WinFormsAppSales
                 MessageBox.Show("Введите логин и пароль");
                 return;
             }
-
-            // Хешируем введённый пароль
-            string hashedEnteredPassword = DatabaseHelper.HashPassword(enteredPassword);
-
-            string query = "SELECT Пользователи.ИмяПользователя, Пользователи.Пароль, Пользователи.КодПравПользователя, ПраваПользователей.ПраваПользователя " +
-                          "FROM Пользователи " +
-                          "INNER JOIN ПраваПользователей ON Пользователи.КодПравПользователя = ПраваПользователей.КодПравПользователя " +
-                          "WHERE Пользователи.ИмяПользователя = @Login";
-
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            try
             {
-                try
+                string message = "";
+                string index = _logicLayer.GetAuthentication(enteredPassword, enteredLogin, out message);
+                MessageBox.Show(message);
+                if(index != null)
                 {
-                    connection.Open();
-                    using (OleDbCommand command = new OleDbCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Login", enteredLogin);
-
-                        using (OleDbDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                // Сравниваем хеш из базы с введённым
-                                string storedHash = reader["Пароль"].ToString();
-
-                                if (storedHash == hashedEnteredPassword)
-                                {
-                                    // Получаем права из связанной таблицы
-                                    userRightsIndex = reader["КодПравПользователя"].ToString();
-                                    string userRights = reader["ПраваПользователя"].ToString();
-                                    MessageBox.Show("Вход выполнен успешно \n" +
-                                        $"Ваш уровень доступа - {userRights}");
-                                    this.DialogResult = DialogResult.OK;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Неверный пароль");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Пользователь не найден");
-                            }
-                        }
-                    }
+                    _userRightsIndex = index;
+                    this.DialogResult = DialogResult.OK;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при входе: {ex.Message}");
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при входе: {ex.Message}");
             }
 
         }
@@ -119,15 +82,17 @@ namespace WinFormsAppSales
         {
             this.Hide();
             RegistrationForm form = new RegistrationForm();
-            form.SetConnectionStirng(connectionString);
+            form.SetLogicLayer(_logicLayer);
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
             {
-                userRightsIndex = "4";
+                form.Close();
+                _userRightsIndex = "4";
                 this.DialogResult = DialogResult.OK;
             }
             else
             {
+                form.Close();
                 this.Show();
             }
 
