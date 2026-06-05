@@ -9,26 +9,25 @@ namespace WinFormsAppSales
     /// </summary>
     public partial class RemakeDataForm : Form
     {
-        private DataTable data;
-        private string connectionString;
-        private string nameOfTable;
-        int page = 1;
+        private DataTable _data;
+        private string _nameOfTable;
+        int _page = 1;
+        LogicLayer _logicLayer;
         public RemakeDataForm()
         {
             InitializeComponent();
         }
-        public void SetData(DataTable dt, string basePath, string name)
+        public void SetData(DataTable dt, string name, LogicLayer logicLayer)
         {
-            data = dt;
-            string conString = DatabaseHelper.GetConnectionString(basePath);
-            connectionString = conString;
-            nameOfTable = name;
+            _data = dt;
+            _nameOfTable = name;
+            _logicLayer = logicLayer;
             CreatingFields();
             ShowPage();
         }
         public DataTable GetDataTable()
         {
-            return data;
+            return _data;
         }
         /// <summary>
         /// Динамическое создание интерфейса формы
@@ -36,13 +35,13 @@ namespace WinFormsAppSales
         private void CreatingFields()
         {
             int y = 65;
-            for (int i = 1; i < data.Columns.Count; i++)
+            for (int i = 0; i < _data.Columns.Count; i++)
             {
-                if (i == 0 && nameOfTable != "Пользователи")
+                if ((i == 0 && _nameOfTable != "Пользователи") && (i == 0 && _nameOfTable != "ПраваПользователей"))
                 {
                     continue;
                 }
-                DataColumn column = data.Columns[i];
+                DataColumn column = _data.Columns[i];
                 Label label = new Label();
                 label.Height = 43;
                 label.Width = 315;
@@ -129,17 +128,17 @@ namespace WinFormsAppSales
 
         private void button_Next_Click(object sender, EventArgs e)
         {
-            if (page < data.Rows.Count)
+            if (_page < _data.Rows.Count)
             {
-                page++;
+                _page++;
                 ShowPage();
             }
         }
         private void button_Last_Click(object sender, EventArgs e)
         {
-            if (page > 1)
+            if (_page > 1)
             {
-                page--;
+                _page--;
                 ShowPage();
             }
         }
@@ -151,15 +150,15 @@ namespace WinFormsAppSales
         private void ShowPage()
         {
             // Проверяем, что страница существует
-            if (page <= 0 || page > data.Rows.Count) return;
+            if (_page <= 0 || _page > _data.Rows.Count) return;
 
-            DataRow currentRow = data.Rows[page - 1];
+            DataRow currentRow = _data.Rows[_page - 1];
             if (currentRow.RowState == DataRowState.Deleted)
             {
                 return;
             }
 
-            foreach (DataColumn column in data.Columns)
+            foreach (DataColumn column in _data.Columns)
             {
                 string textBoxName = $"textBox_{column.ColumnName}";
 
@@ -178,7 +177,7 @@ namespace WinFormsAppSales
         private void button_Save_Click(object sender, EventArgs e)
         {
             string text = "";
-            if (page <= 0 || page > data.Rows.Count) return;
+            if (_page <= 0 || _page > _data.Rows.Count) return;
 
 
             string errorMessage;
@@ -188,7 +187,7 @@ namespace WinFormsAppSales
                 return;
             }
 
-            DataRow currentRow = data.Rows[page - 1];
+            DataRow currentRow = _data.Rows[_page - 1];
             // Проверка: если строка удалена, не сохраняем
             if (currentRow.RowState == DataRowState.Deleted)
             {
@@ -197,16 +196,16 @@ namespace WinFormsAppSales
                 return;
             }
 
-            foreach (DataColumn column in data.Columns)
+            foreach (DataColumn column in _data.Columns)
             {
                 string textBoxName = $"textBox_{column.ColumnName}";
                 TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
 
                 if (textBox != null && textBox.Text != null)
                 {
-                    if (nameOfTable == "Пользователи" && textBoxName == "textBox_Пароль")
+                    if (_nameOfTable == "Пользователи" && textBoxName == "textBox_Пароль")
                     {
-                        text = DatabaseHelper.HashPassword(textBox.Text);
+                        text = _logicLayer.HashUserInput(textBox.Text);
                     }
                     else
                     {
@@ -224,13 +223,13 @@ namespace WinFormsAppSales
 
             // Собираем значения из TextBox в словарь 
             var formValues = new Dictionary<DataColumn, string>();
-            for (int i = 0; i < data.Columns.Count; i++)
+            for (int i = 0; i < _data.Columns.Count; i++)
             {
-                if (i == 0 && nameOfTable != "Пользователи")
+                if (i == 0 && _nameOfTable != "Пользователи")
                 {
                     continue;
                 }
-                DataColumn column = data.Columns[i];
+                DataColumn column = _data.Columns[i];
                 string textBoxName = $"textBox_{column.ColumnName}";
                 TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
                 if (textBox != null)
@@ -239,13 +238,13 @@ namespace WinFormsAppSales
                 }
             }
 
-            for (int i = 1; i < data.Columns.Count; i++)
+            for (int i = 1; i < _data.Columns.Count; i++)
             {
-                if (i == 0 && nameOfTable != "Пользователи")
+                if (i == 0 && _nameOfTable != "Пользователи")
                 {
                     continue;
                 }
-                DataColumn column = data.Columns[i];
+                DataColumn column = _data.Columns[i];
                 string value = formValues[column];
 
                 // Проверка типа данных
@@ -281,18 +280,18 @@ namespace WinFormsAppSales
         }
         private void button_Add_Click(object sender, EventArgs e)
         {
-            DataRow newRow = data.NewRow();
-            data.Rows.Add(newRow);
+            DataRow newRow = _data.NewRow();
+            _data.Rows.Add(newRow);
 
             // Переключаемся на новую запись
-            page = data.Rows.Count;
+            _page = _data.Rows.Count;
             ShowPage();
         }
         private void button_Delete_Click(object sender, EventArgs e)
         {
-            if (page <= 0 || page > data.Rows.Count) return;
+            if (_page <= 0 || _page > _data.Rows.Count) return;
 
-            DataRow currentRow = data.Rows[page - 1];
+            DataRow currentRow = _data.Rows[_page - 1];
             DialogResult result = MessageBox.Show(
                 "Вы действительно хотите удалить запись?",
                 "Подтверждение",
@@ -311,25 +310,9 @@ namespace WinFormsAppSales
         {
             try
             {
-                using (OleDbConnection connection = new OleDbConnection(connectionString))
-                {
-                    connection.Open();
-
-                    OleDbDataAdapter adapter = new OleDbDataAdapter($"SELECT * FROM [{nameOfTable}]", connection);
-                    OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
-
-                    // Обновляем команды адаптера
-                    adapter.InsertCommand = builder.GetInsertCommand();
-                    adapter.UpdateCommand = builder.GetUpdateCommand();
-                    adapter.DeleteCommand = builder.GetDeleteCommand();
-
-                    // Применяем изменения
-                    adapter.Update(data);
-
-                    MessageBox.Show("Данные успешно сохранены в базу данных", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-
-                }
+                _logicLayer.SaveToAccess(_data, _nameOfTable);
+                MessageBox.Show("Данные успешно сохранены в базу данных", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             catch (OleDbException ex)
             {

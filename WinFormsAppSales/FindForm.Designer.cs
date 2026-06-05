@@ -47,10 +47,10 @@
             radioButton_NumFind.AutoSize = true;
             radioButton_NumFind.Location = new Point(125, 152);
             radioButton_NumFind.Name = "radioButton_NumFind";
-            radioButton_NumFind.Size = new Size(226, 36);
+            radioButton_NumFind.Size = new Size(233, 36);
             radioButton_NumFind.TabIndex = 35;
             radioButton_NumFind.TabStop = true;
-            radioButton_NumFind.Text = "Числовой поиск";
+            radioButton_NumFind.Text = "Числовой поиск ";
             radioButton_NumFind.UseVisualStyleBackColor = true;
             radioButton_NumFind.CheckedChanged += radioButton_NumFind_CheckedChanged;
             // 
@@ -59,10 +59,10 @@
             radioButton_StringFind.AutoSize = true;
             radioButton_StringFind.Location = new Point(125, 100);
             radioButton_StringFind.Name = "radioButton_StringFind";
-            radioButton_StringFind.Size = new Size(240, 36);
+            radioButton_StringFind.Size = new Size(478, 36);
             radioButton_StringFind.TabIndex = 34;
             radioButton_StringFind.TabStop = true;
-            radioButton_StringFind.Text = "Строковый поиск";
+            radioButton_StringFind.Text = "Строковый поиск (точное совпадение)";
             radioButton_StringFind.UseVisualStyleBackColor = true;
             radioButton_StringFind.CheckedChanged += radioButton_StringFind_CheckedChanged;
             // 

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "Uv/fFbDusYY=",
+  "success": true,
+  "projectFilePath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\DataAccessLayer\\DataAccessLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.8\\system.configuration.configurationmanager.10.0.8.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.data.oledb\\10.0.8\\system.data.oledb.10.0.8.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.8\\system.diagnostics.eventlog.10.0.8.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.diagnostics.performancecounter\\10.0.8\\system.diagnostics.performancecounter.10.0.8.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.8\\system.security.cryptography.protecteddata.10.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

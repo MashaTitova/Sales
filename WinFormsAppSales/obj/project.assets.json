@@ -2,6 +2,19 @@
   "version": 4,
   "targets": {
     "net10.0-windows7.0": {
+      "Castle.Core/5.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "FastReport.Compat/2026.2.1": {
         "type": "package",
         "dependencies": {
@@ -217,6 +230,18 @@
           }
         }
       },
+      "Moq/4.20.72": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Moq.dll": {}
+        }
+      },
       "System.Data.OleDb/10.0.8": {
         "type": "package",
         "compile": {
@@ -239,23 +264,61 @@
           }
         }
       },
-      "ClassLibrarySales/1.0.0": {
+      "BusinessLogicLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "FastReport.OpenSource": "2026.2.1",
           "System.Data.OleDb": "10.0.8"
         },
         "compile": {
-          "bin/placeholder/ClassLibrarySales.dll": {}
+          "bin/placeholder/BusinessLogicLayer.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ClassLibrarySales.dll": {}
+          "bin/placeholder/BusinessLogicLayer.dll": {}
+        }
+      },
+      "DataAccessLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "System.Data.OleDb": "10.0.8"
+        },
+        "compile": {
+          "bin/placeholder/DataAccessLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccessLayer.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "Castle.Core/5.1.1": {
+      "sha512": "rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
+      "type": "package",
+      "path": "castle.core/5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ASL - Apache Software Foundation License.txt",
+        "CHANGELOG.md",
+        "LICENSE",
+        "castle-logo.png",
+        "castle.core.5.1.1.nupkg.sha512",
+        "castle.core.nuspec",
+        "lib/net462/Castle.Core.dll",
+        "lib/net462/Castle.Core.xml",
+        "lib/net6.0/Castle.Core.dll",
+        "lib/net6.0/Castle.Core.xml",
+        "lib/netstandard2.0/Castle.Core.dll",
+        "lib/netstandard2.0/Castle.Core.xml",
+        "lib/netstandard2.1/Castle.Core.dll",
+        "lib/netstandard2.1/Castle.Core.xml",
+        "readme.txt"
+      ]
+    },
     "FastReport.Compat/2026.2.1": {
       "sha512": "xaruBAS86rQLZxLD2CYyt5S4x6Tw6lEBRdYt2+xGSobwIWrxXbXkbwWIg9e65zkZNk6JIWRH9QMTWkg+i0FMtw==",
       "type": "package",
@@ -539,6 +602,23 @@
         "microsoft.codeanalysis.visualbasic.nuspec"
       ]
     },
+    "Moq/4.20.72": {
+      "sha512": "EA55cjyNn8eTNWrgrdZJH5QLFp2L43oxl1tlkoYUKIE9pRwL784OWiTXeCV5ApS+AMYEAlt7Fo03A2XfouvHmQ==",
+      "type": "package",
+      "path": "moq/4.20.72",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net462/Moq.dll",
+        "lib/net6.0/Moq.dll",
+        "lib/netstandard2.0/Moq.dll",
+        "lib/netstandard2.1/Moq.dll",
+        "moq.4.20.72.nupkg.sha512",
+        "moq.nuspec",
+        "readme.md"
+      ]
+    },
     "System.Data.OleDb/10.0.8": {
       "sha512": "QZnhynkA7p7clCHWsQMpnjNGMHSprCI9lYcJp39PyiA1inS98WpkcxWO00/dCljoMG++ujUq0S2ezBrqbMRrQg==",
       "type": "package",
@@ -574,16 +654,22 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "ClassLibrarySales/1.0.0": {
+    "BusinessLogicLayer/1.0.0": {
       "type": "project",
-      "path": "../ClassLibrarySales/ClassLibrarySales.csproj",
-      "msbuildProject": "../ClassLibrarySales/ClassLibrarySales.csproj"
+      "path": "../ClassLibrarySales/BusinessLogicLayer.csproj",
+      "msbuildProject": "../ClassLibrarySales/BusinessLogicLayer.csproj"
+    },
+    "DataAccessLayer/1.0.0": {
+      "type": "project",
+      "path": "../DataAccessLayer/DataAccessLayer.csproj",
+      "msbuildProject": "../DataAccessLayer/DataAccessLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0-windows7.0": [
-      "ClassLibrarySales >= 1.0.0",
+      "BusinessLogicLayer >= 1.0.0",
       "FastReport.OpenSource >= 2026.2.1",
+      "Moq >= 4.20.72",
       "System.Data.OleDb >= 10.0.8"
     ]
   },
@@ -593,9 +679,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\WinFormsAppSales.csproj",
-      "projectName": "WinFormsAppSales",
-      "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\WinFormsAppSales.csproj",
+      "projectUniqueName": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\PresentationLayer.csproj",
+      "projectName": "PresentationLayer",
+      "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\PresentationLayer.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\WinFormsAppSales\\obj\\",
       "projectStyle": "PackageReference",
@@ -615,8 +701,8 @@
           "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows7.0",
           "projectReferences": {
-            "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj": {
-              "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\ClassLibrarySales.csproj"
+            "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\BusinessLogicLayer.csproj": {
+              "projectPath": "D:\\Masha\\VBA\\Практика\\LastSales — копия\\ClassLibrarySales\\BusinessLogicLayer.csproj"
             }
           }
         }
@@ -641,6 +727,10 @@
           "FastReport.OpenSource": {
             "target": "Package",
             "version": "[2026.2.1, )"
+          },
+          "Moq": {
+            "target": "Package",
+            "version": "[4.20.72, )"
           },
           "System.Data.OleDb": {
             "target": "Package",
