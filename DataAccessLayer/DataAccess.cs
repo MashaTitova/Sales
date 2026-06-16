@@ -17,6 +17,11 @@ namespace ClassLibrarySales
         {
             _connectionString = GetConnectionString(basePath);
         }
+        /// <summary>
+        /// Формирует строку подключения к базе данных Microsoft Access с использованием провайдера ACE OLE DB 12.0
+        /// </summary>
+        /// <param name="databasePath">Путь к файлу базы данных</param>
+        /// <returns>Строка подключения</returns>
         private string GetConnectionString(string databasePath)
         {
             // Если драйвер есть — формируем строку подключения
@@ -26,6 +31,9 @@ namespace ClassLibrarySales
         /// <summary>
         /// Проверка наличия нужного драйвера
         /// </summary>
+        /// <returns>
+        /// true<, если провайдер "Microsoft.ACE.OLEDB.12.0" найден в списке доступных OLE DB провайдеров; иначе false.
+        /// </returns>
         public bool IsAceOleDb12Installed()
         {
             try
@@ -53,6 +61,9 @@ namespace ClassLibrarySales
         /// <summary>
         /// Получение данных по запросу
         /// </summary>
+        /// <param name="query">SQL‑запрос</param>
+        /// <returns>DataTable, заполненный результатами запроса.</returns>
+        /// <exception cref="OleDbException">Выбрасывается при ошибке соединения или выполнения запроса.</exception>
         public DataTable GetData(string query)
         {
             DataTable result = new DataTable();
@@ -75,6 +86,7 @@ namespace ClassLibrarySales
         /// <summary>
         /// Получение заголовков всех таблиц в бд
         /// </summary>
+        /// <returns>Список строк, содержащих имена таблиц</returns>
         public List<string> GetAllTableNames()
         {
             List<string> tableNames = new List<string>();
@@ -100,8 +112,14 @@ namespace ClassLibrarySales
         }
 
         /// <summary>
-        /// Аутентификация пользователя
+        /// Выполняет аутентификацию пользователя по логину и хешу пароля
         /// </summary>
+        /// <param name="query">SQL‑запрос для поиска пользователя по логину</param>
+        /// <param name="enteredLogin">Введённый пользователем логин</param>
+        /// <param name="hashedEnteredPassword">Хеш введённого пароля</param>
+        /// <param name="message">Выходной параметр: сообщение о результате операции</param>
+        /// <returns>
+        /// Индекс прав пользователя при успешной аутентификаци, иначе null
         public string Authentication(string query, string enteredLogin, string hashedEnteredPassword, out string message)
         {
             message = "";
@@ -147,6 +165,9 @@ namespace ClassLibrarySales
         /// <summary>
         /// Проверка на существование пользователя с таким же логином
         /// </summary>
+        /// <param name="login">Логин пользователя для проверки</param>
+        /// <param name="checkUserQuery">SQL‑запрос, возвращающий количество пользователей с заданным логином</param>
+        /// <returns>true, если пользователь с таким логином существует, иначе false</returns>
         public bool IsUserExists(string login, string checkUserQuery)
         {
             using (OleDbConnection connection = new OleDbConnection(_connectionString))
@@ -164,7 +185,11 @@ namespace ClassLibrarySales
         /// <summary>
         /// Регистрация нового пользователя
         /// </summary>
-        public void Regicration(string insertUserQuery, string newLogin, string hashedPassword, out string message)
+        /// <param name="insertUserQuery">SQL‑запрос INSERT для добавления пользователя (использует позиционные параметры "?")</param>
+        /// <param name="newLogin">Логин нового пользователя</param>
+        /// <param name="hashedPassword">Хеш пароля нового пользователя</param>
+        /// <param name="message">Выходной параметр: сообщение о результате операции</param>
+        public void Registration(string insertUserQuery, string newLogin, string hashedPassword, out string message)
         {
             message = "";
             using (OleDbConnection connection = new OleDbConnection(_connectionString))
@@ -201,6 +226,7 @@ namespace ClassLibrarySales
         /// <summary>
         /// Получение названия уровня доступа по индексу
         /// </summary>
+        /// <returns>Название уровня доступа для индекса 4; пустая строка</returns>
         public string GetNameFromIndex()
         {
             string getRightsQuery = "SELECT ПраваПользователя FROM ПраваПользователей WHERE КодПравПользователя = @RightsCode";
@@ -224,9 +250,13 @@ namespace ClassLibrarySales
                 }
             }
         }
+
         /// <summary>
-        /// Сохранение в базу данных
+        /// Сохранение таблицы в базу данных
         /// </summary>
+        /// <param name="data">DataTable, содержащий изменённые данные</param>
+        /// <param name="query">SELECT‑запрос</param>
+        /// <exception cref="OleDbException">Выбрасывается при ошибке сохранения</exception>
         public void SaveToAccess(DataTable data, string query)
         {
             using (OleDbConnection connection = new OleDbConnection(_connectionString))
@@ -245,8 +275,11 @@ namespace ClassLibrarySales
             }
         }
         /// <summary>
-        /// Фильтрация данных
+        /// Выполняет фильтрацию данных по заданному значению с использованием оператора LIKE
         /// </summary>
+        /// <param name="query">SQL‑запрос с позиционным параметром "?" для подстановки значения фильтрации</param>
+        /// <param name="value">Значение для поиска (частичное совпадение)</param>
+        /// <returns>DataTable, содержащий отфильтрованные результаты.</returns>
         public DataTable Filter(string query, string value)
         {
             DataTable result = new DataTable();
@@ -257,7 +290,7 @@ namespace ClassLibrarySales
 
                 using (OleDbCommand command = new OleDbCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@value", value);
+                    command.Parameters.AddWithValue("?", "%" + value + "%");
                     using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
                     {
                         adapter.Fill(result);
@@ -267,8 +300,10 @@ namespace ClassLibrarySales
             }
         }
         /// <summary>
-        /// Хеширование паролей
+        /// Создаёт хеш пароля с использованием алгоритма SHA‑256
         /// </summary>
+        /// <param name="password">Исходный пароль в виде строки</param>
+        /// <returns>Строка в формате Base64, представляющая хеш пароля</returns>
         public string HashPassword(string password)
         {
             using (var sha256 = System.Security.Cryptography.SHA256.Create())

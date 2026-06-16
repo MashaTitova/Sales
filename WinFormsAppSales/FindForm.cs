@@ -22,8 +22,8 @@ namespace WinFormsAppSales
             InitializeComponent();
             toolTip_Question.SetToolTip(label_ChooseFind, "Пример для числового поиска:\n" +
             "СтоимостьЕдиницы >= 5000\n" +
-            "Пример для строкового поиска (точное совпадение):\n" +
-            "Модель = A01\n" +
+            "Пример для строкового поиска:\n" +
+            "Модель LIKE A01\n" +
             "ВНИМАНИЕ\n" +
             "Для составления выражений строкового поиска из представленных операторов сравнения выбирайте \"=\"\n");
         }
@@ -60,9 +60,10 @@ namespace WinFormsAppSales
         {
             if (comboBox_ChooseFindParam.Text != "" && comboBox_FindRatio.Text != "" && textBox_ChooseFind.Text != "" && (radioButton_NumFind.Checked || radioButton_StringFind.Checked))
             {
+                // Строковый поиск
                 if (radioButton_StringFind.Checked)
                 {
-                    if(comboBox_FindRatio.Text == "=")
+                    if(comboBox_FindRatio.Text == "LIKE")
                     {
                         try
                         {
@@ -80,17 +81,18 @@ namespace WinFormsAppSales
                     }
                     else
                     {
-                        MessageBox.Show("Для числового поиска выберите знак =");
+                        MessageBox.Show("Для строкового поиска выберите LIKE");
                     }
                 }
                 else
                 {
+                    // Числовой поиск
                     if (radioButton_NumFind.Checked)
                     {
                         // Проверка: введено ли число или дата
                         if (!CheckNumInput(textBox_ChooseFind.Text.Trim()))
                         {
-                            MessageBox.Show("Значение для поиска должно быть числом или датой", "Ошибка",
+                            MessageBox.Show("Значение для числового поиска должно быть числом или датой", "Ошибка",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
