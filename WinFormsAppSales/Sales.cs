@@ -8,29 +8,31 @@ namespace WinFormsAppSales
 {
 
     /// <summary>
-    /// Главная форма приложения.
-    /// Служит для перемещений между остальными формами
+    ///Главная форма приложения для работы с данными о продажах
+    /// Обеспечивает навигацию между модулями, управление отображением данных,
+    /// интеграцию с модулем аутентификации, формирование отчётов и применение обработки
+    /// (сортировка, поиск, группировка) к данным из подключённой БД Access
     /// </summary>
     public partial class Form_Sales : Form
     {
-        // Путь к выбранной базе данных
+        // Путь к выбранной базе данных Access
         private string _selectedBasePath = "";
-        // DataTable с выбранными данными
+        // DataTable с данными выбранной таблицы из БД
         private DataTable _mainTable = new DataTable();
+        // Экземпляр слоя бизнес-логики
         private LogicLayer _logicLayer;
+        // Список названий столбцов выбранной таблицы
         private List<string> _columnNames = new List<string>();
-
+        // Экземпляр класса для изменения данных
+        private int _rightsIndex;
 
         public Form_Sales()
         {
             InitializeComponent();
-
-            foreach (DataGridViewColumn column in dataGridView_Sales.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-
         }
+        /// <summary>
+        /// Взаимодействие с формой аутентификации
+        /// </summary>
         private void ShowAuthentication()
         {
             AuthenticationForm form = new AuthenticationForm();
@@ -48,30 +50,32 @@ namespace WinFormsAppSales
 
         }
         /// <summary>
-        /// Определение доступного функционала в соответствии с правами пользователя
+        /// Настройка доступа к функционалу в соответствии с правами пользователя
         /// </summary>
+        /// <param name="userRightsIndex">Строковое представление индекса прав пользователя.</param>
         private void RightsSettings(string userRightsIndex)
         {
             int userRightsInt = Convert.ToInt32(userRightsIndex);
+            _rightsIndex = userRightsInt;
             if (userRightsInt > 1)
             {
+                // Если права пользователя ниже "Администратора"
                 comboBox_ChooseTable.Items.Remove("Пользователи");
                 comboBox_ChooseTable.Items.Remove("ПраваПользователей");
-                if (userRightsInt > 2)
+                if (userRightsInt > 3)
                 {
-                    if (userRightsInt > 3)
-                    {
-                        button_RemakeData.Visible = false;
-                    }
+                    // Если права пользователя "Чтение"
+                    button_RemakeData.Visible = false;
                 }
             }
         }
         /// <summary>
-        /// Проверка на наличие нужного драйвера
+        /// Обработчик клика по кнопке загрузки базы данных
         /// </summary>
         private void button_LoadBase_Click(object sender, EventArgs e)
         {
             ChooseDatabase();
+            // Проверка наличия нужного драйвера
             if (!_logicLayer.OleDb12Installed())
             {
                 MessageBox.Show(
@@ -108,8 +112,10 @@ namespace WinFormsAppSales
                     MessageBoxIcon.Error);
                     return;
                 }
+                // Инициализация слоя логики выбранным путем
                 _logicLayer = new LogicLayer(_selectedBasePath);
             }
+            else { Application.Exit(); }
         }
         /// <summary>
         /// Формирование списка для выбора таблиц
@@ -120,6 +126,7 @@ namespace WinFormsAppSales
             List<string> tableNames = new List<string>();
             try
             {
+                // Получаем список имен таблиц выбранной бд
                 tableNames = _logicLayer.GetTableNames();
             }
             catch(Exception ex)
@@ -132,6 +139,7 @@ namespace WinFormsAppSales
             }
             panel_ChooseTable.Visible = true;
         }
+
         private void button_ExitApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -170,17 +178,18 @@ namespace WinFormsAppSales
         {
             if (CheckAvailability())
             {
-                RemakeDataForm remakeForm = new RemakeDataForm();
-                remakeForm.SetData(_mainTable, comboBox_ChooseTable.Text, _logicLayer);
+                RemakeDataForm form = new RemakeDataForm();
+                form.SetDeleteRights(_rightsIndex <= 2);
+                form.SetData(_mainTable, comboBox_ChooseTable.Text, _logicLayer);
                 this.Hide();
-                remakeForm.ShowDialog();
-                if (remakeForm.DialogResult == DialogResult.Cancel)
+               form.ShowDialog();
+                if (form.DialogResult == DialogResult.Cancel)
                 {
-                    DataTable dt = remakeForm.GetDataTable();
+                    DataTable dt = form.GetDataTable();
                     dataGridView_Sales.DataSource = dt;
                     if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
                         dataGridView_Sales.Columns[0].Visible = false;
-                    remakeForm.Close();
+                    form.Close();
                     this.Show();
                 }
 
@@ -211,7 +220,7 @@ namespace WinFormsAppSales
             }
         }
         /// <summary>
-        /// Проверка на получение необходимых данных
+        /// Проверяет, загружена ли база данных и выбрана ли таблица
         /// </summary>
         private bool CheckAvailability()
         {
@@ -226,6 +235,9 @@ namespace WinFormsAppSales
             }
             return true;
         }
+        /// <summary>
+        /// Переключает элементы интерфейса в режим просмотра/обработки таблицы
+        /// </summary>
         private void ViewTable()
         {
             button_Return.Visible = true;
@@ -234,8 +246,12 @@ namespace WinFormsAppSales
             panel_StatInfo.Visible = true;
             panel_Base.Visible = true;
             flowLayoutPanel_HomeButtons.Visible = false;
+            label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
         }
-
+        /// <summary>
+        /// Обработчик клика по кнопке «Назад»
+        /// Восстанавливает исходное состояние интерфейса
+        /// </summary>
         private void button_Return_Click(object sender, EventArgs e)
         {
             button_Return.Visible = false;
@@ -268,6 +284,9 @@ namespace WinFormsAppSales
             }
 
         }
+        /// <summary>
+        /// Загружает данные выбранной таблицы из БД через слой логики
+        /// </summary>
         private void LoadTable()
         {
             if(comboBox_ChooseTable.Text == "")
@@ -301,10 +320,14 @@ namespace WinFormsAppSales
             dataGridView_Sales.DataSource = _mainTable;
             if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
                 dataGridView_Sales.Columns[0].Visible = false;
+            foreach (DataGridViewColumn column in dataGridView_Sales.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
         }
         /// <summary>
-        /// Отображение изначальных данных
+        /// Сброс изменений в таблице
         /// </summary>
         private void button_Remove_Click(object sender, EventArgs e)
         {

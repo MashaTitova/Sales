@@ -40,6 +40,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RemakeDataForm";
             Text = "Изменение данных";
+            Load += RemakeDataForm_Load;
             ResumeLayout(false);
         }
 

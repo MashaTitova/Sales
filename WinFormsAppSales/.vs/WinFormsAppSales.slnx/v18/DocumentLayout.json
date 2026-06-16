@@ -3,9 +3,6 @@
   "WorkspaceRootPath": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC569B35-9FDD-4676-9A12-4141F8CE71AD}|..\\DataAccessLayer\\DataAccessLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\dataaccesslayer\\dataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,28 +10,37 @@
       "AbsoluteMoniker": "D:0:0:{2564CD0A-8309-4F53-A3D8-0BF4FA0546EF}|..\\ClassLibrarySales\\BusinessLogicLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\classlibrarysales\\logiclayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EC569B35-9FDD-4676-9A12-4141F8CE71AD}|..\\DataAccessLayer\\DataAccessLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\dataaccesslayer\\dataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{EC569B35-9FDD-4676-9A12-4141F8CE71AD}|..\\DataAccessLayer\\DataAccessLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\dataaccesslayer\\foreignkeyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:findform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:remakedataform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{623C3F29-F03A-4A4B-9056-A4F420FC437C}|..\\TestProjectSales\\TestProject.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\testprojectsales\\dataaccesstests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\authenticationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|d:\\masha\\vba\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\lastsales \u2014 \u043A\u043E\u043F\u0438\u044F\\winformsappsales\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|solutionrelative:reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5FBDEAF4-B36A-4CB5-0F86-C9910F2BE02A}|PresentationLayer.csproj|D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -84,17 +86,17 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Sales.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\Sales.cs",
               "RelativeDocumentMoniker": "Sales.cs",
               "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\Sales.cs",
               "RelativeToolTip": "Sales.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAqwGYBAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-25T11:06:09.843Z",
               "IsPinned": true,
@@ -102,13 +104,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "LogicLayer.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\ClassLibrarySales\\LogicLayer.cs",
               "RelativeDocumentMoniker": "..\\ClassLibrarySales\\LogicLayer.cs",
               "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\ClassLibrarySales\\LogicLayer.cs",
               "RelativeToolTip": "..\\ClassLibrarySales\\LogicLayer.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAowFsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-04T09:10:17.334Z",
               "IsPinned": true,
@@ -116,13 +118,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DataAccess.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\DataAccessLayer\\DataAccess.cs",
               "RelativeDocumentMoniker": "..\\DataAccessLayer\\DataAccess.cs",
               "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\DataAccessLayer\\DataAccess.cs",
               "RelativeToolTip": "..\\DataAccessLayer\\DataAccess.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAowDEBAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-05T14:58:52.208Z",
               "IsPinned": true,
@@ -150,33 +152,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "RemakeDataForm.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RemakeDataForm.cs",
               "RelativeDocumentMoniker": "RemakeDataForm.cs",
               "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RemakeDataForm.cs",
               "RelativeToolTip": "RemakeDataForm.cs",
-              "ViewState": "AgIAABQBAAAAAAAAAAAswFIBAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAuwFkBAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-30T13:15:43.211Z",
+              "WhenOpened": "2026-06-16T10:06:39.578Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "ForeignKeyInfo.cs",
+              "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\DataAccessLayer\\ForeignKeyInfo.cs",
+              "RelativeDocumentMoniker": "..\\DataAccessLayer\\ForeignKeyInfo.cs",
+              "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\DataAccessLayer\\ForeignKeyInfo.cs",
+              "RelativeToolTip": "..\\DataAccessLayer\\ForeignKeyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-16T15:21:03.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "FindForm.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\FindForm.cs",
               "RelativeDocumentMoniker": "FindForm.cs",
               "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\FindForm.cs",
               "RelativeToolTip": "FindForm.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAA0wFkAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAswIEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-04T14:01:01.598Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
+              "Title": "FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\FindForm.cs",
+              "RelativeDocumentMoniker": "FindForm.cs",
+              "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T10:35:10.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RemakeDataForm.cs",
+              "RelativeDocumentMoniker": "RemakeDataForm.cs",
+              "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T19:34:26.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DataAccessTests.cs",
+              "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\TestProjectSales\\DataAccessTests.cs",
+              "RelativeDocumentMoniker": "..\\TestProjectSales\\DataAccessTests.cs",
+              "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\TestProjectSales\\DataAccessTests.cs",
+              "RelativeToolTip": "..\\TestProjectSales\\DataAccessTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T12:38:10.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "RegistrationForm.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RegistrationForm.cs",
               "RelativeDocumentMoniker": "RegistrationForm.cs",
@@ -189,43 +238,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RemakeDataForm.cs",
-              "RelativeDocumentMoniker": "RemakeDataForm.cs",
-              "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "RemakeDataForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-02T19:34:26.256Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\Sales.cs",
               "RelativeDocumentMoniker": "Sales.cs",
               "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Sales.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-25T11:03:21.828Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2026-05-25T11:03:21.828Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\FindForm.cs",
-              "RelativeDocumentMoniker": "FindForm.cs",
-              "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "FindForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T10:35:10.438Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "AuthenticationForm.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\AuthenticationForm.cs",
               "RelativeDocumentMoniker": "AuthenticationForm.cs",
@@ -238,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "SortForm.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\SortForm.cs",
               "RelativeDocumentMoniker": "SortForm.cs",
@@ -251,20 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ReportForm.cs",
-              "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\ReportForm.cs",
-              "RelativeDocumentMoniker": "ReportForm.cs",
-              "ToolTip": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\ReportForm.cs",
-              "RelativeToolTip": "ReportForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKoAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-02T12:45:15.189Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "RegistrationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\RegistrationForm.cs",
               "RelativeDocumentMoniker": "RegistrationForm.cs",
@@ -275,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "GroupForm.cs",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\GroupForm.cs",
               "RelativeDocumentMoniker": "GroupForm.cs",
@@ -288,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "AuthenticationForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\AuthenticationForm.cs",
               "RelativeDocumentMoniker": "AuthenticationForm.cs",
@@ -299,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "ReportForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\ReportForm.cs",
               "RelativeDocumentMoniker": "ReportForm.cs",
@@ -310,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "SortForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\SortForm.cs",
               "RelativeDocumentMoniker": "SortForm.cs",
@@ -321,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "GroupForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\GroupForm.cs",
               "RelativeDocumentMoniker": "GroupForm.cs",
@@ -332,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "ReportForm.resx",
               "DocumentMoniker": "D:\\Masha\\VBA\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430\\LastSales \u2014 \u043A\u043E\u043F\u0438\u044F\\WinFormsAppSales\\ReportForm.resx",
               "RelativeDocumentMoniker": "ReportForm.resx",

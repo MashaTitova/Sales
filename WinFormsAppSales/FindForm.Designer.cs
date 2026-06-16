@@ -59,10 +59,10 @@
             radioButton_StringFind.AutoSize = true;
             radioButton_StringFind.Location = new Point(125, 100);
             radioButton_StringFind.Name = "radioButton_StringFind";
-            radioButton_StringFind.Size = new Size(478, 36);
+            radioButton_StringFind.Size = new Size(240, 36);
             radioButton_StringFind.TabIndex = 34;
             radioButton_StringFind.TabStop = true;
-            radioButton_StringFind.Text = "Строковый поиск (точное совпадение)";
+            radioButton_StringFind.Text = "Строковый поиск";
             radioButton_StringFind.UseVisualStyleBackColor = true;
             radioButton_StringFind.CheckedChanged += radioButton_StringFind_CheckedChanged;
             // 
@@ -95,7 +95,7 @@
             comboBox_FindRatio.Anchor = AnchorStyles.None;
             comboBox_FindRatio.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_FindRatio.FormattingEnabled = true;
-            comboBox_FindRatio.Items.AddRange(new object[] { "=", ">", ">=", "<", "<=" });
+            comboBox_FindRatio.Items.AddRange(new object[] { "=", ">", ">=", "<", "<=", "LIKE" });
             comboBox_FindRatio.Location = new Point(432, 288);
             comboBox_FindRatio.Margin = new Padding(4, 2, 4, 2);
             comboBox_FindRatio.Name = "comboBox_FindRatio";

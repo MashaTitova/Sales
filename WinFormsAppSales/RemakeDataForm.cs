@@ -11,8 +11,9 @@ namespace WinFormsAppSales
     {
         private DataTable _data;
         private string _nameOfTable;
-        int _page = 1;
-        LogicLayer _logicLayer;
+        private int _page = 1;
+        private LogicLayer _logicLayer;
+        private bool _deleteRights;
         public RemakeDataForm()
         {
             InitializeComponent();
@@ -24,6 +25,10 @@ namespace WinFormsAppSales
             _logicLayer = logicLayer;
             CreatingFields();
             ShowPage();
+        }
+        public void SetDeleteRights(bool rights)
+        {
+            _deleteRights = rights;
         }
         public DataTable GetDataTable()
         {
@@ -99,17 +104,19 @@ namespace WinFormsAppSales
             buttonSave.Click += button_Save_Click;
             this.Controls.Add(buttonSave);
 
-            y += 110;
+            if (_deleteRights)
+            {
+                y += 110;
 
-            Button buttonDelete = new Button();
-            buttonDelete.Height = 100;
-            buttonDelete.Width = 300;
-            buttonDelete.Text = "Удалить запись";
-            buttonDelete.Name = $"button_Delete";
-            buttonDelete.Location = new System.Drawing.Point(255, y);
-            buttonDelete.Click += button_Delete_Click;
-            this.Controls.Add(buttonDelete);
-
+                Button buttonDelete = new Button();
+                buttonDelete.Height = 100;
+                buttonDelete.Width = 300;
+                buttonDelete.Text = "Удалить запись";
+                buttonDelete.Name = $"button_Delete";
+                buttonDelete.Location = new System.Drawing.Point(255, y);
+                buttonDelete.Click += button_Delete_Click;
+                this.Controls.Add(buttonDelete);
+            }
             y += 110;
 
             Button buttonReturn = new Button();
@@ -146,7 +153,9 @@ namespace WinFormsAppSales
         {
             if (SaveToAccess()) this.Close();
         }
-
+        /// <summary>
+        /// Отображение записи
+        /// </summary>
         private void ShowPage()
         {
             // Проверяем, что страница существует
@@ -176,26 +185,54 @@ namespace WinFormsAppSales
         }
         private void button_Save_Click(object sender, EventArgs e)
         {
-            string text = "";
-            if (_page <= 0 || _page > _data.Rows.Count) return;
-
+            if (Save())
+            {
+                MessageBox.Show("Текущие изменения успешно сохранены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        /// <summary>
+        /// Сохранение изменений в таблицу
+        /// </summary>
+        private bool Save()
+        {
+            if (!IsValidPage())
+                return false;
 
             string errorMessage;
             if (!ValidateFormData(out errorMessage))
             {
                 MessageBox.Show(errorMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             DataRow currentRow = _data.Rows[_page - 1];
-            // Проверка: если строка удалена, не сохраняем
-            if (currentRow.RowState == DataRowState.Deleted)
+            if (IsRowDeleted(currentRow))
+                return false;
+
+            UpdateRowData(currentRow);
+            return true;
+        }
+        private bool IsValidPage()
+        {
+            if (_page <= 0 || _page > _data.Rows.Count)
+            {
+                MessageBox.Show("Некорректный номер страницы.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+        private bool IsRowDeleted(DataRow row)
+        {
+            if (row.RowState == DataRowState.Deleted)
             {
                 MessageBox.Show("Невозможно сохранить изменения: текущая запись была удалена.",
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return true;
             }
-
+            return false;
+        }
+        private void UpdateRowData(DataRow currentRow)
+        {
             foreach (DataColumn column in _data.Columns)
             {
                 string textBoxName = $"textBox_{column.ColumnName}";
@@ -203,79 +240,99 @@ namespace WinFormsAppSales
 
                 if (textBox != null && textBox.Text != null)
                 {
-                    if (_nameOfTable == "Пользователи" && textBoxName == "textBox_Пароль")
-                    {
-                        text = _logicLayer.HashUserInput(textBox.Text);
-                    }
-                    else
-                    {
-                        text = textBox.Text;
-                    }
-                    // Записываем изменения в DataTable
+                    string text = GetTextBoxValue(textBox);
+                    if (string.IsNullOrEmpty(text)) continue;
                     currentRow[column] = text;
                 }
             }
-            MessageBox.Show("Текущие изменения успешно сохранены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        /// <summary>
+        /// Получение значения из TextBox с учетом условия
+        /// </summary>
+        private string GetTextBoxValue(TextBox textBox)
+        {
+            if (_nameOfTable == "Пользователи" && textBox.Name == "textBox_Пароль")
+            {
+                return _logicLayer.HashUserInput(textBox.Text);
+            }
+            return textBox.Text;
+        }
+        /// <summary>
+        /// Валидация добавленных значений
+        /// </summary>
         private bool ValidateFormData(out string errorMessage)
         {
             errorMessage = "";
 
-            // Собираем значения из TextBox в словарь 
+            var formValues = CollectFormValues();
+
+            foreach (var kvp in formValues)
+            {
+                DataColumn column = kvp.Key;
+                string value = kvp.Value;
+                if(string.IsNullOrEmpty(value)) continue;
+
+                if (!ValidateDataType(column, value, out errorMessage))
+                    return false;
+
+                if (column.DataType == typeof(string) && !ValidateStringLength(column, value, out errorMessage))
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Собираем значения в словарь по столбцу
+        /// </summary>
+        private Dictionary<DataColumn, string> CollectFormValues()
+        {
             var formValues = new Dictionary<DataColumn, string>();
+
             for (int i = 0; i < _data.Columns.Count; i++)
             {
-                if (i == 0 && _nameOfTable != "Пользователи")
-                {
-                    continue;
-                }
                 DataColumn column = _data.Columns[i];
+
+                if (i == 0 && (_nameOfTable != "Пользователи" && _nameOfTable != "ПраваПользователей"))
+                    continue;
+
                 string textBoxName = $"textBox_{column.ColumnName}";
                 TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
+
                 if (textBox != null)
                 {
                     formValues[column] = textBox.Text;
                 }
             }
-
-            for (int i = 1; i < _data.Columns.Count; i++)
-            {
-                if (i == 0 && _nameOfTable != "Пользователи")
-                {
-                    continue;
-                }
-                DataColumn column = _data.Columns[i];
-                string value = formValues[column];
-
-                // Проверка типа данных
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    try
-                    {
-                        Convert.ChangeType(value, column.DataType);
-                    }
-                    catch (Exception)
-                    {
-                        errorMessage = $"В поле \"{column.ColumnName}\" введено некорректное значение. Ожидается тип: {column.DataType.Name}";
-                        return false;
-                    }
-                }
-
-                // Проверка длины строк
-                if (column.DataType == typeof(string))
-                {
-                    int maxLength = column.MaxLength;
-                    if (maxLength > 0 && !string.IsNullOrWhiteSpace(value))
-                    {
-                        if (value.Length > maxLength)
-                        {
-                            errorMessage = $"Длина значения в поле \"{column.ColumnName}\" превышает допустимую ({maxLength} символов).";
-                            return false;
-                        }
-                    }
-                }
-            }
+            return formValues;
+        }
+        /// <summary>
+        /// Проверка типа значения
+        /// </summary>
+        private bool ValidateDataType(DataColumn column, string value, out string errorMessage)
+        {
             errorMessage = "";
+            try
+            {
+                Convert.ChangeType(value, column.DataType);
+            }
+            catch (Exception)
+            {
+                errorMessage = $"В поле \"{column.ColumnName}\" введено некорректное значение. Ожидается тип: {column.DataType.Name}";
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Проверка на соответствие допустимой длине строки
+        /// </summary>
+        private bool ValidateStringLength(DataColumn column, string value, out string errorMessage)
+        {
+            errorMessage = "";
+            int maxLength = column.MaxLength;
+            if (maxLength > 0 && value.Length > maxLength)
+            {
+                errorMessage = $"Длина значения в поле \"{column.ColumnName}\" превышает допустимую ({maxLength} символов).";
+                return false;
+            }
             return true;
         }
         private void button_Add_Click(object sender, EventArgs e)
@@ -308,6 +365,10 @@ namespace WinFormsAppSales
         }
         private bool SaveToAccess()
         {
+            if (!Save())
+            {
+                return false;
+            }
             try
             {
                 _logicLayer.SaveToAccess(_data, _nameOfTable);
@@ -317,7 +378,8 @@ namespace WinFormsAppSales
             catch (OleDbException ex)
             {
                 MessageBox.Show(
-                $"Ошибка при сохранении в базу данных:\n{ex.Message}\n\n" +
+                $"Ошибка при сохранении в базу данных:\n" +
+                $"{ex.Message}\n" +
                 "Проверьте корректность данных и соединение с базой.",
                 "Ошибка базы данных",
                 MessageBoxButtons.OK,
@@ -335,6 +397,11 @@ namespace WinFormsAppSales
                 );
                 return false;
             }
+        }
+
+        private void RemakeDataForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
