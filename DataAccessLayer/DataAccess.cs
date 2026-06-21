@@ -161,6 +161,83 @@ namespace ClassLibrarySales
                 }
             }
         }
+        public List<string> FindTablesWithColumn(string columnName)
+        {
+            var tableNames = new List<string>();
+
+            using (OleDbConnection connection = new OleDbConnection(_connectionString))
+            {
+                connection.Open();
+
+                // Получаем список всех таблиц
+                DataTable tablesSchema = connection.GetOleDbSchemaTable(
+                    OleDbSchemaGuid.Tables,
+                    new object[] { null, null, null, "TABLE" });
+
+                if (tablesSchema == null) return tableNames;
+
+                foreach (DataRow tableRow in tablesSchema.Rows)
+                {
+                    string tableName = tableRow["TABLE_NAME"].ToString();
+
+                    // Получаем схему столбцов для текущей таблицы
+                    DataTable columnsSchema = connection.GetOleDbSchemaTable(
+                        OleDbSchemaGuid.Columns,
+                        new object[] { null, null, tableName, null });
+
+                    if (columnsSchema == null) continue;
+
+                    foreach (DataRow colRow in columnsSchema.Rows)
+                    {
+                        string colName = colRow["COLUMN_NAME"].ToString();
+                        if (colName.Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            tableNames.Add(tableName);
+                            break; 
+                        }
+                    }
+                }
+            }
+
+            return tableNames;
+        }
+        public List<string> GetCodeAndFullNamePairsByIndex(string tableName, int codeColumnIndex, int fullNameColumnIndex)
+        {
+            var result = new List<string>();
+
+            using (OleDbConnection connection = new OleDbConnection(_connectionString))
+            {
+                connection.Open();
+
+                DataTable columnsSchema = connection.GetOleDbSchemaTable(
+                    OleDbSchemaGuid.Columns,
+                    new object[] { null, null, tableName, null });
+
+                if (columnsSchema == null || columnsSchema.Rows.Count == 0)
+                    return result;
+
+                string codeColumnName = columnsSchema.Rows[codeColumnIndex]["COLUMN_NAME"].ToString();
+                string fullNameColumnName = columnsSchema.Rows[fullNameColumnIndex]["COLUMN_NAME"].ToString();
+
+                string query = $"SELECT DISTINCT [{codeColumnName}], [{fullNameColumnName}] " +
+                               $"FROM [{tableName}] " +
+                               $"WHERE [{codeColumnName}] IS NOT NULL AND [{fullNameColumnName}] IS NOT NULL " +
+                               $"ORDER BY [{codeColumnName}]";
+
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                using (OleDbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string code = reader.GetValue(0).ToString().Trim();
+                        string fullName = reader.GetValue(1).ToString().Trim();
+                        result.Add($"{code} - {fullName}");
+                    }
+                }
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// Проверка на существование пользователя с таким же логином
@@ -299,6 +376,7 @@ namespace ClassLibrarySales
                 }
             }
         }
+     
         /// <summary>
         /// Создаёт хеш пароля с использованием алгоритма SHA‑256
         /// </summary>

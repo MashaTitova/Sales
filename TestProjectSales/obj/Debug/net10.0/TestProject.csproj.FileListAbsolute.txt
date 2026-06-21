@@ -1,5 +1,13 @@
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\.msCoverageSourceRootsMapping_TestProject
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\CoverletSourceRootsMapping_TestProject
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\testhost.dll
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\xunit.abstractions.dll
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\testhost.exe
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\xunit.runner.visualstudio.testadapter.dll
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.deps.json
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.runtimeconfig.json
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.dll
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.pdb
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\Castle.Core.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\FastReport.Compat.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\FastReport.dll
@@ -14,7 +22,6 @@ D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debu
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\Microsoft.TestPlatform.CrossPlatEngine.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\Microsoft.TestPlatform.Utilities.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\Microsoft.VisualStudio.TestPlatform.Common.dll
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\testhost.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\Microsoft.Win32.SystemEvents.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\Moq.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\Newtonsoft.Json.dll
@@ -24,7 +31,6 @@ D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debu
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\System.Drawing.Common.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\xunit.abstractions.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\xunit.assert.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\xunit.core.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\xunit.execution.dotnet.dll
@@ -149,15 +155,9 @@ D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debu
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProject.AssemblyInfo.cs
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProject.csproj.CoreCompileInputs.cache
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProject.sourcelink.json
+D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProj.121896E9.Up2Date
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProject.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\refint\TestProject.dll
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProject.pdb
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\testhost.exe
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\xunit.runner.visualstudio.testadapter.dll
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.deps.json
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.runtimeconfig.json
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.dll
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\bin\Debug\net10.0\TestProject.pdb
-D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProj.121896E9.Up2Date
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\TestProject.genruntimeconfig.cache
 D:\Masha\VBA\Практика\LastSales — копия\TestProjectSales\obj\Debug\net10.0\ref\TestProject.dll

@@ -166,5 +166,35 @@ namespace ClassLibrarySales.Tests
             Assert.NotNull(result);
             Assert.IsType<DataTable>(result);
         }
+        
+        [Theory]
+        [InlineData("СерийныйНомер", 1)]
+        [InlineData("Модель", 1)]
+        [InlineData("НесуществующийСтолбец", 0)]
+        public void FindTablesWithColumn_ShouldReturnCorrectTables(string columnName, int expectedCount)
+        {
+            var dataAccess = new DataAccess(TestDatabasePath);
+
+            var result = dataAccess.FindTablesWithColumn(columnName);
+
+            Assert.NotNull(result);
+            Assert.Equal(expectedCount, result.Count);
+        }
+        [Fact]
+        public void GetCodeAndFullNamePairsByIndex_ShouldReturnSortedPairs()
+        {
+            var dataAccess = new DataAccess(TestDatabasePath);
+
+            var result = dataAccess.GetCodeAndFullNamePairsByIndex("ПраваПользователей", 0, 1);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.Equal(3, result.Count);
+
+            Assert.Equal("1 - Администратор", result[0]);
+            Assert.Equal("2 - Менеджер", result[1]);
+            Assert.Equal("3 - Оператор", result[2]);
+        }
     }
+
 }

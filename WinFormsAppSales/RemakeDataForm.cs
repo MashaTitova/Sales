@@ -1,4 +1,5 @@
 ﻿using ClassLibrarySales;
+using FastReport.Table;
 using System.Data;
 using System.Data.OleDb;
 
@@ -17,15 +18,18 @@ namespace WinFormsAppSales
         public RemakeDataForm()
         {
             InitializeComponent();
+           
         }
         public void SetData(DataTable dt, string name, LogicLayer logicLayer)
         {
             _data = dt;
             _nameOfTable = name;
             _logicLayer = logicLayer;
+            _page = 1;
             CreatingFields();
             ShowPage();
         }
+        
         public void SetDeleteRights(bool rights)
         {
             _deleteRights = rights;
@@ -34,6 +38,8 @@ namespace WinFormsAppSales
         {
             return _data;
         }
+
+        
         /// <summary>
         /// Динамическое создание интерфейса формы
         /// </summary>
@@ -54,14 +60,37 @@ namespace WinFormsAppSales
                 label.Name = $"label_{column.ColumnName}";
                 label.Location = new System.Drawing.Point(55, y);
                 this.Controls.Add(label);
+                if (column.ColumnName.Contains("Код") && !column.ColumnName.Equals("КодПравПользователя") || column.ColumnName.Equals("СерийныйНомер"))
+                {
+                    ComboBox comboBox = new ComboBox();
+                    comboBox.Height = 43;
+                    comboBox.Width = 315;
+                    comboBox.Name = $"comboBox_{column.ColumnName}";
+                    comboBox.Location = new System.Drawing.Point(470, y);
+                    comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+                    if (column.ColumnName == "СерийныйНомер")
+                    {
+                        var items = _logicLayer.GetSerialAndModelPairs();
+                        comboBox.Items.AddRange(items.ToArray());
+                    }
+                    else
+                    {
+                        var items = _logicLayer.GetAllValuesFromColumn(column.ColumnName, _nameOfTable);
+                        comboBox.Items.AddRange(items.ToArray());
+                    }
+                    this.Controls.Add(comboBox);
+                }
+                else
+                {
+                    TextBox textBox = new TextBox();
+                    textBox.Height = 43;
+                    textBox.Width = 315;
+                    textBox.Name = $"textBox_{column.ColumnName}";
+                    textBox.Location = new System.Drawing.Point(470, y);
+                    this.Controls.Add(textBox);
 
-                TextBox textBox = new TextBox();
-                textBox.Height = 43;
-                textBox.Width = 315;
-                textBox.Name = $"textBox_{column.ColumnName}";
-                textBox.Location = new System.Drawing.Point(470, y);
-                this.Controls.Add(textBox);
 
+                }
                 y += 53;
             }
             Button buttonLast = new Button();
@@ -158,29 +187,91 @@ namespace WinFormsAppSales
         /// </summary>
         private void ShowPage()
         {
-            // Проверяем, что страница существует
             if (_page <= 0 || _page > _data.Rows.Count) return;
 
             DataRow currentRow = _data.Rows[_page - 1];
-            if (currentRow.RowState == DataRowState.Deleted)
-            {
-                return;
-            }
+            if (currentRow.RowState == DataRowState.Deleted) return;
 
+            bool isNewRow = (currentRow.RowState == DataRowState.Added);
+
+            FillTextBoxes(currentRow);
+            FillComboBoxes(currentRow);
+            SetUpAccess(currentRow);
+            SetUpAccessUserRights(currentRow);
+        }
+        private void FillTextBoxes(DataRow currentRow)
+        {
             foreach (DataColumn column in _data.Columns)
             {
                 string textBoxName = $"textBox_{column.ColumnName}";
-
-                // Находим элемент управления по имени
                 TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
 
                 if (textBox != null)
                 {
-                    if (currentRow.RowState == DataRowState.Deleted)
-                        continue;
-                    // Берем значение из текущей строки и текущего столбца
-                    textBox.Text = currentRow[column].ToString();
+                    object value = currentRow[column];
+                    textBox.Text = value != DBNull.Value ? value.ToString() : "";
                 }
+            }
+        }
+        private void FillComboBoxes(DataRow currentRow)
+        {
+            foreach (DataColumn column in _data.Columns)
+            {
+                string comboBoxName = $"comboBox_{column.ColumnName}";
+                ComboBox comboBox = this.Controls.Find(comboBoxName, true).FirstOrDefault() as ComboBox;
+
+                if (comboBox == null) continue;
+
+                object currentValue = currentRow[column];
+                if (currentValue == DBNull.Value)
+                {
+                    comboBox.SelectedIndex = -1;
+                    continue;
+                }
+
+                string currentValueStr = currentValue.ToString().Trim();
+
+                int index = -1;
+                for (int i = 0; i < comboBox.Items.Count; i++)
+                {
+                    string item = comboBox.Items[i].ToString();
+                    if (item.StartsWith(currentValueStr + " - "))
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+
+                comboBox.SelectedIndex = index;
+            }
+        }
+        public void SetUpAccessUserRights(DataRow currentRow)
+        {
+            if (_nameOfTable == "ПраваПользователей")
+            {
+                isAvailableUserRights(false);
+            }
+            else
+            {
+                isAvailableUserRights(true);
+            }
+        }
+        private void SetUpAccess(DataRow currentRow)
+        {
+            Button buttonSave = this.Controls["button_Save"] as Button;
+            if (_nameOfTable == "Пользователи" && Convert.ToInt32(currentRow["КодПравПользователя"]) == 1)
+            {   
+                IsAvailableUsers(false);
+
+                if (buttonSave != null)
+                {
+                    buttonSave.Enabled = false;
+                }
+            }
+            else
+            {
+                IsAvailableUsers(true);
+                buttonSave.Enabled = true;
             }
         }
         private void button_Save_Click(object sender, EventArgs e)
@@ -208,9 +299,33 @@ namespace WinFormsAppSales
             DataRow currentRow = _data.Rows[_page - 1];
             if (IsRowDeleted(currentRow))
                 return false;
-
+                
             UpdateRowData(currentRow);
             return true;
+        }
+        private void isAvailableUserRights(bool available = true)
+        {
+            foreach (Control ctl in this.Controls)
+            {
+                if (ctl is TextBox tb && tb.Name == "textBox_КодПравПользователя")
+                {
+                    tb.Enabled = available;
+                }
+            }
+        }
+        private void IsAvailableUsers(bool available = true)
+        {
+            foreach (Control ctl in this.Controls)
+            {
+                if (ctl is TextBox tb)
+                {
+                    tb.Enabled = available;
+                }
+                else if (ctl is ComboBox cb)
+                {
+                    cb.Enabled = available;
+                }
+            }
         }
         private bool IsValidPage()
         {
@@ -236,13 +351,30 @@ namespace WinFormsAppSales
             foreach (DataColumn column in _data.Columns)
             {
                 string textBoxName = $"textBox_{column.ColumnName}";
-                TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
+                string comboBoxName = $"comboBox_{column.ColumnName}";
 
-                if (textBox != null && textBox.Text != null)
+                TextBox textBox = this.Controls.Find(textBoxName, true).FirstOrDefault() as TextBox;
+                ComboBox comboBox = this.Controls.Find(comboBoxName, true).FirstOrDefault() as ComboBox;
+
+
+
+                if (comboBox != null && comboBox.Visible && comboBox.SelectedItem != null)
+                {
+                    string selected = comboBox.SelectedItem.ToString();
+                    string[] parts = selected.Split(" - ", 2);
+                    if (parts.Length >= 1)
+                    {
+                        currentRow[column] = Convert.ToInt32(parts[0]);
+                    }
+                }
+                
+                else if (textBox != null && textBox.Text != null)
                 {
                     string text = GetTextBoxValue(textBox);
-                    if (string.IsNullOrEmpty(text)) continue;
-                    currentRow[column] = text;
+                    if (!string.IsNullOrEmpty(text))
+                    {
+                        currentRow[column] = text;
+                    }
                 }
             }
         }
@@ -339,25 +471,28 @@ namespace WinFormsAppSales
         {
             DataRow newRow = _data.NewRow();
             _data.Rows.Add(newRow);
-
-            // Переключаемся на новую запись
-            _page = _data.Rows.Count;
+            _page = _data.Rows.Count; 
             ShowPage();
         }
+       
         private void button_Delete_Click(object sender, EventArgs e)
         {
             if (_page <= 0 || _page > _data.Rows.Count) return;
-
+           
             DataRow currentRow = _data.Rows[_page - 1];
+            if (_nameOfTable == "Пользователи" && Convert.ToInt32(currentRow["КодПравПользователя"]) == 1)
+            {
+                MessageBox.Show("Невозможно удалить пользователя с правом доступа \"Администратор\"");
+                return;
+            }
             DialogResult result = MessageBox.Show(
-                "Вы действительно хотите удалить запись?",
-                "Подтверждение",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-            currentRow.Delete();
+            "Вы действительно хотите удалить запись?",
+            "Подтверждение",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // Обновляем отображение страницы
+                currentRow.Delete();
                 ShowPage();
                 MessageBox.Show("Данные успешно удалены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

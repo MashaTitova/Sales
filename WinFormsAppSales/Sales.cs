@@ -45,7 +45,7 @@ namespace WinFormsAppSales
             {
                 this.Show();
             }
-            else { Application.Exit(); } 
+            else { Application.Exit(); }
 
 
         }
@@ -129,7 +129,7 @@ namespace WinFormsAppSales
                 // Получаем список имен таблиц выбранной бд
                 tableNames = _logicLayer.GetTableNames();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -142,18 +142,25 @@ namespace WinFormsAppSales
 
         private void button_ExitApp_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show(
+               "Вы действительно хотите закрыть приложение?",
+               "Подтверждение",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Information
+           );
+            if(result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void Form_Sales_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-            DialogResult result = MessageBox.Show(
-                "Приложение будет закрыто",
-                "Закрытие приложения",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            if(e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void button_DataProcessing_Click(object sender, EventArgs e)
@@ -182,7 +189,7 @@ namespace WinFormsAppSales
                 form.SetDeleteRights(_rightsIndex <= 2);
                 form.SetData(_mainTable, comboBox_ChooseTable.Text, _logicLayer);
                 this.Hide();
-               form.ShowDialog();
+                form.ShowDialog();
                 if (form.DialogResult == DialogResult.Cancel)
                 {
                     DataTable dt = form.GetDataTable();
@@ -289,7 +296,7 @@ namespace WinFormsAppSales
         /// </summary>
         private void LoadTable()
         {
-            if(comboBox_ChooseTable.Text == "")
+            if (comboBox_ChooseTable.Text == "")
             {
                 return;
             }
@@ -351,8 +358,8 @@ namespace WinFormsAppSales
                 {
                     DataTable dt = sort.GetDataTable();
                     dataGridView_Sales.DataSource = dt;
-                    if(comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
-                     dataGridView_Sales.Columns[0].Visible = false;
+                    if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
+                        dataGridView_Sales.Columns[0].Visible = false;
                     sort.Close();
                     this.Show();
                 }
@@ -404,8 +411,6 @@ namespace WinFormsAppSales
                 {
                     DataTable dt = group.GetDataTable();
                     dataGridView_Sales.DataSource = dt;
-                    if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
-                        dataGridView_Sales.Columns[0].Visible = false;
                     dataGridView_Sales.Refresh();
                     group.Close();
                     this.Show();
@@ -433,6 +438,11 @@ namespace WinFormsAppSales
                 "   4. Создавать отчеты по данные, которые можно сохранить или распечатать", "Справка пользователя",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+        }
+
+        private void button_ChangeUser_Click(object sender, EventArgs e)
+        {
+            ShowAuthentication();
         }
     }
 }
