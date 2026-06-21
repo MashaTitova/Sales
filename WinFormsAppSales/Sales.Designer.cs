@@ -31,15 +31,16 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Sales));
             panel_Main = new Panel();
-            button_Info = new Button();
-            button_Return = new Button();
             flowLayoutPanel_HomeButtons = new FlowLayoutPanel();
             button_LoadBase = new Button();
+            button_ChangeUser = new Button();
             button_DataViewing = new Button();
             button_DataProcessing = new Button();
             button_RemakeData = new Button();
             button_Report = new Button();
             button_ExitApp = new Button();
+            button_Info = new Button();
+            button_Return = new Button();
             panel_Processing = new Panel();
             button_Group = new Button();
             button_Remove = new Button();
@@ -68,9 +69,9 @@
             // panel_Main
             // 
             panel_Main.BackColor = Color.Transparent;
+            panel_Main.Controls.Add(flowLayoutPanel_HomeButtons);
             panel_Main.Controls.Add(button_Info);
             panel_Main.Controls.Add(button_Return);
-            panel_Main.Controls.Add(flowLayoutPanel_HomeButtons);
             panel_Main.Controls.Add(panel_Processing);
             panel_Main.Controls.Add(panel_ChooseTable);
             panel_Main.Controls.Add(panel_StatInfo);
@@ -82,6 +83,125 @@
             panel_Main.Name = "panel_Main";
             panel_Main.Size = new Size(1622, 1164);
             panel_Main.TabIndex = 8;
+            // 
+            // flowLayoutPanel_HomeButtons
+            // 
+            flowLayoutPanel_HomeButtons.Anchor = AnchorStyles.None;
+            flowLayoutPanel_HomeButtons.AutoSize = true;
+            flowLayoutPanel_HomeButtons.BackColor = Color.Transparent;
+            flowLayoutPanel_HomeButtons.Controls.Add(button_LoadBase);
+            flowLayoutPanel_HomeButtons.Controls.Add(button_ChangeUser);
+            flowLayoutPanel_HomeButtons.Controls.Add(button_DataViewing);
+            flowLayoutPanel_HomeButtons.Controls.Add(button_DataProcessing);
+            flowLayoutPanel_HomeButtons.Controls.Add(button_RemakeData);
+            flowLayoutPanel_HomeButtons.Controls.Add(button_Report);
+            flowLayoutPanel_HomeButtons.Controls.Add(button_ExitApp);
+            flowLayoutPanel_HomeButtons.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel_HomeButtons.Location = new Point(523, 200);
+            flowLayoutPanel_HomeButtons.Margin = new Padding(4, 2, 4, 2);
+            flowLayoutPanel_HomeButtons.MaximumSize = new Size(700, 1000);
+            flowLayoutPanel_HomeButtons.MinimumSize = new Size(496, 582);
+            flowLayoutPanel_HomeButtons.Name = "flowLayoutPanel_HomeButtons";
+            flowLayoutPanel_HomeButtons.Size = new Size(598, 826);
+            flowLayoutPanel_HomeButtons.TabIndex = 9;
+            flowLayoutPanel_HomeButtons.WrapContents = false;
+            // 
+            // button_LoadBase
+            // 
+            button_LoadBase.AutoSize = true;
+            button_LoadBase.BackColor = Color.Transparent;
+            button_LoadBase.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button_LoadBase.Location = new Point(4, 2);
+            button_LoadBase.Margin = new Padding(4, 2, 4, 2);
+            button_LoadBase.Name = "button_LoadBase";
+            button_LoadBase.Size = new Size(590, 114);
+            button_LoadBase.TabIndex = 7;
+            button_LoadBase.Text = "Загрузка базы данных";
+            button_LoadBase.UseVisualStyleBackColor = false;
+            button_LoadBase.Click += button_LoadBase_Click;
+            // 
+            // button_ChangeUser
+            // 
+            button_ChangeUser.AutoSize = true;
+            button_ChangeUser.BackColor = Color.Transparent;
+            button_ChangeUser.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button_ChangeUser.Location = new Point(4, 120);
+            button_ChangeUser.Margin = new Padding(4, 2, 4, 2);
+            button_ChangeUser.Name = "button_ChangeUser";
+            button_ChangeUser.Size = new Size(590, 114);
+            button_ChangeUser.TabIndex = 47;
+            button_ChangeUser.Text = "Сменить пользоватея";
+            button_ChangeUser.UseVisualStyleBackColor = false;
+            button_ChangeUser.Click += button_ChangeUser_Click;
+            // 
+            // button_DataViewing
+            // 
+            button_DataViewing.AutoSize = true;
+            button_DataViewing.BackColor = Color.Transparent;
+            button_DataViewing.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button_DataViewing.Location = new Point(4, 238);
+            button_DataViewing.Margin = new Padding(4, 2, 4, 2);
+            button_DataViewing.Name = "button_DataViewing";
+            button_DataViewing.Size = new Size(590, 114);
+            button_DataViewing.TabIndex = 12;
+            button_DataViewing.Text = "Просмотр данных";
+            button_DataViewing.UseVisualStyleBackColor = false;
+            button_DataViewing.Click += button_DataViewing_Click;
+            // 
+            // button_DataProcessing
+            // 
+            button_DataProcessing.AutoSize = true;
+            button_DataProcessing.BackColor = Color.Transparent;
+            button_DataProcessing.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button_DataProcessing.Location = new Point(4, 356);
+            button_DataProcessing.Margin = new Padding(4, 2, 4, 2);
+            button_DataProcessing.Name = "button_DataProcessing";
+            button_DataProcessing.Size = new Size(590, 114);
+            button_DataProcessing.TabIndex = 8;
+            button_DataProcessing.Text = "Обработка данных";
+            button_DataProcessing.UseVisualStyleBackColor = false;
+            button_DataProcessing.Click += button_DataProcessing_Click;
+            // 
+            // button_RemakeData
+            // 
+            button_RemakeData.AutoSize = true;
+            button_RemakeData.BackColor = Color.Transparent;
+            button_RemakeData.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button_RemakeData.Location = new Point(4, 474);
+            button_RemakeData.Margin = new Padding(4, 2, 4, 2);
+            button_RemakeData.Name = "button_RemakeData";
+            button_RemakeData.Size = new Size(590, 114);
+            button_RemakeData.TabIndex = 9;
+            button_RemakeData.Text = "Изменение данных";
+            button_RemakeData.UseVisualStyleBackColor = false;
+            button_RemakeData.Click += button_RemakeData_Click;
+            // 
+            // button_Report
+            // 
+            button_Report.AutoSize = true;
+            button_Report.BackColor = Color.Transparent;
+            button_Report.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button_Report.Location = new Point(4, 592);
+            button_Report.Margin = new Padding(4, 2, 4, 2);
+            button_Report.Name = "button_Report";
+            button_Report.Size = new Size(590, 114);
+            button_Report.TabIndex = 10;
+            button_Report.Text = "Создание отчета";
+            button_Report.UseVisualStyleBackColor = false;
+            button_Report.Click += button_Report_Click;
+            // 
+            // button_ExitApp
+            // 
+            button_ExitApp.BackColor = Color.Transparent;
+            button_ExitApp.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button_ExitApp.Location = new Point(4, 710);
+            button_ExitApp.Margin = new Padding(4, 2, 4, 2);
+            button_ExitApp.Name = "button_ExitApp";
+            button_ExitApp.Size = new Size(590, 114);
+            button_ExitApp.TabIndex = 11;
+            button_ExitApp.Text = "Выход из приложения";
+            button_ExitApp.UseVisualStyleBackColor = false;
+            button_ExitApp.Click += button_ExitApp_Click;
             // 
             // button_Info
             // 
@@ -107,109 +227,6 @@
             button_Return.UseVisualStyleBackColor = true;
             button_Return.Visible = false;
             button_Return.Click += button_Return_Click;
-            // 
-            // flowLayoutPanel_HomeButtons
-            // 
-            flowLayoutPanel_HomeButtons.Anchor = AnchorStyles.None;
-            flowLayoutPanel_HomeButtons.AutoSize = true;
-            flowLayoutPanel_HomeButtons.BackColor = Color.Transparent;
-            flowLayoutPanel_HomeButtons.Controls.Add(button_LoadBase);
-            flowLayoutPanel_HomeButtons.Controls.Add(button_DataViewing);
-            flowLayoutPanel_HomeButtons.Controls.Add(button_DataProcessing);
-            flowLayoutPanel_HomeButtons.Controls.Add(button_RemakeData);
-            flowLayoutPanel_HomeButtons.Controls.Add(button_Report);
-            flowLayoutPanel_HomeButtons.Controls.Add(button_ExitApp);
-            flowLayoutPanel_HomeButtons.Location = new Point(528, 257);
-            flowLayoutPanel_HomeButtons.Margin = new Padding(4, 2, 4, 2);
-            flowLayoutPanel_HomeButtons.MaximumSize = new Size(700, 800);
-            flowLayoutPanel_HomeButtons.MinimumSize = new Size(496, 582);
-            flowLayoutPanel_HomeButtons.Name = "flowLayoutPanel_HomeButtons";
-            flowLayoutPanel_HomeButtons.Size = new Size(598, 714);
-            flowLayoutPanel_HomeButtons.TabIndex = 9;
-            // 
-            // button_LoadBase
-            // 
-            button_LoadBase.AutoSize = true;
-            button_LoadBase.BackColor = Color.Transparent;
-            button_LoadBase.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button_LoadBase.Location = new Point(4, 2);
-            button_LoadBase.Margin = new Padding(4, 2, 4, 2);
-            button_LoadBase.Name = "button_LoadBase";
-            button_LoadBase.Size = new Size(590, 114);
-            button_LoadBase.TabIndex = 7;
-            button_LoadBase.Text = "Загрузка базы данных";
-            button_LoadBase.UseVisualStyleBackColor = false;
-            button_LoadBase.Click += button_LoadBase_Click;
-            // 
-            // button_DataViewing
-            // 
-            button_DataViewing.AutoSize = true;
-            button_DataViewing.BackColor = Color.Transparent;
-            button_DataViewing.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button_DataViewing.Location = new Point(4, 120);
-            button_DataViewing.Margin = new Padding(4, 2, 4, 2);
-            button_DataViewing.Name = "button_DataViewing";
-            button_DataViewing.Size = new Size(590, 114);
-            button_DataViewing.TabIndex = 12;
-            button_DataViewing.Text = "Просмотр данных";
-            button_DataViewing.UseVisualStyleBackColor = false;
-            button_DataViewing.Click += button_DataViewing_Click;
-            // 
-            // button_DataProcessing
-            // 
-            button_DataProcessing.AutoSize = true;
-            button_DataProcessing.BackColor = Color.Transparent;
-            button_DataProcessing.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button_DataProcessing.Location = new Point(4, 238);
-            button_DataProcessing.Margin = new Padding(4, 2, 4, 2);
-            button_DataProcessing.Name = "button_DataProcessing";
-            button_DataProcessing.Size = new Size(590, 114);
-            button_DataProcessing.TabIndex = 8;
-            button_DataProcessing.Text = "Обработка данных";
-            button_DataProcessing.UseVisualStyleBackColor = false;
-            button_DataProcessing.Click += button_DataProcessing_Click;
-            // 
-            // button_RemakeData
-            // 
-            button_RemakeData.AutoSize = true;
-            button_RemakeData.BackColor = Color.Transparent;
-            button_RemakeData.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button_RemakeData.Location = new Point(4, 356);
-            button_RemakeData.Margin = new Padding(4, 2, 4, 2);
-            button_RemakeData.Name = "button_RemakeData";
-            button_RemakeData.Size = new Size(590, 114);
-            button_RemakeData.TabIndex = 9;
-            button_RemakeData.Text = "Изменение данных";
-            button_RemakeData.UseVisualStyleBackColor = false;
-            button_RemakeData.Click += button_RemakeData_Click;
-            // 
-            // button_Report
-            // 
-            button_Report.AutoSize = true;
-            button_Report.BackColor = Color.Transparent;
-            button_Report.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button_Report.Location = new Point(4, 474);
-            button_Report.Margin = new Padding(4, 2, 4, 2);
-            button_Report.Name = "button_Report";
-            button_Report.Size = new Size(590, 114);
-            button_Report.TabIndex = 10;
-            button_Report.Text = "Создание отчета";
-            button_Report.UseVisualStyleBackColor = false;
-            button_Report.Click += button_Report_Click;
-            // 
-            // button_ExitApp
-            // 
-            button_ExitApp.AutoSize = true;
-            button_ExitApp.BackColor = Color.Transparent;
-            button_ExitApp.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button_ExitApp.Location = new Point(4, 592);
-            button_ExitApp.Margin = new Padding(4, 2, 4, 2);
-            button_ExitApp.Name = "button_ExitApp";
-            button_ExitApp.Size = new Size(590, 114);
-            button_ExitApp.TabIndex = 11;
-            button_ExitApp.Text = "Выход из приложения";
-            button_ExitApp.UseVisualStyleBackColor = false;
-            button_ExitApp.Click += button_ExitApp_Click;
             // 
             // panel_Processing
             // 
@@ -445,5 +462,6 @@
         private Button button_Remove;
         private Button button_Find;
         private Button button_Sort;
+        private Button button_ChangeUser;
     }
 }

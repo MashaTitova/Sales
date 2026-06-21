@@ -4,6 +4,9 @@
     <Compile Update="AuthenticationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ExcelReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FindForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -23,6 +26,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SortForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TxtReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WordReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

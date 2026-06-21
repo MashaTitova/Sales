@@ -66,8 +66,8 @@ namespace ClassLibrarySales
                           "INNER JOIN ПраваПользователей ON Пользователи.КодПравПользователя = ПраваПользователей.КодПравПользователя " +
                           "WHERE Пользователи.ИмяПользователя = @Login";
 
-                string userRigtsIndex = _dataAccess.Authentication(query, entredLogin, hashedEnteredPassword, out message);
-                return userRigtsIndex;
+            string userRigtsIndex = _dataAccess.Authentication(query, entredLogin, hashedEnteredPassword, out message);
+            return userRigtsIndex;
         }
         /// <summary>
         /// Проверяет существование пользователя с указанным логином в таблице Пользователи.
@@ -135,7 +135,7 @@ namespace ClassLibrarySales
             string sortDirection = direction == "Возрастание" ? "ASC" : "DESC";
             string query = $"SELECT * FROM [{tableName}] ORDER BY [{columnName}]{sortDirection}";
             return _dataAccess.GetData(query);
-           
+
         }
         /// <summary>
         /// Фильтрует данные таблицы по строковому значению в заданном столбце
@@ -175,6 +175,40 @@ namespace ClassLibrarySales
                 $"FROM [{tableName}]" +
                 $"GROUP BY [{columnName}]";
             return _dataAccess.GetData(query);
+        }
+        public List<string> GetAllValuesFromColumn(string columnName, string currentTable)
+        {
+            var allValues = new HashSet<string>();
+            var tables = _dataAccess.FindTablesWithColumn(columnName);
+            tables.Remove(currentTable);
+            foreach (string tableName in tables)
+            {
+                var values = _dataAccess.GetCodeAndFullNamePairsByIndex(tableName, 0, 1);
+                foreach (string value in values)
+                {
+                    allValues.Add(value);
+                }
+            }
+
+            return allValues.ToList();
+        }
+        
+        public List<string> GetSerialAndModelPairs()
+        {
+            string query = @"
+        SELECT t.СерийныйНомер, m.Модель
+        FROM Товар t
+        INNER JOIN Модель m ON t.КодМодели = m.КодМодели
+        ORDER BY t.СерийныйНомер";
+        var result = new List<string>();
+        var dt = _dataAccess.GetData(query);
+        foreach (DataRow row in dt.Rows)
+        {
+            string serial = row["СерийныйНомер"].ToString().Trim();
+            string model = row["Модель"].ToString().Trim();
+            result.Add($"{serial} - {model}");
+        }
+        return result;
         }
     }
 }
