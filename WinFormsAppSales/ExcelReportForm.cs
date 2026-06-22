@@ -57,10 +57,12 @@ namespace PresentationLayer
 
                 // Стили
                 var numericStyle = workbook.CreateCellStyle();
+                
                 var font = workbook.CreateFont();
                 font.IsBold = true;                 
 
                 var cellStyle = workbook.CreateCellStyle();
+                // Перенос текста
                 cellStyle.WrapText = true;
 
                 // Заголовки
@@ -116,7 +118,7 @@ namespace PresentationLayer
             try
             {
                 File.WriteAllBytes(tempPath, _excelData);
-                Process.Start(new ProcessStartInfo(tempPath) { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo(tempPath) { UseShellExecute = true }); // Открытие в приложении Excel
             }
             catch (Exception ex)
             {
