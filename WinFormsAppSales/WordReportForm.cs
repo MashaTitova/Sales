@@ -63,9 +63,9 @@ namespace PresentationLayer
                     // Заголовок
                     var paragraph = new Paragraph(
                         new Run(new Text($"Отчёт по данным: {_nameOfBase}")),
-                        new ParagraphProperties(new Justification { Val = JustificationValues.Center })
+                        new ParagraphProperties(new Justification { Val = JustificationValues.Center }) // Выравнивание по центру
                     );
-                    body.AppendChild(paragraph);
+                    body.AppendChild(paragraph); // Пустая строка
                     body.AppendChild(new Paragraph(new Run()));
 
                     // Таблица

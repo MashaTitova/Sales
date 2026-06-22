@@ -219,7 +219,7 @@ namespace ClassLibrarySales
                 string codeColumnName = columnsSchema.Rows[codeColumnIndex]["COLUMN_NAME"].ToString();
                 string fullNameColumnName = columnsSchema.Rows[fullNameColumnIndex]["COLUMN_NAME"].ToString();
 
-                string query = $"SELECT DISTINCT [{codeColumnName}], [{fullNameColumnName}] " +
+                string query = $"SELECT [{codeColumnName}], [{fullNameColumnName}] " +
                                $"FROM [{tableName}] " +
                                $"WHERE [{codeColumnName}] IS NOT NULL AND [{fullNameColumnName}] IS NOT NULL " +
                                $"ORDER BY [{codeColumnName}]";
