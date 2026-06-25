@@ -155,6 +155,8 @@
             Controls.Add(label_Login);
             Controls.Add(textBox_Login);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(847, 761);
+            MinimumSize = new Size(847, 761);
             Name = "AuthenticationForm";
             Text = "Аутентификация";
             FormClosing += AuthenticationForm_FormClosing;

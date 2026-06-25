@@ -97,6 +97,8 @@
             Controls.Add(label_ChooseGroup);
             Controls.Add(comboBox_ChooseGroupParam);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(651, 632);
+            MinimumSize = new Size(651, 632);
             Name = "GroupForm";
             Text = "Группировка";
             ResumeLayout(false);

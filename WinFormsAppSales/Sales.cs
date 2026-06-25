@@ -61,7 +61,6 @@ namespace WinFormsAppSales
             {
                 // Если права пользователя ниже "Администратора"
                 comboBox_ChooseTable.Items.Remove("Пользователи");
-                comboBox_ChooseTable.Items.Remove("ПраваПользователей");
                 if (userRightsInt > 3)
                 {
                     // Если права пользователя "Чтение"
@@ -137,6 +136,7 @@ namespace WinFormsAppSales
             {
                 comboBox_ChooseTable.Items.Add(tableName);
             }
+            comboBox_ChooseTable.Items.Remove("ПраваПользователей");
             panel_ChooseTable.Visible = true;
         }
 
@@ -148,19 +148,16 @@ namespace WinFormsAppSales
                MessageBoxButtons.YesNo,
                MessageBoxIcon.Information
            );
-            if(result == DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 Application.Exit();
             }
-            
+
         }
 
         private void Form_Sales_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-            }
+
         }
 
         private void button_DataProcessing_Click(object sender, EventArgs e)
@@ -185,20 +182,7 @@ namespace WinFormsAppSales
         {
             if (CheckAvailability())
             {
-                RemakeDataForm form = new RemakeDataForm();
-                form.SetDeleteRights(_rightsIndex <= 2);
-                form.SetData(_mainTable, comboBox_ChooseTable.Text, _logicLayer);
-                this.Hide();
-                form.ShowDialog();
-                if (form.DialogResult == DialogResult.Cancel)
-                {
-                    DataTable dt = form.GetDataTable();
-                    dataGridView_Sales.DataSource = dt;
-                    if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
-                        dataGridView_Sales.Columns[0].Visible = false;
-                    form.Close();
-                    this.Show();
-                }
+                OpenRemakeForm();
 
             }
 
@@ -211,9 +195,7 @@ namespace WinFormsAppSales
                 {
                     ReportForm form = new ReportForm();
                     form.SetData(_mainTable, comboBox_ChooseTable.Text);
-                    this.Hide();
                     DialogResult result = form.ShowDialog();
-                    this.Show();
                 }
                 else
                 {
@@ -248,7 +230,6 @@ namespace WinFormsAppSales
         private void ViewTable()
         {
             button_Return.Visible = true;
-            panel_ChooseTable.Visible = false;
             button_Info.Visible = false;
             panel_StatInfo.Visible = true;
             panel_Base.Visible = true;
@@ -265,7 +246,6 @@ namespace WinFormsAppSales
             button_Info.Visible = true;
             panel_StatInfo.Visible = false;
             panel_Base.Visible = false;
-            panel_ChooseTable.Visible = true;
             flowLayoutPanel_HomeButtons.Visible = true;
             label_Name.Text = "Данные о продажах";
             if (panel_Processing.Visible == true)
@@ -273,7 +253,7 @@ namespace WinFormsAppSales
                 panel_Processing.Visible = false;
             }
             dataGridView_Sales.DataSource = _mainTable;
-            if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
+            if (comboBox_ChooseTable.Text != "Пользователи")
                 dataGridView_Sales.Columns[0].Visible = false;
             label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
 
@@ -325,7 +305,7 @@ namespace WinFormsAppSales
         private void FillTable()
         {
             dataGridView_Sales.DataSource = _mainTable;
-            if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
+            if (comboBox_ChooseTable.Text != "Пользователи")
                 dataGridView_Sales.Columns[0].Visible = false;
             foreach (DataGridViewColumn column in dataGridView_Sales.Columns)
             {
@@ -341,7 +321,7 @@ namespace WinFormsAppSales
 
             DataTable dt = _mainTable.Copy();
             dataGridView_Sales.DataSource = dt;
-            if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
+            if (comboBox_ChooseTable.Text != "Пользователи")
                 dataGridView_Sales.Columns[0].Visible = false;
             label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
         }
@@ -351,21 +331,17 @@ namespace WinFormsAppSales
             {
                 SortForm sort = new SortForm();
                 DataTable table = _mainTable.Copy();
+                if (comboBox_ChooseTable.Text != "Пользователи")
+                dataGridView_Sales.Columns[0].Visible = false;
                 sort.SetData(comboBox_ChooseTable.Text, _logicLayer, _columnNames);
-                this.Hide();
                 sort.ShowDialog();
                 if (sort.DialogResult == DialogResult.OK)
                 {
                     DataTable dt = sort.GetDataTable();
                     dataGridView_Sales.DataSource = dt;
-                    if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
+                    if (comboBox_ChooseTable.Text != "Пользователи")
                         dataGridView_Sales.Columns[0].Visible = false;
                     sort.Close();
-                    this.Show();
-                }
-                else
-                {
-                    this.Show();
                 }
 
             }
@@ -378,20 +354,14 @@ namespace WinFormsAppSales
                 FindForm find = new FindForm();
                 DataTable table = _mainTable.Copy();
                 find.SetData(comboBox_ChooseTable.Text, _logicLayer, _columnNames, table);
-                this.Hide();
                 find.ShowDialog();
                 if (find.DialogResult == DialogResult.OK)
                 {
                     DataTable dt = find.GetDataTable();
                     dataGridView_Sales.DataSource = dt;
-                    if (comboBox_ChooseTable.Text != "Пользователи" && comboBox_ChooseTable.Text != "ПраваПользователей")
+                    if (comboBox_ChooseTable.Text != "Пользователи")
                         dataGridView_Sales.Columns[0].Visible = false;
                     find.Close();
-                    this.Show();
-                }
-                else
-                {
-                    this.Show();
                 }
                 label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
 
@@ -405,7 +375,6 @@ namespace WinFormsAppSales
                 GroupForm group = new GroupForm();
                 DataTable table = _mainTable.Copy();
                 group.SetData(comboBox_ChooseTable.Text, _logicLayer, _columnNames);
-                this.Hide();
                 group.ShowDialog();
                 if (group.DialogResult == DialogResult.OK)
                 {
@@ -413,11 +382,6 @@ namespace WinFormsAppSales
                     dataGridView_Sales.DataSource = dt;
                     dataGridView_Sales.Refresh();
                     group.Close();
-                    this.Show();
-                }
-                else
-                {
-                    this.Show();
                 }
                 label_StatInfoNum.Text = dataGridView_Sales.Rows.Count.ToString();
 
@@ -443,6 +407,39 @@ namespace WinFormsAppSales
         private void button_ChangeUser_Click(object sender, EventArgs e)
         {
             ShowAuthentication();
+        }
+
+        private void dataGridView_Sales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(panel_Processing.Visible == true)
+            {
+                return;
+            }
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+            var selectedRowIndex = e.RowIndex;
+            OpenRemakeForm(selectedRowIndex);
+        }
+        private void OpenRemakeForm(int selectedRowIndex = 0)
+        {
+            RemakeDataForm form = new RemakeDataForm();
+            form.SetPage(selectedRowIndex);
+            form.SetDeleteRights(_rightsIndex <= 2);
+            form.SetData(_mainTable, comboBox_ChooseTable.Text, _logicLayer);
+
+            this.Hide();
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.Cancel)
+            {
+                DataTable dt = form.GetDataTable();
+                dataGridView_Sales.DataSource = dt;
+                if (comboBox_ChooseTable.Text != "Пользователи")
+                    dataGridView_Sales.Columns[0].Visible = false;
+                form.Close();
+                this.Show();
+            }
         }
     }
 }

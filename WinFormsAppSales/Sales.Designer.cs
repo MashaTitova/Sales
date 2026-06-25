@@ -395,6 +395,7 @@
             dataGridView_Sales.RowHeadersWidth = 82;
             dataGridView_Sales.Size = new Size(1059, 973);
             dataGridView_Sales.TabIndex = 8;
+            dataGridView_Sales.CellDoubleClick += dataGridView_Sales_CellDoubleClick;
             // 
             // label_Name
             // 

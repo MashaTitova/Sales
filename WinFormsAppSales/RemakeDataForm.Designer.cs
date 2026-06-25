@@ -38,6 +38,8 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(850, 1175);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(876, 1246);
+            MinimumSize = new Size(876, 1246);
             Name = "RemakeDataForm";
             Text = "Изменение данных";
             Load += RemakeDataForm_Load;

@@ -145,6 +145,8 @@
             Controls.Add(label_Login);
             Controls.Add(textBox_Login);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(865, 843);
+            MinimumSize = new Size(865, 843);
             Name = "RegistrationForm";
             Text = "Регестрация";
             FormClosing += RegistrationForm_FormClosing;

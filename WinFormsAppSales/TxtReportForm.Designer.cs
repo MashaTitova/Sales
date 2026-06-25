@@ -149,6 +149,8 @@
             Controls.Add(label_Name);
             Controls.Add(flowLayoutPanel_HomeButtons);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(944, 1008);
+            MinimumSize = new Size(944, 1008);
             Name = "TxtReportForm";
             Text = "Отчет Txt";
             FormClosing += TxtReportForm_FormClosing;

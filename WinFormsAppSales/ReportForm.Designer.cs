@@ -133,6 +133,8 @@
             Controls.Add(label_Name);
             Controls.Add(flowLayoutPanel_HomeButtons);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(905, 853);
+            MinimumSize = new Size(905, 853);
             Name = "ReportForm";
             Text = "Выбор формата";
             flowLayoutPanel_HomeButtons.ResumeLayout(false);

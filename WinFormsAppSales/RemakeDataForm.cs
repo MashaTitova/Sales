@@ -1,6 +1,7 @@
 ﻿using ClassLibrarySales;
 using System.Data;
 using System.Data.OleDb;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WinFormsAppSales
 {
@@ -11,7 +12,7 @@ namespace WinFormsAppSales
     {
         private DataTable _data;
         private string _nameOfTable;
-        private int _page = 1;
+        private int _page;
         private LogicLayer _logicLayer;
         private bool _deleteRights;
         public RemakeDataForm()
@@ -24,11 +25,13 @@ namespace WinFormsAppSales
             _data = dt;
             _nameOfTable = name;
             _logicLayer = logicLayer;
-            _page = 1;
             CreatingFields();
             ShowPage();
         }
-        
+        public void SetPage(int currentPage)
+        {
+            _page = currentPage + 1;
+        }
         public void SetDeleteRights(bool rights)
         {
             _deleteRights = rights;
@@ -47,7 +50,7 @@ namespace WinFormsAppSales
             int y = 65;
             for (int i = 0; i < _data.Columns.Count; i++)
             {
-                if ((i == 0 && _nameOfTable != "Пользователи") && (i == 0 && _nameOfTable != "ПраваПользователей"))
+                if (i == 0 && _nameOfTable != "Пользователи")
                 {
                     continue;
                 }
@@ -58,8 +61,9 @@ namespace WinFormsAppSales
                 label.Text = column.ColumnName;
                 label.Name = $"label_{column.ColumnName}";
                 label.Location = new System.Drawing.Point(55, y);
+                label.Enabled = false;
                 this.Controls.Add(label);
-                if (column.ColumnName.Contains("Код") && !column.ColumnName.Equals("КодПравПользователя") || column.ColumnName.Equals("СерийныйНомер"))
+                if (column.ColumnName.Contains("Код") || column.ColumnName.Equals("СерийныйНомер"))
                 {
                     ComboBox comboBox = new ComboBox();
                     comboBox.Height = 43;
@@ -67,6 +71,7 @@ namespace WinFormsAppSales
                     comboBox.Name = $"comboBox_{column.ColumnName}";
                     comboBox.Location = new System.Drawing.Point(470, y);
                     comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox.Enabled = false;
                     if (column.ColumnName == "СерийныйНомер")
                     {
                         var items = _logicLayer.GetSerialAndModelPairs();
@@ -86,6 +91,7 @@ namespace WinFormsAppSales
                     textBox.Width = 315;
                     textBox.Name = $"textBox_{column.ColumnName}";
                     textBox.Location = new System.Drawing.Point(470, y);
+                    textBox.Enabled = false;
                     this.Controls.Add(textBox);
 
 
@@ -134,6 +140,17 @@ namespace WinFormsAppSales
 
             y += 110;
 
+            Button buttonRemake = new Button();
+            buttonRemake.Height = 100;
+            buttonRemake.Width = 300;
+            buttonRemake.Text = "Изменить запись";
+            buttonRemake.Name = $"button_Remake";
+            buttonRemake.Location = new System.Drawing.Point(255, y);
+            buttonRemake.Click += button_Remake_Click;
+            this.Controls.Add(buttonRemake);
+
+            y += 110;
+
             Button buttonSave = new Button();
             buttonSave.Height = 100;
             buttonSave.Width = 300;
@@ -142,6 +159,17 @@ namespace WinFormsAppSales
             buttonSave.Location = new System.Drawing.Point(255, y);
             buttonSave.Click += button_Save_Click;
             this.Controls.Add(buttonSave);
+
+            y += 110;
+
+            Button buttonRemove = new Button();
+            buttonRemove.Height = 100;
+            buttonRemove.Width = 300;
+            buttonRemove.Text = "Отменить изменения в записи";
+            buttonRemove.Name = $"button_Remove";
+            buttonRemove.Location = new System.Drawing.Point(255, y);
+            buttonRemove.Click += button_Remove_Click;
+            this.Controls.Add(buttonRemove);
 
             if (_deleteRights)
             {
@@ -171,8 +199,38 @@ namespace WinFormsAppSales
 
             this.Height = y;
         }
+        private void button_Remake_Click(object sender, EventArgs e)
+        {
+            СonfigureAccessibility(true);
+            if (_nameOfTable == "Пользователи")
+            {
+                СonfigureAccessibilitySpecial();
+            }
+        }
+        private void СonfigureAccessibility(bool isEnabled)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox || control is ComboBox)
+                {
+                    control.Enabled = isEnabled;
+                }
+            }
+        }
+        private void СonfigureAccessibilitySpecial()
+        {
+            DataRow currentRow = _data.Rows[_page - 1];
+            bool isAdmin = IsCurrentUserAdmin(currentRow);
+            if (_nameOfTable == "Пользователи")
+            {
+                IsAvailableUsers(!isAdmin);
+            }
+        }
+
+            
         private void button_Next_Click(object sender, EventArgs e)
         {
+            СonfigureAccessibility(false);
             if (_page < _data.Rows.Count)
             {
                 _page++;
@@ -181,6 +239,7 @@ namespace WinFormsAppSales
         }
         private void button_Last_Click(object sender, EventArgs e)
         {
+            СonfigureAccessibility(false);
             if (_page > 1)
             {
                 _page--;
@@ -207,23 +266,7 @@ namespace WinFormsAppSales
             }
             FillTextBoxes(currentRow);
             SelectItem(currentRow);
-            bool isAdmin = IsCurrentUserAdmin(currentRow);
-
-            if (_nameOfTable == "ПраваПользователей")
-            {
-                if (currentRow.RowState != DataRowState.Added)
-                {
-                    IsAvailableUserRights(false);
-                }
-                else
-                {
-                    IsAvailableUserRights(true);
-                }
-            }
-            else if (_nameOfTable == "Пользователи")
-            {
-                IsAvailableUsers(!isAdmin);
-            }
+           
         }
         private bool IsCurrentUserAdmin(DataRow currentRow)
         {
@@ -283,16 +326,6 @@ namespace WinFormsAppSales
                 comboBox.SelectedIndex = index;
             }
         }
-        private void IsAvailableUserRights(bool available)
-        {
-            foreach (Control ctl in this.Controls)
-            {
-                if (ctl is TextBox tb && tb.Name == "textBox_КодПравПользователя")
-                {
-                    tb.Enabled = available;
-                }
-            }
-        }
         private void IsAvailableUsers(bool available)
         {
             foreach (Control ctl in this.Controls)
@@ -307,10 +340,29 @@ namespace WinFormsAppSales
                 }
             }
         }
+        private void button_Remove_Click(object sender, EventArgs e)
+        {
+           
+            if (IsNewRecord()){
+                ControlNextLast(true);
+                _data.Rows.Remove(_data.Rows[_data.Rows.Count - 1]);
+                _page = _data.Rows.Count;
+                ShowPage();
+            }
+            else
+            {
+                DataRow currentRow = _data.Rows[_page - 1];
+                FillTextBoxes(currentRow);
+                SelectItem(currentRow);
+            }
+        
+        }
         private void button_Save_Click(object sender, EventArgs e)
         {
             if (Save())
             {
+                ControlNextLast(true);
+                СonfigureAccessibility(false);
                 MessageBox.Show("Текущие изменения успешно сохранены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -350,8 +402,6 @@ namespace WinFormsAppSales
         {
             if (row.RowState == DataRowState.Deleted)
             {
-                MessageBox.Show("Невозможно сохранить изменения: текущая запись была удалена.",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             return false;
@@ -417,13 +467,40 @@ namespace WinFormsAppSales
 
             var formValues = CollectFormValues();
 
+            if (IsNewRecord() && !HasAnyFilledField())
+            {
+                errorMessage = "Для новой записи необходимо заполнить хотя бы одно поле";
+                return false;
+            }
+
+            if (_nameOfTable == "Пользователи")
+            {
+                // Проверка уникальности имени пользователя
+                if (formValues.TryGetValue(_data.Columns["ИмяПользователя"], out string username) &&
+                    !string.IsNullOrEmpty(username))
+                {
+                    if (!IsUniqUserName(username, out errorMessage))
+                    {
+                        return false;
+                    }
+                }
+
+                // Дополнительная валидация для новых пользователей
+                if (!ValidateNewUser(out errorMessage))
+                {
+                    return false;
+                }
+            }
+
+            // Общие проверки для всех таблиц и полей
             foreach (var kvp in formValues)
             {
                 DataColumn column = kvp.Key;
                 string value = kvp.Value;
 
-                // Пропускаем пустые поля при валидации
-                if (string.IsNullOrEmpty(value)) continue;
+                // Пропускаем пустые поля 
+                if (string.IsNullOrEmpty(value))
+                    continue;
 
                 if (!ValidateDataType(column, value, out errorMessage))
                     return false;
@@ -432,17 +509,74 @@ namespace WinFormsAppSales
                     return false;
             }
 
-            // Проверка для новых записей: хотя бы одно поле должно быть заполнено
-            if (IsNewRecord() && !HasAnyFilledField())
+            return true;
+        }
+        private bool IsUniqUserName(string userName, out string message)
+        {
+            message = "";
+
+            int currentRowIndex = _page - 1;
+            int countOfSameNames = 0;
+
+            foreach (DataRow row in _data.Rows)
             {
-                errorMessage = "Для новой записи необходимо заполнить хотя бы одно поле.";
+                if (IsRowDeleted(row))
+                    continue;
+
+                if (!IsNewRecord() && row == _data.Rows[currentRowIndex])
+                    continue;
+
+                if (row["ИмяПользователя"] != DBNull.Value)
+                {
+                    string existingUsername = row["ИмяПользователя"].ToString();
+                    if (string.Equals(existingUsername, userName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        countOfSameNames++;
+                    }
+                }
+            }
+
+            if (countOfSameNames > 0)
+            {
+                message = "Пользователь с таким именем уже существует в базе данных";
                 return false;
             }
 
             return true;
         }
-
-        // Вспомогательные методы
+        private bool HasAllFilledFields(Control control, out string message)
+        {
+            if (control is TextBox || control is ComboBox)
+            {
+                if (control.Text == "")
+                {
+                    message = "Все поля данной записи должны быть заполнены";
+                    return false;
+                }
+            }
+            message = "";
+            return true;
+        }
+        private bool PasswordValidate(Control control, out string message)
+        {
+            if (control.Name == "textBox_Пароль" && control.Text.Length < 6)
+            {
+                message = "Пароль должен быть не короче 5 символов";
+                return false;
+            }
+            message = "";
+            return true;
+        }
+        private bool ValidateNewUser(out string message)
+        {
+            foreach (Control control in this.Controls )
+            {
+                if(!HasAllFilledFields(control, out message)) { return false; }
+                if (!PasswordValidate(control, out message)) { return false; }
+            }
+            message = "";
+            return true;
+        }
         private bool IsNewRecord()
         {
             return _page <= _data.Rows.Count && _data.Rows[_page - 1].RowState == DataRowState.Added;
@@ -450,11 +584,11 @@ namespace WinFormsAppSales
 
         private bool HasAnyFilledField()
         {
-            var currentRow = _data.Rows[_page - 1];
-            foreach (DataColumn column in _data.Columns)
+            foreach (Control control in this.Controls)
             {
-                object value = currentRow[column];
-                if (value != DBNull.Value && !string.IsNullOrEmpty(value.ToString())) 
+                if (control is TextBox textBox && !string.IsNullOrEmpty(textBox.Text))
+                    return true;
+                if (control is ComboBox comboBox && comboBox.SelectedIndex >= 0)
                     return true;
             }
             return false;
@@ -516,12 +650,19 @@ namespace WinFormsAppSales
         }
         private void button_Add_Click(object sender, EventArgs e)
         {
-            DataRow newRow = _data.NewRow();
+            ControlNextLast(false);
+             DataRow newRow = _data.NewRow();
             _data.Rows.Add(newRow);
             _page = _data.Rows.Count; 
             ShowPage();
         }
-       
+       private void ControlNextLast(bool active)
+       {
+            Button buttonNext = this.Controls.Find("button_Next", true).FirstOrDefault() as Button;
+            buttonNext.Enabled = active;
+            Button buttonLast = this.Controls.Find("button_Last", true).FirstOrDefault() as Button;
+            buttonLast.Enabled = active;
+        }
         private void button_Delete_Click(object sender, EventArgs e)
         {
             if (!IsValidPage()) return;
@@ -541,7 +682,6 @@ namespace WinFormsAppSales
                 if (result == DialogResult.Yes)
                 {
                     currentRow.Delete();
-                    ShowPage();
                     MessageBox.Show("Данные успешно удалены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

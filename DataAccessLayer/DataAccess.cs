@@ -304,9 +304,9 @@ namespace ClassLibrarySales
         /// Получение названия уровня доступа по индексу
         /// </summary>
         /// <returns>Название уровня доступа для индекса 4; пустая строка</returns>
-        public string GetNameFromIndex()
+        public string GetNameFromIndex(string getRightsQuery)
         {
-            string getRightsQuery = "SELECT ПраваПользователя FROM ПраваПользователей WHERE КодПравПользователя = @RightsCode";
+            
             string userRightsName = "";
             using (OleDbConnection connection = new OleDbConnection(_connectionString))
             {

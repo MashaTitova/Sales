@@ -71,9 +71,16 @@ namespace WinFormsAppSales
         private void FillComboBox(List<string> columnNames)
         {
             comboBox_SortingColumn.Items.Clear();
+            int index = 0;
             foreach (string name in columnNames)
             {
+                if (index == 0 && _name != "Пользователи")
+                {
+                    index++;
+                    continue;
+                }
                 comboBox_SortingColumn.Items.Add(name);
+                index++;
             }
         }
     }

@@ -102,7 +102,8 @@ namespace ClassLibrarySales
         /// <returns>Строка с названием прав</returns>
         public string ShowUserRights()
         {
-            return _dataAccess.GetNameFromIndex();
+            string getRightsQuery = "SELECT ПраваПользователя FROM ПраваПользователей WHERE КодПравПользователя = @RightsCode";
+            return _dataAccess.GetNameFromIndex(getRightsQuery);
         }
         /// <summary>
         /// Сохраняет изменения из DataTable в соответствующую таблицу базы данных Access

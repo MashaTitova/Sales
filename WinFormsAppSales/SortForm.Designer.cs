@@ -126,6 +126,8 @@
             Controls.Add(label_SortingColumn);
             Controls.Add(comboBox_SortingColumn);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(651, 632);
+            MinimumSize = new Size(651, 632);
             Name = "SortForm";
             Text = "Сортировка";
             ResumeLayout(false);

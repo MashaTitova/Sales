@@ -41,9 +41,16 @@ namespace WinFormsAppSales
         private void FillComboBox(List<string> columnNames)
         {
             comboBox_ChooseFindParam.Items.Clear();
+            int index = 0;
             foreach (string name in columnNames)
             {
+                if (index == 0 && _name != "Пользователи")
+                {
+                    index++;
+                    continue;
+                }
                 comboBox_ChooseFindParam.Items.Add(name);
+                index++;
             }
         }
         private void button_DataProcessing_Click(object sender, EventArgs e)
@@ -65,19 +72,7 @@ namespace WinFormsAppSales
                 {
                     if(comboBox_FindRatio.Text == "LIKE")
                     {
-                        try
-                        {
-                            _dt = _logicLayer.FilterString(_name, comboBox_ChooseFindParam.Text, textBox_ChooseFind.Text.Trim());
-                            _wasProcess = true;
-                        }
-                        catch (OleDbException ex)
-                        {
-                            MessageBox.Show($"SQL ошибка: {ex.Message}");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Общая ошибка: {ex.Message}");
-                        }
+                        FilterString();
                     }
                     else
                     {
@@ -89,49 +84,69 @@ namespace WinFormsAppSales
                     // Числовой поиск
                     if (radioButton_NumFind.Checked)
                     {
-                        // Проверка: введено ли число или дата
-                        if (!CheckNumInput(textBox_ChooseFind.Text.Trim()))
-                        {
-                            MessageBox.Show("Значение для числового поиска должно быть числом или датой", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Проверка: является ли выбранный столбец числовым или датой
-                        if (!IsNumericOrDateTimeColumn(_dt, comboBox_ChooseFindParam.Text))
-                        {
-                            MessageBox.Show($"Столбец '{comboBox_ChooseFindParam.Text}' не является числовым или датой. Числовой поиск невозможен.",
-                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        // Проверка: можно ли преобразовать введённое значение к типу столбца
-                        object convertedValue;
-                        if (!IsValidValueForColumn(_dt, comboBox_ChooseFindParam.Text, textBox_ChooseFind.Text.Trim(), out convertedValue))
-                        {
-                            MessageBox.Show($"Введённое значение '{textBox_ChooseFind.Text}' несовместимо с типом столбца '{comboBox_ChooseFindParam.Text}'.",
-                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                        try
-                        {
-                            _dt = _logicLayer.FilterNum(_name, comboBox_ChooseFindParam.Text, comboBox_FindRatio.Text, textBox_ChooseFind.Text.Trim());
-                            _wasProcess = true;
-                        }
-                        catch (OleDbException ex)
-                        {
-                            MessageBox.Show($"SQL ошибка: {ex.Message}");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Общая ошибка: {ex.Message}");
-                        }
+                        FilterNum();
                     }
                 }
             }
             else
             {
                 MessageBox.Show("Заполните все поля");
+            }
+        }
+        private void FilterNum()
+        {
+            // Проверка: введено ли число или дата
+            if (!CheckNumInput(textBox_ChooseFind.Text.Trim()))
+            {
+                MessageBox.Show("Значение для числового поиска должно быть числом или датой", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Проверка: является ли выбранный столбец числовым или датой
+            if (!IsNumericOrDateTimeColumn(_dt, comboBox_ChooseFindParam.Text))
+            {
+                MessageBox.Show($"Столбец '{comboBox_ChooseFindParam.Text}' не является числовым или датой. Числовой поиск невозможен.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Проверка: можно ли преобразовать введённое значение к типу столбца
+            object convertedValue;
+            if (!IsValidValueForColumn(_dt, comboBox_ChooseFindParam.Text, textBox_ChooseFind.Text.Trim(), out convertedValue))
+            {
+                MessageBox.Show($"Введённое значение '{textBox_ChooseFind.Text}' несовместимо с типом столбца '{comboBox_ChooseFindParam.Text}'.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                _dt = _logicLayer.FilterNum(_name, comboBox_ChooseFindParam.Text, comboBox_FindRatio.Text, textBox_ChooseFind.Text.Trim());
+                _wasProcess = true;
+            }
+            catch (OleDbException ex)
+            {
+                MessageBox.Show($"SQL ошибка: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Общая ошибка: {ex.Message}");
+            }
+        }
+        private void FilterString()
+        {
+            try
+            {
+                _dt = _logicLayer.FilterString(_name, comboBox_ChooseFindParam.Text, textBox_ChooseFind.Text.Trim());
+                _wasProcess = true;
+            }
+            catch (OleDbException ex)
+            {
+                MessageBox.Show($"SQL ошибка: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Общая ошибка: {ex.Message}");
             }
         }
         private bool IsValidValueForColumn(DataTable table, string columnName, string inputValue, out object convertedValue)

@@ -166,6 +166,8 @@
             Controls.Add(comboBox_ChooseFindParam);
             Controls.Add(textBox_ChooseFind);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(651, 757);
+            MinimumSize = new Size(651, 757);
             Name = "FindForm";
             Text = "Поиск";
             ResumeLayout(false);
